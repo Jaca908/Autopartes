@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es" >
+
 <head>
   <meta charset="UTF-8">
-  <title>Sidebar template</title>
+  <title>TUHONDAAPP</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="../layouts/css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 <style >
     body{
@@ -119,7 +119,7 @@
         color:#999898;
         margin-bottom:3px;
     }
-</style>
+    </style>
 <body>
 <!-- partial:index.partial.html -->
 <div class="page-wrapper chiller-theme toggled">
@@ -136,7 +136,7 @@
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            <img class="img-responsive img-rounded" src="./assets/img/logo3.png"
             alt="User picture">
         </div>
         <div class="user-info">
@@ -150,22 +150,21 @@
           </span>
         </div>
       </div>
-
-      <div class="sidebar-menu">
+<div class="sidebar-menu">
         <ul>
           <li class="header-menu">
             <span>General</span>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-tachometer-alt"></i>
+              <i class="fas fa-car-side"></i>
               <span>Modelo</span>
               <!--<span class="badge badge-pill badge-warning">New</span>-->
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Modelos
+                  <a href="formulariomodelo.php">Ingresar Modelos
                     <!--<span class="badge badge-pill badge-success">Pro</span>-->
                   </a>
                 </li>
@@ -178,109 +177,92 @@
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Generacion</span>
+              <span class="badge badge-pill badge-danger"></span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Products
+                  <a href="formulariogeneracion.php">Ingresar Generaciones
 
                   </a>
                 </li>
                 <li>
-                  <a href="#">Orders</a>
+                  <a href="#">Ver Generaciones</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fas fa-cogs"></i>
+              <span>Respuesto General</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="formulariorepuestogeneral.php">Ingresar Repuesto General</a>
                 </li>
                 <li>
-                  <a href="#">Credit cart</a>
+                  <a href="#">Ver Repuestos Generales</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="far fa-gem"></i>
-              <span>Components</span>
+              <i class="fas fa-cog"></i>
+              <span>Repuesto Especifico</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">General</a>
+                  <a href="formulariorepuestoespecifico.php">Ingresar Repuesto Especifico</a>
                 </li>
                 <li>
-                  <a href="#">Panels</a>
-                </li>
-                <li>
-                  <a href="#">Tables</a>
-                </li>
-                <li>
-                  <a href="#">Icons</a>
-                </li>
-                <li>
-                  <a href="#">Forms</a>
+                  <a href="#">Ver Repuestos Especificos</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
+              <i class="fas fa-tools"></i>
+              <span>Repuesto Final</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Pie chart</a>
+                  <a href="formulariorepuestofinal.php">V=Ingresar Repuesto Final</a>
                 </li>
                 <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
+                  <a href="#">Ver Repuestos Finales</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="header-menu">
-            <span>Extra</span>
+            <span>Administracion</span>
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
+              <i class="fas fa-user-friends"></i>
+              <span>Usuarios</span>
+              <span class="badge badge-pill badge-primary">!!</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-calendar"></i>
-              <span>Calendar</span>
+              <i class="fas fa-users"></i>
+              <span>Clientes</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
+              <i class="fa fa-cog"></i>
+              <span>Ajustes</span>
             </a>
           </li>
         </ul>
@@ -288,6 +270,7 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
+        <!-- sidebar-content  -->
     <div class="sidebar-footer">
       <a href="#">
         <i class="fa fa-bell"></i>
@@ -307,7 +290,7 @@
     </div>
   </nav>
   <!-- sidebar-wrapper  -->
-  <main class="page-content">
+     <main class="page-content">
     <div class="container-fluid">
       <h2>TUHONDAAPP</h2>
       <hr>
@@ -321,19 +304,73 @@
       </div>
       <h5>Ingrese los datos correspondientes</h5>
       <hr>
-      <div class="row">
-         <div id="wrapper">
+      <div class="row" id="carga">
+        <div id="wrapper">
             <fieldset>
-                <legend>Ingrese la Generacion</legend>
+                <legend>Ingrese el Repuesto</legend>
                 <div>
-                    <input type="text" maxlength="5" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+                    <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+                </div>
+                
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione un Modelo</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione una Generación</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione un Repuesto General</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione una Especificación de Repuesto</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                    <input type="text" maxlength="100" id="DescripcionRepuestoFinal" name="txtDescripcionRepuestoFinal" placeholder="Descripción"/>
                 </div>
                 <div>
-                    <input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generación"/>
+                    <input type="text" maxlength="11" id="Peso" name="txtPeso" placeholder="Peso"/>
                 </div>
-           <!--     <div>
-                    <input type="radio" name="Estado" value="1">Activo<br>
-                    <input type="radio" name="Estado" value="0">Inactivo<br>
+                <div>
+                    <input type="text" maxlength="11" id="Dimension" name="txtDimension" placeholder="Dimensión"/>
+                </div>
+                <div>
+					<input type="checkbox" id="Automatico" name="Automatico" value="Automatico">Automático	&nbsp;&nbsp;
+					<input type="checkbox" name="Manual" id="Manual" value="Manual">Manual
+					<pre></pre>
+					<input type="checkbox" id="4X2" name="4X2" value="4X2">4X2	&nbsp;&nbsp;
+					<input type="checkbox" id="4X4" name="4X4" value="4X4">4X4
+                </div>
+                
+                <div>
+                    <input type="text" maxlength="11" id="PrecioCosto" name="txtPrecioCosto" placeholder="Precio Costo"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="11" id="PrecioVenta" name="txtPrecioVenta" placeholder="Precio Venta"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="11" id="Utilidad" name="txtUtilidad" placeholder="Utilidad"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="5" id="IVA" name="txtIVA" placeholder="IVA"/>
+                </div>
+				 <!--<div>
+                    
                 </div>-->
                  
                 <input type="button" name="btnEnviar" value="Enviar"/>
@@ -351,7 +388,50 @@
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script><script  src="./script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script>
+<script  src="../layouts/js/script.js"></script>
+
+<script type="text/javascript">
+  
+  /*Filtarar campos para validar el tipo de dato aceptado*/
+
+
+  // Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      }
+    });
+  });
+}
+
+//Moneda con dos decimales)
+setInputFilter(document.getElementById("PrecioCosto"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+
+setInputFilter(document.getElementById("PrecioVenta"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+
+setInputFilter(document.getElementById("Utilidad"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+
+setInputFilter(document.getElementById("Peso"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+  
+setInputFilter(document.getElementById("IVA"), function(value) {
+  return /^\d*$/.test(value); });
+
+</script>
+
+</body>
+  </html>
 
 </body>
 </html>

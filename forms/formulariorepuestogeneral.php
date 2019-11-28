@@ -4,26 +4,122 @@
   <meta charset="UTF-8">
   <title>TUHONDAAPP</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="../layouts/css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
- <script type="text/javascript">
-            $(document).ready(function() {
-                $("#ingresemod").click(function(event) {
-                    $("#carga").load('formmod.php ');
-                });
-            });
-        </script>
-
 </head>
-<style>
+<style >
     body{
         font-family: 'Comfortaa', cursive !important;
     }
-</style>
+    #wrapper {
+        width:450px;
+        margin:0 auto;
+        font-family: 'Comfortaa', cursive;
+    }
+    legend {
+        color:#0481b1;
+        font-size:16px;
+        padding:0 10px;
+        background:#fff;
+        -moz-border-radius:4px;
+        box-shadow: 0 1px 5px rgba(4, 129, 177, 0.5);
+        padding:5px 10px;
+        text-transform:uppercase;
+        font-family:Helvetica, sans-serif;
+        font-weight:bold;
+    }
+    fieldset {
+        border-radius:4px;
+        background: #fff; 
+        background: -moz-linear-gradient(#fff, #f9fdff);
+        background: -o-linear-gradient(#fff, #f9fdff);
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff)); 
+        background: -webkit-linear-gradient(#fff, #f9fdff);
+        padding:20px;
+        border-color:rgba(4, 129, 177, 0.4);
+    }
+    input,
+    textarea {
+        color: #373737;
+        background: #fff;
+        border: 1px solid #CCCCCC;
+        color: #aaa;
+        font-size: 14px;
+        line-height: 1.2em;
+        margin-bottom:15px;
+
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    input[type="text"],
+    input[type="password"]{
+        padding: 8px 6px;
+        height: 22px;
+        width:280px;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        background:#f5fcfe;
+        text-indent: 0;
+        z-index: 1;
+        color: #373737;
+        -webkit-transition-duration: 400ms;
+        -webkit-transition-property: width, background;
+        -webkit-transition-timing-function: ease;
+        -moz-transition-duration: 400ms;
+        -moz-transition-property: width, background;
+        -moz-transition-timing-function: ease;
+        -o-transition-duration: 400ms;
+        -o-transition-property: width, background;
+        -o-transition-timing-function: ease;
+        width: 380px;
+        
+        border-color:#ccc;
+        box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+        opacity:0.6;
+    }
+    input[type="submit"]{
+        background: #222;
+        border: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+        text-transform:uppercase;
+        color: #eee;
+        cursor: pointer;
+        font-size: 15px;
+        margin: 5px 0;
+        padding: 5px 22px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-border-radius:4px;
+        -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+    }
+    textarea {
+        padding:3px;
+        width:96%;
+        height:100px;
+    }
+    textarea:focus {
+        background:#ebf8fd;
+        text-indent: 0;
+        z-index: 1;
+        color: #373737;
+        opacity:0.6;
+        box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+        border-color:#ccc;
+    }
+    .small {
+        line-height:14px;
+        font-size:12px;
+        color:#999898;
+        margin-bottom:3px;
+    }
+    </style>
 <body>
 <!-- partial:index.partial.html -->
 <div class="page-wrapper chiller-theme toggled">
@@ -40,7 +136,7 @@
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="logo3.png"
+            <img class="img-responsive img-rounded" src="./assets/img/logo3.png"
             alt="User picture">
         </div>
         <div class="user-info">
@@ -54,8 +150,7 @@
           </span>
         </div>
       </div>
-
-      <div class="sidebar-menu">
+<div class="sidebar-menu">
         <ul>
           <li class="header-menu">
             <span>General</span>
@@ -69,7 +164,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a id="ingresemod">Ingresar Modelos
+                  <a href="formulariomodelo.php">Ingresar Modelos
                     <!--<span class="badge badge-pill badge-success">Pro</span>-->
                   </a>
                 </li>
@@ -89,7 +184,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Generaciones
+                  <a href="formulariogeneracion.php">Ingresar Generaciones
 
                   </a>
                 </li>
@@ -108,7 +203,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Repuesto General</a>
+                  <a href="formulariorepuestogeneral.php">Ingresar Repuesto General</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Generales</a>
@@ -124,7 +219,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Repuesto Especifico</a>
+                  <a href="formulariorepuestoespecifico.php">Ingresar Repuesto Especifico</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Especificos</a>
@@ -140,7 +235,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">V=Ingresar Repuesto Final</a>
+                  <a href="formulariorepuestofinal.php">V=Ingresar Repuesto Final</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Finales</a>
@@ -175,6 +270,7 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
+        <!-- sidebar-content  -->
     <div class="sidebar-footer">
       <a href="#">
         <i class="fa fa-bell"></i>
@@ -194,7 +290,7 @@
     </div>
   </nav>
   <!-- sidebar-wrapper  -->
-  <main class="page-content">
+     <main class="page-content">
     <div class="container-fluid">
       <h2>TUHONDAAPP</h2>
       <hr>
@@ -209,21 +305,39 @@
       <h5>Ingrese los datos correspondientes</h5>
       <hr>
       <div class="row" id="carga">
-       
+             <div id="wrapper">
+            <fieldset>
+                <legend>Ingrese el Repuesto General</legend>
+                <div>
+                    <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="50" id="RepuestoGeneral" name="txtRepuestoGeneral" placeholder="Repuesto General"/>
+                </div>
+<!--                <div>
+                    <input type="radio" name="Estado" value="1">Activo<br>
+                    <input type="radio" name="Estado" value="0">Inactivo<br>
+                </div>-->
+                 
+                <input type="button" name="btnEnviar" value="Enviar"/>
+            </fieldset>    
+    </div>       
 
-    </body>
+ 
         </div>
 
       </div>
-    </div>
+      
+        </div>
 
-  </main>
-  <!-- page-content" -->
+  </main> <!-- page-content" -->
 </div>
 <!-- page-wrapper -->
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script><script  src="./script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script>
+<script  src="../layouts/js/script.js"></script>
 
 </body>
+  </html>
