@@ -324,14 +324,14 @@
       <div class="row">
          <div id="wrapper">
             <fieldset>
-                <legend>Ingrese el Modelo</legend>
+                <legend>Ingrese el Repuesto Especifico</legend>
                 <div>
-                    <input type="text" maxlength="5" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+                    <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
                 </div>
                 <div>
-                    <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
+                    <input type="text" maxlength="50" id="RepuestoEspecifico" name="txtRepuestoEspecifico" placeholder="Repuesto Específico"/>
                 </div>
-           <!--     <div>
+<!--                <div>
                     <input type="radio" name="Estado" value="1">Activo<br>
                     <input type="radio" name="Estado" value="0">Inactivo<br>
                 </div>-->

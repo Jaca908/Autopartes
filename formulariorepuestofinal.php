@@ -324,16 +324,70 @@
       <div class="row">
          <div id="wrapper">
             <fieldset>
-                <legend>Ingrese el Modelo</legend>
+                <legend>Ingrese el Repuesto</legend>
                 <div>
-                    <input type="text" maxlength="5" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+                    <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+                </div>
+                
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione un Modelo</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione una Generación</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione un Repuesto General</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                	<select>
+					  <option value="" selected="selected">Seleccione una Especificación de Repuesto</option>
+					  
+					</select>	
+                </div>
+                <br>
+                <div>
+                    <input type="text" maxlength="100" id="DescripcionRepuestoFinal" name="txtDescripcionRepuestoFinal" placeholder="Descripción"/>
                 </div>
                 <div>
-                    <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
+                    <input type="text" maxlength="11" id="Peso" name="txtPeso" placeholder="Peso"/>
                 </div>
-           <!--     <div>
-                    <input type="radio" name="Estado" value="1">Activo<br>
-                    <input type="radio" name="Estado" value="0">Inactivo<br>
+                <div>
+                    <input type="text" maxlength="11" id="Dimension" name="txtDimension" placeholder="Dimensión"/>
+                </div>
+                <div>
+					<input type="checkbox" id="Automatico" name="Automatico" value="Automatico">Automático	&nbsp;&nbsp;
+					<input type="checkbox" name="Manual" id="Manual" value="Manual">Manual
+					<pre></pre>
+					<input type="checkbox" id="4X2" name="4X2" value="4X2">4X2	&nbsp;&nbsp;
+					<input type="checkbox" id="4X4" name="4X4" value="4X4">4X4
+                </div>
+                
+                <div>
+                    <input type="text" maxlength="11" id="PrecioCosto" name="txtPrecioCosto" placeholder="Precio Costo"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="11" id="PrecioVenta" name="txtPrecioVenta" placeholder="Precio Venta"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="11" id="Utilidad" name="txtUtilidad" placeholder="Utilidad"/>
+                </div>
+                <div>
+                    <input type="text" maxlength="5" id="IVA" name="txtIVA" placeholder="IVA"/>
+                </div>
+				 <!--<div>
+                    
                 </div>-->
                  
                 <input type="button" name="btnEnviar" value="Enviar"/>
@@ -352,6 +406,46 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script><script  src="./script.js"></script>
+
+
+<script type="text/javascript">
+  
+  /*Filtarar campos para validar el tipo de dato aceptado*/
+
+
+  // Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      }
+    });
+  });
+}
+
+//Moneda con dos decimales)
+setInputFilter(document.getElementById("PrecioCosto"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+
+setInputFilter(document.getElementById("PrecioVenta"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+
+setInputFilter(document.getElementById("Utilidad"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+
+setInputFilter(document.getElementById("Peso"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
+  
+setInputFilter(document.getElementById("IVA"), function(value) {
+  return /^\d*$/.test(value); });
+
+</script>
 
 </body>
 </html>
