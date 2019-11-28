@@ -4,7 +4,7 @@
             <span>General</span>
           </li>
           <li class="sidebar-dropdown">
-            <a href="forms/formulariomodelo">
+            <a href="">
               <i class="fas fa-car-side"></i>
               <span>Modelo</span>
               <!--<span class="badge badge-pill badge-warning">New</span>-->
@@ -12,7 +12,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariomodelo">Ingresar Modelos
+                  <a href="forms/formulariomodelo.php">Ingresar Modelos
                     <!--<span class="badge badge-pill badge-success">Pro</span>-->
                   </a>
                 </li>
@@ -32,7 +32,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariogeneracion">Ingresar Generaciones
+                  <a href="forms/formulariogeneracion.php">Ingresar Generaciones
 
                   </a>
                 </li>
@@ -44,14 +44,14 @@
             </div>
           </li>
           <li class="sidebar-dropdown">
-            <a href="forms/formulariorepuestogeneral">
+            <a href="#">
               <i class="fas fa-cogs"></i>
               <span>Respuesto General</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariorepuestogeneral">Ingresar Repuesto General</a>
+                  <a href="forms/formulariorepuestogeneral.php">Ingresar Repuesto General</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Generales</a>
@@ -60,14 +60,14 @@
             </div>
           </li>
           <li class="sidebar-dropdown">
-            <a href="forms/formulariorepuestoespecifico">
+            <a href="#">
               <i class="fas fa-cog"></i>
               <span>Repuesto Especifico</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariorepuestoespecifico">Ingresar Repuesto Especifico</a>
+                  <a href="forms/formulariorepuestoespecifico.php">Ingresar Repuesto Especifico</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Especificos</a>
@@ -76,14 +76,14 @@
             </div>
           </li>
           <li class="sidebar-dropdown">
-            <a href="forms/formulariorepuestofinal">
+            <a href="#">
               <i class="fas fa-tools"></i>
               <span>Repuesto Final</span>
             </a>
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariorepuestofinal">V=Ingresar Repuesto Final</a>
+                  <a href="forms/formulariorepuestofinal.php">V=Ingresar Repuesto Final</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Finales</a>
