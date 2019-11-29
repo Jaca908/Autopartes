@@ -8,6 +8,19 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- page-wrapper -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script>
+<script  src="../layouts/js/script.js"></script>
+
+	    <!--Librerias para el modal -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
 </head>
 <style >
     body{
@@ -319,10 +332,26 @@
                     <input type="radio" name="Estado" value="0">Inactivo<br>
                 </div>-->
                  
-                <input type="button" name="btnEnviar" value="Enviar"/>
+                <input type="button" onclick="GuardarModificar()" name="btnEnviar" value="Enviar"/>
             </fieldset>    
     </div>   
-
+	<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                      <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Reportes</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>
+                      <div class="modal-body" style="color:black;" id="MSJ">
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
  
         </div>
 
@@ -332,12 +361,95 @@
 
   </main> <!-- page-content" -->
 </div>
-<!-- page-wrapper -->
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script>
-<script  src="../layouts/js/script.js"></script>
-
 </body>
+
+<script>
+function GuardarModificar()//Funcion para guardar/modificar un modelo
+{
+	if(document.getElementById('Codigo').value=='')
+	{
+		$("#MSJ").html('Error: Debe ingresar un código de modelo.');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Modelo').value=='')
+	{
+		$("#MSJ").html('Error: Debe ingresar un modelo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else
+	{
+		  var btnEnviar="EnviarModelo";
+		  var GuardarModificar="";
+		  
+		  if ( $('#Codigo').is('[readonly]') ) 
+		  { 
+		    GuardarModificar="Modificar";
+		  }
+		  else
+		  {
+		    GuardarModificar="Guardar";
+		  }
+		  
+		 $.ajax({
+              url: '../Logica/Modelo.php',
+              type: 'post',
+              data: 
+              {
+                 Codigo:document.getElementById('Codigo').value,
+                 Modelo:document.getElementById('Modelo').value,
+                 GuardarModificar:GuardarModificar,
+                 btnEnviar:btnEnviar
+				 
+              },
+              dataType:'json',
+		        success : function(response){
+		        	
+		        	var len =response.length;
+		        	
+		        	if(len>0)
+		        	{
+						var Respuesta=response[0]['Respuesta'];
+						var GuarMod=response[0]['GuarMod'];
+						
+						$("#MSJ").html(Respuesta);
+		            	$("#ModalMSJ").modal("show");
+		            	
+		            	sessionStorage.setItem('GuarMod',GuarMod);
+					}
+		        }
+          });
+
+          return false;  
+
+		
+	}	
+}
+	
+	
+</script>
+
+  <script>
+//luego de que se cierre el msj hace algo dependiendo de si guarda, modifica o no hay un error 	
+$('#ModalMSJ').on('hide.bs.modal', function (e) {
+		
+	var GuarMod = sessionStorage.getItem("GuarMod");
+	
+	sessionStorage.clear();	
+		
+	if(GuarMod =='Guardo')//si guarda recarga el formulario
+	{
+		window.open('../forms/formulariomodelo.php', '_self');	
+	}
+	else if(GuarMod =='Modifico')//si modifica abre el formulario de ver modelos
+	{
+		window.open('../forms/formulariovermodelo.php', '_self');	
+	}
+	
+	//si hay un error al guardar o modificar, no hace nada solo se cierra y deja la pantalla para que el usuario haga los cambios pertinentes
+});
+	
+</script>
+
+
+
   </html>
