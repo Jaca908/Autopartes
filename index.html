@@ -1,4 +1,61 @@
-<div class="sidebar-menu">
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>TUHONDAAPP</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="./style.css">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+ <script type="text/javascript">
+            $(document).ready(function() {
+                $("#ingresemod").click(function(event) {
+                    $("#carga").load('formmod.php ');
+                });
+            });
+        </script>
+
+</head>
+<style>
+    body{
+        font-family: 'Comfortaa', cursive !important;
+    }
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">TuHondaAPP</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="logo3.png"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">Nombre
+            <strong>Usuario</strong>
+          </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>En linea</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="sidebar-menu">
         <ul>
           <li class="header-menu">
             <span>General</span>
@@ -12,7 +69,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariomodelo.php">Ingresar Modelos
+                  <a id="ingresemod">Ingresar Modelos
                     <!--<span class="badge badge-pill badge-success">Pro</span>-->
                   </a>
                 </li>
@@ -32,7 +89,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariogeneracion.php">Ingresar Generaciones
+                  <a href="#">Ingresar Generaciones
 
                   </a>
                 </li>
@@ -51,7 +108,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariorepuestogeneral.php">Ingresar Repuesto General</a>
+                  <a href="#">Ingresar Repuesto General</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Generales</a>
@@ -67,7 +124,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariorepuestoespecifico.php">Ingresar Repuesto Especifico</a>
+                  <a href="#">Ingresar Repuesto Especifico</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Especificos</a>
@@ -83,7 +140,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="forms/formulariorepuestofinal.php">V=Ingresar Repuesto Final</a>
+                  <a href="#">V=Ingresar Repuesto Final</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Finales</a>
@@ -118,7 +175,6 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-        <!-- sidebar-content  -->
     <div class="sidebar-footer">
       <a href="#">
         <i class="fa fa-bell"></i>
@@ -138,4 +194,36 @@
     </div>
   </nav>
   <!-- sidebar-wrapper  -->
-    
+  <main class="page-content">
+    <div class="container-fluid">
+      <h2>TUHONDAAPP</h2>
+      <hr>
+      <div class="row">
+        <div class="form-group col-md-12">
+         
+        </div>
+        <div class="form-group col-md-12">
+         
+        </div>
+      </div>
+      <h5>Ingrese los datos correspondientes</h5>
+      <hr>
+      <div class="row" id="carga">
+       
+
+    </body>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+  <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script><script  src="./script.js"></script>
+
+</body>
