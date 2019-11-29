@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style >
+    /*Estilo para el formulario*/
     body{
         font-family: 'Comfortaa', cursive !important;
     }

@@ -4,26 +4,12 @@
   <meta charset="UTF-8">
   <title>TUHONDAAPP</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="assets/css/stylemenu.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
- <script type="text/javascript">
-            $(document).ready(function() {
-                $("#ingresemod").click(function(event) {
-                    $("#carga").load('formmod.php ');
-                });
-            });
-        </script>
-
 </head>
-<style>
-    body{
-        font-family: 'Comfortaa', cursive !important;
-    }
-</style>
+
 <body>
 <!-- partial:index.partial.html -->
 <div class="page-wrapper chiller-theme toggled">
@@ -40,7 +26,7 @@
       </div>
       <div class="sidebar-header">
         <div class="user-pic">
-          <img class="img-responsive img-rounded" src="logo3.png"
+            <img class="img-responsive img-rounded" src="./assets/img/logo3.png"
             alt="User picture">
         </div>
         <div class="user-info">
@@ -54,8 +40,7 @@
           </span>
         </div>
       </div>
-
-      <div class="sidebar-menu">
+<div class="sidebar-menu">
         <ul>
           <li class="header-menu">
             <span>General</span>
@@ -69,7 +54,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a id="ingresemod">Ingresar Modelos
+                  <a href="formulariomodelo.php">Ingresar Modelos
                     <!--<span class="badge badge-pill badge-success">Pro</span>-->
                   </a>
                 </li>
@@ -89,7 +74,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Generaciones
+                  <a href="formulariogeneracion.php">Ingresar Generaciones
 
                   </a>
                 </li>
@@ -108,7 +93,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Repuesto General</a>
+                  <a href="formulariorepuestogeneral.php">Ingresar Repuesto General</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Generales</a>
@@ -124,7 +109,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Ingresar Repuesto Especifico</a>
+                  <a href="formulariorepuestoespecifico.php">Ingresar Repuesto Especifico</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Especificos</a>
@@ -140,7 +125,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">V=Ingresar Repuesto Final</a>
+                  <a href="formulariorepuestofinal.php">V=Ingresar Repuesto Final</a>
                 </li>
                 <li>
                   <a href="#">Ver Repuestos Finales</a>
@@ -174,7 +159,10 @@
       </div>
       <!-- sidebar-menu  -->
     </div>
+      
+      
     <!-- sidebar-content  -->
+
     <div class="sidebar-footer">
       <a href="#">
         <i class="fa fa-bell"></i>
@@ -193,37 +181,38 @@
       </a>
     </div>
   </nav>
+    
+    
   <!-- sidebar-wrapper  -->
-  <main class="page-content">
-    <div class="container-fluid">
-      <h2>TUHONDAAPP</h2>
-      <hr>
-      <div class="row">
-        <div class="form-group col-md-12">
+    <main class="page-content">
+        <div class="container-fluid">
+            <h2>TUHONDAAPP</h2>
+                <hr>
+            <div class="row">
+                <div class="form-group col-md-12">
          
-        </div>
-        <div class="form-group col-md-12">
+                    </div>
+                        <div class="form-group col-md-12">
          
+                            </div>
+            </div>
+                
+            <h5>Ingrese los datos correspondientes</h5>
+                        <hr>
+                <div class="row" id="carga">
+                        <div id="wrapper">
+            
+                                </div>  <!-- page-wrapper -->
+                </div>
         </div>
-      </div>
-      <h5>Ingrese los datos correspondientes</h5>
-      <hr>
-      <div class="row" id="carga">
-       
-
-    </body>
-        </div>
-
-      </div>
-    </div>
-
-  </main>
-  <!-- page-content" -->
+    </main>  <!-- page-content" -->
 </div>
-<!-- page-wrapper -->
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script><script  src="./script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script>
+<script  src="assets/js/scriptdatatable.js"></script>
 
 </body>
+  </html>

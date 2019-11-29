@@ -4,25 +4,27 @@
   <meta charset="UTF-8">
   <title>TUHONDAAPP</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="../layouts/css/style.css">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'><link rel="stylesheet" href="../assets/css/stylemenu.css">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- page-wrapper -->
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
+<!--MENU-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js'></script>
-<script  src="../layouts/js/script.js"></script>
+<script  src="../assets/js/scriptmenu.js"></script>
+<!--MENU-->
 
-	    <!--Librerias para el modal -->
+
+<!--Librerias para el modal -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--Librerias para el modal -->
 
 </head>
 <style >
+    /*Estilo para el formulario*/
     body{
         font-family: 'Comfortaa', cursive !important;
     }
@@ -363,6 +365,7 @@
 </div>
 </body>
 
+
 <script>
 function GuardarModificar()//Funcion para guardar/modificar un modelo
 {
@@ -424,8 +427,6 @@ function GuardarModificar()//Funcion para guardar/modificar un modelo
 		
 	}	
 }
-	
-	
 </script>
 
   <script>
@@ -446,11 +447,10 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 	}
 	
 	//si hay un error al guardar o modificar, no hace nada solo se cierra y deja la pantalla para que el usuario haga los cambios pertinentes
-});
-	
+});	
 </script>
 
-<script  src="../layouts/js/script.js"></script>
+
 
 
 
