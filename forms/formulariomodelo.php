@@ -450,6 +450,8 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 	
 </script>
 
+<script  src="../layouts/js/script.js"></script>
+
 
 
   </html>
