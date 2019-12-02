@@ -146,8 +146,8 @@
 					<input type="checkbox" class="sub-menu-checkbox" id="modelo" />
 
 					<ul class="sub-menu-dropdown">
-						<li><a href="">Ingresar Modelo</a></li>
-						<li><a href="">Ver Modelos</a></li>
+						<li><a href="#">Ingresar Modelo</a></li>
+                                                <li><a href="../forms/vistas/vermodelos.php">Ver Modelos</a></li>
 					</ul>
 				</li>
                                 
