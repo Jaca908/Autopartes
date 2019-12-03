@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es" >
 <head>
   <meta charset="UTF-8">
   <title>Tu Honda APP</title>
@@ -152,126 +152,158 @@
 <thead>
 <tr>
 		<th>Modelo</th>
+                <th>Acciones</th>
 
 	</tr>
   </thead>
 <tbody>
 	<tr>
 		<td>Modelo1</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo2</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo3</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo4</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo5</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo6</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo7</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo8</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo9</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo1</td>
+                <td>Acciones</td>
 	</tr>
         
  		<tr>
 		<td>Modelo1</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo2</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo3</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo4</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo5</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo6</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo7</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo8</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo9</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo1</td>
-	</tr>	<tr>
+                <td>Acciones</td>
+	</tr>	
+        <tr>
 		<td>Modelo1</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo2</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo3</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo4</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo5</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo6</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo7</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo8</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo9</td>
+                <td>Acciones</td>
 	</tr>
         
  	<tr>
 		<td>Modelo1</td>
+                <td>Acciones</td>
 	</tr>
         
         

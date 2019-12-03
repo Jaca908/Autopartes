@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es" >
 <head>
   <meta charset="UTF-8">
   <title>Tu Honda APP</title>
@@ -9,115 +9,72 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 </head>
 
-<style >
-    /*Estilo para el formulario*/
-    body{
-        font-family: 'Comfortaa', cursive !important;
-    }
-    #wrapper {
-        width:450px;
-        margin:0 auto;
-        font-family: 'Comfortaa', cursive;
-    }
-    legend {
-        color:white;
-        font-size:16px;
-        padding:0 10px;
-        background: black;
-        -moz-border-radius:4px;
-        box-shadow: 0 1px 5px rgba(4, 129, 177, 0.5);
-        padding:5px 10px;
-        text-transform:uppercase;
-        font-family:Helvetica, sans-serif;
-        font-weight:bold;
-    }
-    fieldset {
-        border-radius:4px;
-        background: black; 
-        
-        padding:20px;
-        border-color: black;
-    }
-    input,
-    textarea {
-        color: black;
-        background: #fff;
-        border: 1px solid #CCCCCC;
-        color: #aaa;
-        font-size: 14px;
-        line-height: 1.2em;
-        margin-bottom:15px;
+<style>
+* {
+  box-sizing: border-box;
+}
 
-        -moz-border-radius:4px;
-        -webkit-border-radius:4px;
-        border-radius:4px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-    input[type="text"],
-    input[type="password"]{
-        padding: 8px 6px;
-        height: 22px;
-        width:280px;
-    }
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-        background:#f5fcfe;
-        text-indent: 0;
-        z-index: 1;
-        color: #373737;
-        -webkit-transition-duration: 400ms;
-        -webkit-transition-property: width, background;
-        -webkit-transition-timing-function: ease;
-        -moz-transition-duration: 400ms;
-        -moz-transition-property: width, background;
-        -moz-transition-timing-function: ease;
-        -o-transition-duration: 400ms;
-        -o-transition-property: width, background;
-        -o-transition-timing-function: ease;
-        width: 380px;
-        
-        border-color:#ccc;
-        box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
-        opacity:0.6;
-    }
-    input[type="submit"]{
-        background: black;
-        border: none;
-        text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
-        text-transform:uppercase;
-        color: black;
-        cursor: pointer;
-        font-size: 15px;
-        margin: 5px 0;
-        padding: 5px 22px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        -webkit-border-radius:4px;
-        -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-        -moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-        box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    }
-    textarea {
-        padding:3px;
-        width:96%;
-        height:100px;
-    }
-    textarea:focus {
-        background:#ebf8fd;
-        text-indent: 0;
-        z-index: 1;
-        color: #373737;
-        opacity:0.6;
-        box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
-        border-color:#ccc;
-    }
-    .small {
-        line-height:14px;
-        font-size:12px;
-        color:#999898;
-        margin-bottom:3px;
-    }
-    </style>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #120B00;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #144033;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #120B00;
+  color: #fff;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
 
 <body>
 <!-- partial:index.partial.html -->
@@ -160,53 +117,52 @@
 					<input type="checkbox" class="sub-menu-checkbox" id="generacion" />
 
 					<ul class="sub-menu-dropdown">
-						<li><a href="">Ingresar Generacion</a></li>
-						<li><a href="">Ver Generacion</a></li>
+                                            <li><a href="formgeneracion.php">Ingresar Generacion</a></li>
+                                            <li><a href="../forms/vistas/vergeneracion.php">Ver Generacion</a></li>
+					</ul>
+				</li>
+                                
+                              <li class="menu-hasdropdown">
+					<a href="#">Grupos</a><span class="icon"><i class="fa fa-gear"></i></span>
+
+					<label title="toggle menu" for="grupo">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="grupo" />
+
+					<ul class="sub-menu-dropdown">
+						<li><a href="formgrupo.php">Ingresar Grupo</a></li>
+						<li><a href="forms/vistas/vergrupos.php">Ver Grupo</a></li>
 					</ul>
 				</li>
                                 
                                 <li class="menu-hasdropdown">
-					<a href="#">Repuesto General</a><span class="icon"><i class="fa fa-gear"></i></span>
+					<a href="#">SubGrupo</a><span class="icon"><i class="fa fa-gear"></i></span>
 
-					<label title="toggle menu" for="repuestogene">
+					<label title="toggle menu" for="subgrupo">
                                             <span class="downarrow"><i class="fa fa-caret-down"></i></span>
                                         </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="repuestogene" />
+					<input type="checkbox" class="sub-menu-checkbox" id="subgrupo" />
 
 					<ul class="sub-menu-dropdown">
-						<li><a href="">Ingresar Repuesto General</a></li>
-						<li><a href="">Ver Repuestos Generales</a></li>
+						<li><a href="formsubgrupo.php">Ingresar SubGrupo</a></li>
+						<li><a href="forms/vistas/versubgrupos.php">Ver SubGrupo</a></li>
 					</ul>
 				</li>
                                 
                                 <li class="menu-hasdropdown">
-					<a href="#">Repuesto Especifico</a><span class="icon"><i class="fa fa-gear"></i></span>
+					<a href="#">Repuesto</a><span class="icon"><i class="fa fa-gear"></i></span>
 
-					<label title="toggle menu" for="repuestoespe">
+					<label title="toggle menu" for="repuesto">
                                             <span class="downarrow"><i class="fa fa-caret-down"></i></span>
                                         </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="repuestoespe" />
+					<input type="checkbox" class="sub-menu-checkbox" id="repuesto" />
 
 					<ul class="sub-menu-dropdown">
-						<li><a href="">Ingresar Repuesto Especifico</a></li>
-						<li><a href="">Ver Repuestos Especificos</a></li>
+						<li><a href="formrepuesto.php">Ingresar Repuesto</a></li>
+						<li><a href="forms/vistas/verrepuestos.php">Ver Repuestos</a></li>
 					</ul>
 				</li>
-                                
-                                <li class="menu-hasdropdown">
-					<a href="#">Repuesto Final</a><span class="icon"><i class="fa fa-gear"></i></span>
-
-					<label title="toggle menu" for="repuestofinal">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="repuestofinal" />
-
-					<ul class="sub-menu-dropdown">
-						<li><a href="">Ingresar Repuesto Final</a></li>
-						<li><a href="">Ver Repuestos Finales</a></li>
-					</ul>
-				</li>
-
 				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
 
 				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
@@ -226,21 +182,42 @@
 		<div id="main-contents">
                             
                    <div id="wrapper">
-            <fieldset>
-                <legend>Ingrese el Modelo</legend>
-                <div>
-                    <input type="text" maxlength="5" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
-                </div>
-                <div>
-                    <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
-                </div>
-           <!--     <div>
-                    <input type="radio" name="Estado" value="1">Activo<br>
-                    <input type="radio" name="Estado" value="0">Inactivo<br>
-                </div>-->
-                 
-                <input type="button" onclick="GuardarModificar()" name="btnEnviar" value="Enviar"/>
-            </fieldset>    
+<div class="container">
+  <form action="/action_page.php">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Codigo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="firstname" placeholder="Ingrese el codigo del modelo..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Modelo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="lastname" placeholder="Ingrese el nombre del modelo..">
+      </div>
+    </div>
+   <!-- <div class="row">
+      <div class="col-25">
+        <label for="country">Country</label>
+      </div>
+      <div class="col-75">
+        <select id="country" name="country">
+          <option value="australia">Australia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+      </div>
+    </div>-->
+
+    <div class="row">
+      <input type="submit" value="Guardar">
+    </div>
+  </form>
+</div>
     </div>   
 
 		</div>
