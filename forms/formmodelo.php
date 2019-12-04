@@ -183,13 +183,14 @@ input[type=submit]:hover {
                             
                    <div id="wrapper">
 <div class="container">
-  <form action="/action_page.php">
+	<fieldset>
+                <legend>Ingrese el Modelo</legend>
     <div class="row">
       <div class="col-25">
         <label for="fname">Codigo</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Ingrese el codigo del modelo..">
+        <input type="text" maxlength="5" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
       </div>
     </div>
     <div class="row">
@@ -197,7 +198,7 @@ input[type=submit]:hover {
         <label for="lname">Modelo</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Ingrese el nombre del modelo..">
+        <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
       </div>
     </div>
    <!-- <div class="row">
@@ -214,9 +215,14 @@ input[type=submit]:hover {
     </div>-->
 
     <div class="row">
-      <input type="submit" value="Guardar">
+      <div class="col-20">
+
+      </div>
+      <div class="col-75">
+      	<input type="button" value="Enviar">
+      </div>
     </div>
-  </form>
+    </fieldset>
 </div>
     </div>   
 
