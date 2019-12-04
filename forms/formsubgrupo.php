@@ -10,6 +10,7 @@
 </head>
 
 <style>
+    /*EStilo del formulario*/
 * {
   box-sizing: border-box;
 }
