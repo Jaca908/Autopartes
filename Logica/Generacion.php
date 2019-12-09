@@ -29,7 +29,9 @@ function GuardarOModificar()
 		//Guardar
 
 		$Codigo=$_POST["Codigo"];
-		$Genaracion=$_POST["Genaracion"];
+		$Modelo=$_POST["Modelo"];
+		$Generacion=$_POST["Generacion"];
+		$Ano=$_POST["Ano"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -39,38 +41,38 @@ function GuardarOModificar()
 			die("Connection failed: " . $Conexion->connect_error);
 		} 
 
-		$sql = "SELECT Codigo,Genaracion FROM genaracion WHERE Codigo = '$Codigo'";
+		$sql = "SELECT Codigo,Generacion FROM generacion WHERE Codigo = '$Codigo'";
 							
 		$result = $Conexion->query($sql);
 
 		if ($result->num_rows > 0) 
 		{
-		$Respuesta = "Ya existe un genaración con ese código";
-		$GuarMod='Error'; 
+			$Respuesta = "Ya existe un generación con ese código";
+			$GuarMod='Error'; 
 		}
 		else # si no existe verificar que no haya otro grupo con el mismo nombre
 		{		
-			$sql = "SELECT Codigo,Genaracion FROM genaración WHERE Genaracion like '$Genaracion'";
+			$sql = "SELECT Codigo,Generacion FROM generacion WHERE Generacion like '$Generacion' AND FK_modelo='$Modelo'";
 							
 			$result = $Conexion->query($sql);
 
 			if ($result->num_rows > 0) 
 			{
-				$Respuesta = "Ya existe una genaración con ese nombre"; 
+				$Respuesta = "Ya existe una generación con ese nombre asignada al modelo seleccionado"; 
 			}
 			else
 			{
 				//sanitize el sql
-				$sql = "INSERT INTO genaracion(Codigo,Genaracion)values('$Codigo','$Genaracion');";
+				$sql = "INSERT INTO generacion(Codigo,Generacion,Ano,FK_modelo)values('$Codigo','$Generacion','$Ano','$Modelo');";
 								
 				if($Conexion->query($sql) === TRUE) 
 				{   
-				  $Respuesta = "Genaración guardada exitosamente";
+				  $Respuesta = "Generación guardada exitosamente";
 				  $GuarMod='Guardo'; 			  
 				} 
 				else 
 				{
-				  $Respuesta = "Error al guardar la genaración";
+				  $Respuesta = "Error al guardar la generación";
 				  $GuarMod='Error';
 				}
 			}		
@@ -81,7 +83,9 @@ function GuardarOModificar()
 		//modificar
 		
 		$Codigo=$_POST["Codigo"];
-		$Genaracion=$_POST["Genaracion"];
+		$Modelo=$_POST["Modelo"];
+		$Generacion=$_POST["Generacion"];
+		$Ano=$_POST["Ano"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

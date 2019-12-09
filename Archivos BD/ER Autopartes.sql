@@ -8,15 +8,15 @@ DROP TABLE IF EXISTS `marca_repuesto`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `modelo` (
-    `Codigo` VARCHAR(5) NOT NULL,
+    `Codigo` VARCHAR(3) NOT NULL,
     `Modelo` VARCHAR(50) NOT NULL,
-    `Estado` VARCHAR(10) NOT NULL,
+    `Estado` VARCHAR(10) NOT NULL,/*Activo, Inactivo, MuyBasico(cuando es muy nuevo y casi no hay repuestos)*/
     PRIMARY KEY (`Codigo`)
 );
 
 CREATE TABLE `generacion` (
     `Codigo` VARCHAR(3) NOT NULL,
-    `FK_Modelo` VARCHAR(5) NOT NULL,
+    `FK_modelo` VARCHAR(3) NOT NULL,
     `Generacion` VARCHAR(50) NOT NULL,
     `Ano` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`Codigo`)
@@ -30,13 +30,13 @@ CREATE TABLE `grupo` (
 
 CREATE TABLE `subgrupo` (
     `Codigo` VARCHAR(3) NOT NULL,
-    `FK_Grupo` VARCHAR(3) NOT NULL,
+    `FK_grupo` VARCHAR(3) NOT NULL,
     `Subgrupo` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );
 
 CREATE TABLE `repuesto` (
-    `FK_modelo` VARCHAR(5) NOT NULL,
+    `FK_modelo` VARCHAR(3) NOT NULL,
     `FK_generacion` VARCHAR(3) NOT NULL,
     `FK_grupo` VARCHAR(3) NOT NULL,
     `FK_subgrupo` VARCHAR(3) NOT NULL,

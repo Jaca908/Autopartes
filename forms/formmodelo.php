@@ -165,10 +165,10 @@ input[type=submit]:hover {
                 <legend>Ingrese el Modelo</legend>
     <div class="row">
       <div class="col-25">
-        <label for="fname">Codigo</label>
+        <label for="fname">Código</label>
       </div>
       <div class="col-75">
-        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
       </div>
     </div>
     <div class="row">
