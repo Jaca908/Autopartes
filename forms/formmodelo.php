@@ -2,11 +2,24 @@
 <html lang="es" >
 <head>
   <meta charset="UTF-8">
-  <title>Tu Honda APP</title>
-  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'><link rel="stylesheet" href="../assets/css/style.css">
+  <title>Tu Honda APP</title>  
+
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+<link rel="stylesheet" href="../assets/css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!--Letra comfortaa-->
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script  src="../assets/js/script.js"></script>
+
+<!--Librerias para el modal -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!--este es el estilo del boostrap que necesito pero que distorciona la pagina-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 <style>
 * {
@@ -155,7 +168,7 @@ input[type=submit]:hover {
         <label for="fname">Codigo</label>
       </div>
       <div class="col-75">
-        <input type="text" maxlength="5" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Codigo"/>
       </div>
     </div>
     <div class="row">
@@ -166,32 +179,132 @@ input[type=submit]:hover {
         <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
       </div>
     </div>
-   <!-- <div class="row">
+    <div class="row">
       <div class="col-25">
-        <label for="country">Country</label>
+        <label for="Estado">Estado</label>
       </div>
       <div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+        <select id="Estado" name="Estado">
+          <option value=""></option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+          <option value="MuyBasico">Muy Básico</option>
         </select>
       </div>
-    </div>-->
+    </div>
     <div class="row">
       <div class="col-20">
       </div>
       <div class="col-75">
-          <input type="button" id="enviar" value="Enviar">
+          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
       </div>
     </div>
+    
+    <!--Modal de mensajes-->
+    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Modelo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body" style="color:black;" id="MSJ">
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        </div>
+    </div>
+    
     </fieldset>
 </div>
     </div>   
 		</div>
 	</div>
 </div>
-<!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="../assets/js/script.js"></script>
 </body>
+
+<script>
+	
+function Enviar()
+{//Funcion para Guardar o Modificar un modelo
+
+	if(document.getElementById('Codigo').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese un código de modelo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Modelo').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese un modelo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Estado').value=='')
+	{
+		$("#MSJ").html('Error: Seleccione un estado');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else
+	{  
+		$.ajax({
+          url: '../Logica/Modelo.php',
+          type: 'post',
+          data: 
+          {
+             btnEnviar:"Enviar",
+             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('Codigo').value,
+             Modelo:document.getElementById('Modelo').value,
+             Estado:document.getElementById('Estado').value,
+             
+          },
+          dataType: 'json',
+          success:function(response){
+              
+              var len = response.length;
+
+              if(len > 0){
+                
+                var Respuesta=response[0]['Respuesta'];
+				var GuarMod=response[0]['GuarMod'];
+				
+				$("#MSJ").html(Respuesta);
+            	$("#ModalMSJ").modal("show");
+            	
+            	sessionStorage.setItem('GuarMod',GuarMod);
+              }
+              
+          }
+      });
+
+      return false;
+	}
+	
+}
+	
+</script>
+
+  <script>
+	
+$('#ModalMSJ').on('hide.bs.modal', function (e) {
+		
+	var GuarMod = sessionStorage.getItem("GuarMod");
+	
+	sessionStorage.clear();	
+		
+	if(GuarMod =='Guardo')
+	{
+		window.open('formmodelo.php', '_self');	
+	}
+	else if(GuarMod =='Modifico')
+	{
+		window.open('vistas/vermodelos.php', '_self');	
+	}
+});
+	
+</script>
+
 </html>

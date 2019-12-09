@@ -30,6 +30,7 @@ function GuardarOModificarModelo()
 
 		$Codigo=$_POST["Codigo"];
 		$Modelo=$_POST["Modelo"];
+		$Estado=$_POST["Estado"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -61,7 +62,7 @@ function GuardarOModificarModelo()
 			else
 			{
 				//sanitize el sql
-				$sql = "INSERT INTO modelo(Codigo,Modelo)values('$Codigo','$Modelo');";
+				$sql = "INSERT INTO modelo(Codigo,Modelo,Estado)values('$Codigo','$Modelo','$Estado');";
 								
 				if($Conexion->query($sql) === TRUE) 
 				{   
@@ -82,6 +83,7 @@ function GuardarOModificarModelo()
 		
 		$Codigo=$_POST["Codigo"];
 		$Modelo=$_POST["Modelo"];
+		$Estado=$_POST["Estado"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -91,7 +93,7 @@ function GuardarOModificarModelo()
 		 	die("Connection failed: " . $Conexion->connect_error);
 		} 
 			//sanitize el sql
-			$sql = "UPDATE modelo SET Modelo='$Modelo' where Codigo='$Codigo'";
+			$sql = "UPDATE modelo SET Modelo='$Modelo', Estado='$Estado' WHERE Codigo='$Codigo'";
 							
 			if($Conexion->query($sql) === TRUE) 
 			{   
