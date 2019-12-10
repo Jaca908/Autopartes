@@ -44,7 +44,10 @@ input[type=submit],#enviar {
   border-radius: 4px;
   cursor: pointer;
   float: right;
+  margin-top: 40px;
   margin-right: -35%;
+  position: absolute;
+  
 }
 input[type=submit]:hover {
   background-color: #144033;
@@ -55,9 +58,10 @@ input[type=submit]:hover {
   color: #fff;
   padding: 20px;
 }
+
 .col-25 {
   float: left;
-  width: 25%;
+  width: 10%;
   margin-top: 6px;
 }
 .col-75 {
@@ -77,6 +81,11 @@ input[type=submit]:hover {
     width: 100%;
     margin-top: 0;
   }
+}
+@media (min-width: 1200px){
+.container {
+    width: 100%;
+}
 }
 </style>
 <body>
