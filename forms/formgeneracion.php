@@ -244,7 +244,7 @@ var Modificar=sessionStorage.getItem("Modificar");
 <script>
 	
 function Enviar()
-{//Funcion para Guardar o Modificar un modelo
+{//Funcion para Guardar o Modificar una generacion
 
 	if(document.getElementById('Codigo').value=='')
 	{
