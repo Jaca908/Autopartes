@@ -77,12 +77,12 @@ function showig_rows_count(maxRows, pageNum, totalRows) {
    //Default rows showing
         var end_index = maxRows*pageNum;
         var start_index = ((maxRows*pageNum)- maxRows) + parseFloat(1);
-        var string = 'Showing '+ start_index + ' to ' + end_index +' of ' + totalRows + ' entries';               
+        var string = 'Mostrando '+ start_index + ' a ' + end_index +' de ' + totalRows + ' entradas';               
         $('.rows_count').html(string);
 }
 
 // CREATING INDEX
-function default_index() {
+/*function default_index() {
   $('table tr:eq(0)').prepend('<th> ID </th>')
 
 					var id = 0;
@@ -91,7 +91,7 @@ function default_index() {
 						id++
 						$(this).prepend('<td>'+id+'</td>');
 					});
-}
+}*/
 
 // All Table search script
 function FilterkeyWord_all_table() {
