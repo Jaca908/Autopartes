@@ -66,7 +66,7 @@
 <thead>
 <tr>
 		<th>Código</th>
-		<th>Grupo</th>
+		<th>Marca de Repuesto</th>
         <th>Acciones</th>
 
 	</tr>
@@ -83,13 +83,13 @@
             die("Connection failed: " . $Conexion->connect_error);
           }
 
-          $sql = "SELECT Codigo,Grupo FROM grupo;";
+          $sql = "SELECT Codigo,MarcaRepuesto FROM marca_repuesto;";
           $result = $Conexion->query($sql);
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
             echo "<tr>";
             echo "<td>" . $ri['Codigo'] . "</td>";
-            echo "<td>" . $ri['Grupo'] . "</td>";
+            echo "<td>" . $ri['MarcaRepuesto'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";
@@ -127,12 +127,12 @@
 
 function ObtenerDatosFila(oButton)
 {
-	var dgvVerGrupos = document.getElementById('table');
+	var dgvVerMarcas = document.getElementById('table');
 
-    sessionStorage.setItem("Codigo", dgvVerGrupos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
+    sessionStorage.setItem("Codigo", dgvVerMarcas.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
     sessionStorage.setItem("Modificar", 'Modificar');
 
-    location.href = "formgrupo.php";
+    location.href = "formmarca.php";
 }
 
 </script>

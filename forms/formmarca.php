@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Tu Honda APP</title>  
+
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
 <link rel="stylesheet" href="../assets/css/style.css">
@@ -20,7 +21,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
-
 <style>
 * {
   box-sizing: border-box;
@@ -62,7 +62,7 @@ input[type=submit]:hover {
 
 .col-25 {
   float: left;
-  width: 15%;
+  width: 10%;
   margin-top: 6px;
 }
 .col-75 {
@@ -89,10 +89,11 @@ input[type=submit]:hover {
 }
 }
 </style>
-
 <body>
 <!-- partial:index.partial.html -->
-<?php include("Menu.php")?>
+
+<!--Menu-->
+<?php include("Menu.php") ?>
 <div class="new-wrapper">
 	<div id="main">
 		<div id="main-contents">
@@ -100,7 +101,7 @@ input[type=submit]:hover {
                    <div id="wrapper">
 <div class="container">
 	<fieldset>
-                <legend>Ingrese el Subgrupo</legend>
+                <legend>Ingrese la Marca de Repuesto</legend>
     <div class="row">
       <div class="col-25">
         <label for="fname">Código</label>
@@ -111,44 +112,12 @@ input[type=submit]:hover {
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="Grupo">Grupo</label>
+        <label for="lname">Marca</label>
       </div>
       <div class="col-75">
-      <?php ?>
-        <select id="Grupo" name="Grupo">
-          <option value="" selected="selected"></option>
-        <?php
-          //Cargar Combobox de Modelos
-          
-          include '../Conexion/Conexion.php';
-          
-          $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-          if ($Conexion->connect_error) 
-          {
-            die("Connection failed: " . $Conexion->connect_error);
-          } 
-          
-          $sql = "SELECT Codigo,Grupo FROM grupo";           
-          $result = $Conexion->query($sql);
-        ?>
-        <?php while($ri =  mysqli_fetch_array($result))
-              {
-              echo "<option value=".$ri['Codigo'].">".$ri['Grupo']."</option>";
-              }
-        ?>
-        </select>
+        <input type="text" maxlength="100" id="Marca" name="txtMarca" placeholder="Marca de Repuesto"/>
       </div>
     </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Subgrupo</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="100" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
-      </div>
-    </div>
-    
     <div class="row">
       <div class="col-20">
       </div>
@@ -162,7 +131,7 @@ input[type=submit]:hover {
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Subgrupo</h4>
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Marca de Repuesto</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -199,7 +168,7 @@ var Modificar=sessionStorage.getItem("Modificar");
     document.getElementById('Codigo').readOnly = true;
 
     $.ajax({
-            url: '../Logica/Subgrupo.php',
+            url: '../Logica/Marca.php',
             type: 'post',
             data: 
             {
@@ -214,9 +183,7 @@ var Modificar=sessionStorage.getItem("Modificar");
                 if(len > 0)
                 {
                   document.getElementById('Codigo').value = response[0]['Codigo'];
-                  document.getElementById('Subgrupo').value = response[0]['Subgrupo'];
-                  document.getElementById('Grupo').value = response[0]['Grupo'];   
-                  
+                  document.getElementById('Marca').value = response[0]['Marca'];                    
         		}
               
             }
@@ -235,35 +202,29 @@ var Modificar=sessionStorage.getItem("Modificar");
 <script>
 	
 function Enviar()
-{//Funcion para Guardar o Modificar una generacion
+{//Funcion para Guardar o Modificar una marca
 
 	if(document.getElementById('Codigo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de subgrupo');
+		$("#MSJ").html('Error: Ingrese un código de marca de repuesto');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Grupo').value=='')
+	else if(document.getElementById('Marca').value=='')
 	{
-		$("#MSJ").html('Error: Seleccione un grupo');
-    	$("#ModalMSJ").modal("show");	
-	}
-	else if(document.getElementById('Subgrupo').value=='')
-	{
-		$("#MSJ").html('Error: Ingrese un subgrupo');
+		$("#MSJ").html('Error: Ingrese una marca de repuesto');
     	$("#ModalMSJ").modal("show");	
 	}
 	else
 	{  
 		$.ajax({
-          url: '../Logica/Subgrupo.php',
+          url: '../Logica/Marca.php',
           type: 'post',
           data: 
           {
              btnEnviar:"Enviar",
              GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
              Codigo:document.getElementById('Codigo').value,
-             Grupo:document.getElementById('Grupo').value,
-             Subgrupo:document.getElementById('Subgrupo').value,             
+             Marca:document.getElementById('Marca').value,             
           },
           dataType: 'json',
           success:function(response){
@@ -301,11 +262,11 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 		
 	if(GuarMod =='Guardo')
 	{
-		window.open('formsubgrupo.php', '_self');	
+		window.open('formmarca.php', '_self');	
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('versubgrupos.php', '_self');	
+		window.open('vermarcas.php', '_self');	
 	}
 });
 	

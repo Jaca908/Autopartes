@@ -66,6 +66,21 @@
 						<li><a href="verrepuestos.php">Ver Repuestos</a></li>
 					</ul>
 				</li>
+				
+								<li class="menu-hasdropdown">
+					<a href="#">Marcas de Repuestos</a><span class="icon"><i class="fa fa-gear"></i></span>
+
+					<label title="toggle menu" for="marca">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="marca" />
+
+					<ul class="sub-menu-dropdown">
+						<li><a href="formmarca.php">Ingresar Marcas de Repuestos</a></li>
+						<li><a href="vermarcas.php">Ver Marcas de Repuestos</a></li>
+					</ul>
+				</li>
+				
 				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
 				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
 			</ul>
