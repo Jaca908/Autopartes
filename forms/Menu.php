@@ -27,7 +27,7 @@
 					<input type="checkbox" class="sub-menu-checkbox" id="generacion" />
 					<ul class="sub-menu-dropdown">
                                             <li><a href="formgeneracion.php">Ingresar Generacion</a></li>
-                                            <li><a href="vergeneracion.php">Ver Generacion</a></li>
+                                            <li><a href="vergeneraciones.php">Ver Generacion</a></li>
 					</ul>
 				</li>
                                 

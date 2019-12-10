@@ -95,16 +95,16 @@ function GuardarOModificar()
 		 	die("Connection failed: " . $Conexion->connect_error);
 		} 
 			//sanitize el sql
-			$sql = "UPDATE genaracion SET Genaracion='$Genaracion' where Codigo='$Codigo'";
+			$sql = "UPDATE generacion SET Generacion='$Generacion',Ano='$Ano',FK_modelo='$Modelo' WHERE Codigo='$Codigo'";
 							
 			if($Conexion->query($sql) === TRUE) 
 			{   
-			  $Respuesta = "Genaración modificada exitosamente";
+			  $Respuesta = "Generación modificada exitosamente";
 			  $GuarMod = 'Modifico'; 			  
 			} 
 			else 
 			{
-				 $Respuesta = "Error al modificar la genaración";
+				 $Respuesta = "Error al modificar la generación";
 				 $GuarMod='Error';
 			}		
 	}
@@ -131,7 +131,7 @@ function Consultar()
 		die("Connection failed: " . $Conexion->connect_error);
 	} 
 
-	$sql = "SELECT Codigo,Generacion FROM generacion WHERE Codigo = '$Codigo'";
+	$sql = "SELECT Codigo,Generacion,Ano,FK_modelo FROM generacion WHERE Codigo = '$Codigo'";
 						
 	$result = $Conexion->query($sql);
 
@@ -141,10 +141,12 @@ function Consultar()
 
 		$Codigo= $row["Codigo"];
 		$Generacion=$row["Generacion"];
+		$Ano=$row["Ano"];
+		$Modelo=$row["FK_modelo"];
 	}
 
 	$users_arr[] = array( 
-                         "Codigo"=>$Codigo,"Generacion"=>$Generacion,
+                         "Codigo"=>$Codigo,"Generacion"=>$Generacion,"Ano"=>$Ano,"Modelo"=>$Modelo,
                      );
 
     // encoding array to json format

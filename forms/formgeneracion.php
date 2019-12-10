@@ -192,6 +192,55 @@ input[type=submit]:hover {
 </div>
 </body>
 
+<script type="text/javascript">
+
+/*Cargar datos al abrir la pagina para consultar cuando se pulse el boton de ver*/
+window.onload = function() { 
+
+var Codigo=sessionStorage.getItem("Codigo");
+var Modificar=sessionStorage.getItem("Modificar");
+
+  if(Codigo!=null && Modificar!=null)
+  {
+    sessionStorage.clear();
+
+    document.getElementById('Codigo').readOnly = true;
+
+    $.ajax({
+            url: '../Logica/Generacion.php',
+            type: 'post',
+            data: 
+            {
+              MostrarDatos:'MostrarDatos',
+              Codigo:Codigo
+            },
+            dataType: 'json',
+            success:function(response){
+              
+                var len = response.length;
+
+                if(len > 0)
+                {
+                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('Generacion').value = response[0]['Generacion'];
+                  document.getElementById('Ano').value = response[0]['Ano'];
+                  document.getElementById('Modelo').value = response[0]['Modelo'];   
+                  
+        		}
+              
+            }
+        });
+
+        return false;
+  }
+  else
+  {
+    document.getElementById('Codigo').readOnly = false;
+  }
+
+}
+  </script> 
+
 <script>
 	
 function Enviar()
