@@ -37,44 +37,33 @@ function GuardarOModificar()
 		if ($Conexion->connect_error) 
 		{
 			die("Connection failed: " . $Conexion->connect_error);
-		} 
-
-		$sql = "SELECT Codigo,MarcaRepuesto FROM marca_repuesto WHERE Codigo = '$Codigo'";
-							
+		}
+		 		
+		$sql = "SELECT Codigo,MarcaRepuesto FROM marca_repuesto WHERE MarcaRepuesto like '$Marca'";
+						
 		$result = $Conexion->query($sql);
 
 		if ($result->num_rows > 0) 
 		{
-		$Respuesta = "Ya existe una marca de repuesto con ese código";
-		$GuarMod='Error'; 
+			$Respuesta = "Ya existe una marca de repuesto con ese nombre"; 
 		}
-		else # si no existe verificar que no haya otro grupo con el mismo nombre
-		{		
-			$sql = "SELECT Codigo,MarcaRepuesto FROM marca_repuesto WHERE MarcaRepuesto like '$Marca'";
+		else
+		{
+			//sanitize el sql
+			$sql = "INSERT INTO marca_repuesto(MarcaRepuesto)values('$Marca');";
 							
-			$result = $Conexion->query($sql);
-
-			if ($result->num_rows > 0) 
+			if($Conexion->query($sql) === TRUE) 
+			{   
+			  $Respuesta = "Marca de repuesto guardada exitosamente";
+			  $GuarMod='Guardo'; 			  
+			} 
+			else 
 			{
-				$Respuesta = "Ya existe una marca de repuesto con ese nombre"; 
+			  $Respuesta = "Error al guardar la marca de repuesto";
+			  $GuarMod='Error';
 			}
-			else
-			{
-				//sanitize el sql
-				$sql = "INSERT INTO marca_repuesto(Codigo,MarcaRepuesto)values('$Codigo','$Marca');";
-								
-				if($Conexion->query($sql) === TRUE) 
-				{   
-				  $Respuesta = "Marca de repuesto guardada exitosamente";
-				  $GuarMod='Guardo'; 			  
-				} 
-				else 
-				{
-				  $Respuesta = "Error al guardar la marca de repuesto";
-				  $GuarMod='Error';
-				}
-			}		
 		}		
+				
 	}			
 	else if($GuardarModificar=="Modificar")
 	{
