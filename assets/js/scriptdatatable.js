@@ -66,18 +66,18 @@ getPagination('#table-id');
 			
 
 // SI SETTING
-$(function(){
+/*$(function(){
 	// Just to append id number for each row  
 default_index();
 					
-});
+});*/
 
 //ROWS SHOWING FUNCTION
 function showig_rows_count(maxRows, pageNum, totalRows) {
    //Default rows showing
         var end_index = maxRows*pageNum;
         var start_index = ((maxRows*pageNum)- maxRows) + parseFloat(1);
-        var string = 'Mostrando '+ start_index + ' a ' + end_index +' de ' + totalRows + ' entradas';               
+        var string = 'Mostrando '+ start_index + ' a ' + end_index;               
         $('.rows_count').html(string);
 }
 

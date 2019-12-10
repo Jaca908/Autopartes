@@ -166,6 +166,54 @@ input[type=submit]:hover {
 </div>
 </body>
 
+<script type="text/javascript">
+
+/*Cargar datos al abrir la pagina para consultar cuando se pulse el boton de ver*/
+window.onload = function() { 
+
+var Codigo=sessionStorage.getItem("Codigo");
+var Modificar=sessionStorage.getItem("Modificar");
+
+  if(Codigo!=null && Modificar!=null)
+  {
+    sessionStorage.clear();
+
+    document.getElementById('Codigo').readOnly = true;
+
+    $.ajax({
+            url: '../Logica/Modelo.php',
+            type: 'post',
+            data: 
+            {
+              MostrarDatos:'MostrarDatos',
+              Codigo:Codigo
+            },
+            dataType: 'json',
+            success:function(response){
+              
+                var len = response.length;
+
+                if(len > 0)
+                {
+                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('Modelo').value = response[0]['Modelo'];  
+                  document.getElementById('Estado').value = response[0]['Estado'];  
+                  
+        		}
+              
+            }
+        });
+
+        return false;
+  }
+  else
+  {
+    document.getElementById('Codigo').readOnly = false;
+  }
+
+}
+  </script> 
+
 <script>
 	
 function Enviar()
@@ -240,7 +288,7 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('vistas/vermodelos.php', '_self');	
+		window.open('vermodelos.php', '_self');	
 	}
 });
 	

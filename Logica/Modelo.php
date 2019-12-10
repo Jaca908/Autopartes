@@ -8,14 +8,14 @@ require ("../Conexion/Conexion.php");
 
 if(isset($_POST["btnEnviar"]))/*Para guardar o modificar*/
 {
-	GuardarOModificarModelo();
+	GuardarOModificar();
 }
 else if(isset($_POST['MostrarDatos']))/*Para consultar y llenar los campos*/
 {
-	ConsultarGrupo();
+	Consultar();
 }
 
-function GuardarOModificarModelo()
+function GuardarOModificar()
 {
 	$GuardarModificar=$_POST["GuardarModificar"];
 	
@@ -115,6 +115,39 @@ function GuardarOModificarModelo()
       // encoding array to json format
       echo json_encode($users_arr);
       exit;
+}
+
+function Consultar()
+{
+	$Codigo=$_POST['Codigo'];
+	
+	$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+	if ($Conexion->connect_error) 
+	{
+	 	die("Connection failed: " . $Conexion->connect_error);
+	} 
+	
+	$sql="SELECT Codigo,Modelo,Estado FROM modelo WHERE Codigo=$Codigo;";
+	
+	$result = $Conexion->query($sql);
+
+	if ($result->num_rows > 0) 
+	{
+		$row = $result->fetch_assoc();
+
+		$Codigo= $row["Codigo"];
+		$Modelo=$row["Modelo"];
+		$Estado=$row["Estado"];
+	}
+
+	$users_arr[] = array( 
+                         "Codigo"=>$Codigo,"Modelo"=>$Modelo,"Estado"=>$Estado,
+                     );
+
+    // encoding array to json format
+    echo json_encode($users_arr);
+    exit;
 }
 
 ?>

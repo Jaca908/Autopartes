@@ -60,13 +60,14 @@
 <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" placeholder="Buscar.." class="form-control">
         </div>
       </div>
-<table class="table table-striped table-class" id= "table-id">
+<table class="table table-striped table-class" id= "tableModelos">
   
 	
 <thead>
 <tr>
-		<th>Codigo</th>
+		<th>Código</th>
 		<th>Modelo</th>
+		<th>Estado</th>
         <th>Acciones</th>
 
 	</tr>
@@ -83,13 +84,14 @@
             die("Connection failed: " . $Conexion->connect_error);
           }
 
-          $sql = "SELECT Codigo,Modelo FROM modelo;";
+          $sql = "SELECT Codigo,Modelo,Estado FROM modelo;";
           $result = $Conexion->query($sql);
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
             echo "<tr>";
             echo "<td>" . $ri['Codigo'] . "</td>";
             echo "<td>" . $ri['Modelo'] . "</td>";
+            echo "<td>" . $ri['Estado'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";
@@ -120,7 +122,21 @@
 <script  src="../assets/js/scriptdatatable.js"></script>
 
 </div>
-
-
 </body>
+
+<script>
+//Funcion para consultar/editar los modelos
+
+function ObtenerDatosFila(oButton)
+{
+	var dgvVerModelos = document.getElementById('tableModelos');
+
+    sessionStorage.setItem("Codigo", dgvVerModelos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
+    sessionStorage.setItem("Modificar", 'Modificar');
+
+    location.href = "formmodelo.php";
+}
+
+</script>
+
 </html>

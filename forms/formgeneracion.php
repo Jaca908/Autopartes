@@ -272,7 +272,7 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('vistas/vergeneraciones.php', '_self');	
+		window.open('vergeneraciones.php', '_self');	
 	}
 });
 	
