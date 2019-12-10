@@ -104,10 +104,10 @@ input[type=submit]:hover {
                 <legend>Ingrese la Marca de Repuesto</legend>
     <div class="row">
       <div class="col-25">
-        <label for="fname">Código</label>
+        <label style="display: none" for="fname">Código</label>
       </div>
       <div class="col-75">
-        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+        <input type="hidden" id="Codigo" name="txtCodigo" placeholder="Código"/>
       </div>
     </div>
     <div class="row">
@@ -204,12 +204,12 @@ var Modificar=sessionStorage.getItem("Modificar");
 function Enviar()
 {//Funcion para Guardar o Modificar una marca
 
-	if(document.getElementById('Codigo').value=='')
+	/*if(document.getElementById('Codigo').value=='')
 	{
 		$("#MSJ").html('Error: Ingrese un código de marca de repuesto');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Marca').value=='')
+	else*/ if(document.getElementById('Marca').value=='')
 	{
 		$("#MSJ").html('Error: Ingrese una marca de repuesto');
     	$("#ModalMSJ").modal("show");	

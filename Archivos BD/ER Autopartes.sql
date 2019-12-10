@@ -67,7 +67,7 @@ CREATE TABLE `repuesto` (
 );
 
 CREATE TABLE `marca_repuesto` (
-    `Codigo` INT NOT NULL,
+    `Codigo` INT NOT NULL AUTO_INCREMENT,
     `MarcaRepuesto` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );

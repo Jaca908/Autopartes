@@ -65,7 +65,7 @@
 	
 <thead>
 <tr>
-		<th>Código</th>
+		<th style="display: none">Código</th>
 		<th>Marca de Repuesto</th>
         <th>Acciones</th>
 
@@ -88,7 +88,7 @@
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" . $ri['Codigo'] . "</td>";
+            echo "<td style='display: none'>" . $ri['Codigo'] . "</td>";
             echo "<td>" . $ri['MarcaRepuesto'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';

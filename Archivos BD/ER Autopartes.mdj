@@ -2224,6 +2224,7 @@
 								"$ref": "AAAAAAFu7CfHJkvfLU8="
 							},
 							"name": "Codigo",
+							"documentation": "Autoincrementable y no visible",
 							"type": "INT",
 							"length": 0,
 							"primaryKey": true
