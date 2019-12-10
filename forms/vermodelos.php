@@ -20,6 +20,9 @@
 <link rel="stylesheet" href="../assets/css/styledatatable.css">
 
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 
 </head>
 
@@ -62,160 +65,37 @@
 	
 <thead>
 <tr>
+		<th>Codigo</th>
 		<th>Modelo</th>
-                <th>Acciones</th>
+        <th>Acciones</th>
 
 	</tr>
   </thead>
 <tbody>
-	<tr>
-		<td>Modelo1</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo2</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo3</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo4</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo5</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo6</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo7</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo8</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo9</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo1</td>
-                <td>Acciones</td>
-	</tr>
-        
- 		<tr>
-		<td>Modelo1</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo2</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo3</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo4</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo5</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo6</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo7</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo8</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo9</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo1</td>
-                <td>Acciones</td>
-	</tr>	
-        <tr>
-		<td>Modelo1</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo2</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo3</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo4</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo5</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo6</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo7</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo8</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo9</td>
-                <td>Acciones</td>
-	</tr>
-        
- 	<tr>
-		<td>Modelo1</td>
-                <td>Acciones</td>
-	</tr>
+	<?php
+          //Cargar lista de Modelos en la tabla
+          
+          include '../Conexion/Conexion.php';
+          
+          $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+          if ($Conexion->connect_error) {
+            die("Connection failed: " . $Conexion->connect_error);
+          }
+
+          $sql = "SELECT Codigo,Modelo FROM modelo;";
+          $result = $Conexion->query($sql);
+          ?>
+          <?php while ($ri =  mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>" . $ri['Codigo'] . "</td>";
+            echo "<td>" . $ri['Modelo'] . "</td>";
+            echo "<td>";
+            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
+            echo "</td>";
+            echo "</tr>";
+          } ?>
+
         
     </tbody>
 </table>
