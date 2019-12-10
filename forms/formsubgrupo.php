@@ -2,33 +2,42 @@
 <html lang="es" >
 <head>
   <meta charset="UTF-8">
-  <title>Tu Honda APP</title>
-  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'><link rel="stylesheet" href="../assets/css/style.css">
+  <title>Tu Honda APP</title>  
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+<link rel="stylesheet" href="../assets/css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!--Letra comfortaa-->
 <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script  src="../assets/js/script.js"></script>
+
+<!--Librerias para el modal -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!--este es el estilo del boostrap que necesito pero que distorciona la pagina-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <style>
-    /*EStilo del formulario*/
 * {
   box-sizing: border-box;
 }
-
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  color: black;
 }
-
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
-
-input[type=submit] {
+input[type=submit],#enviar {
   background-color: #120B00;
   color: white;
   padding: 12px 20px;
@@ -36,12 +45,14 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   float: right;
+  margin-top: 40px;
+  margin-right: -35%;
+  position: absolute;
+  
 }
-
 input[type=submit]:hover {
   background-color: #144033;
 }
-
 .container {
   border-radius: 5px;
   background-color: #120B00;
@@ -51,23 +62,20 @@ input[type=submit]:hover {
 
 .col-25 {
   float: left;
-  width: 25%;
+  width: 15%;
   margin-top: 6px;
 }
-
 .col-75 {
   float: left;
   width: 75%;
   margin-top: 6px;
 }
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .col-25, .col-75, input[type=submit] {
@@ -75,160 +83,232 @@ input[type=submit]:hover {
     margin-top: 0;
   }
 }
+@media (min-width: 1200px){
+.container {
+    width: 100%;
+}
+}
 </style>
 
 <body>
 <!-- partial:index.partial.html -->
-<div class="primary-nav">
-
-	<button href="#" class="hamburger open-panel nav-toggle">
-<span class="screen-reader-text">Menu</span>
-</button>
-
-	<nav role="navigation" class="menu">
-
-		<a href="#" class="logotype">TUHONDA<span>APP</span></a>
-
-		<div class="overflow-container">
-
-			<ul class="menu-dropdown">
-
-				
-
-				<li class="menu-hasdropdown">
-					<a href="#">Modelo</a><span class="icon"><i class="fa fa-gear"></i></span>
-
-					<label title="toggle menu" for="modelo">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="modelo" />
-
-					<ul class="sub-menu-dropdown">
-                                            <li><a href="formmodelo.php">Ingresar Modelo</a></li>
-                                                <li><a href="../forms/vistas/vermodelos.php">Ver Modelos</a></li>
-					</ul>
-				</li>
-                                
-                                <li class="menu-hasdropdown">
-					<a href="#">Generacion</a><span class="icon"><i class="fa fa-gear"></i></span>
-
-					<label title="toggle menu" for="generacion">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="generacion" />
-
-					<ul class="sub-menu-dropdown">
-                                            <li><a href="formgeneracion.php">Ingresar Generacion</a></li>
-                                                <li><a href="../forms/vistas/vergeneraciones.php">Ver Generacion</a></li>
-					</ul>
-				</li>
-                                
-                                  <li class="menu-hasdropdown">
-					<a href="#">Grupos</a><span class="icon"><i class="fa fa-gear"></i></span>
-
-					<label title="toggle menu" for="grupo">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="grupo" />
-
-					<ul class="sub-menu-dropdown">
-						<li><a href="formgrupo.php">Ingresar Grupo</a></li>
-						<li><a href="forms/vistas/vergrupos.php">Ver Grupo</a></li>
-					</ul>
-				</li>
-                                
-                                <li class="menu-hasdropdown">
-					<a href="#">SubGrupo</a><span class="icon"><i class="fa fa-gear"></i></span>
-
-					<label title="toggle menu" for="subgrupo">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="subgrupo" />
-
-					<ul class="sub-menu-dropdown">
-						<li><a href="#">Ingresar SubGrupo</a></li>
-						<li><a href="forms/vistas/versubgrupos.php">Ver SubGrupo</a></li>
-					</ul>
-				</li>
-                                
-                                <li class="menu-hasdropdown">
-					<a href="#">Repuesto</a><span class="icon"><i class="fa fa-gear"></i></span>
-
-					<label title="toggle menu" for="repuesto">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="repuesto" />
-
-					<ul class="sub-menu-dropdown">
-						<li><a href="formrepuesto.php">Ingresar Repuesto</a></li>
-						<li><a href="forms/vistas/verrepuestos.php">Ver Repuestos</a></li>
-					</ul>
-				</li>
-
-				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-
-				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
-
-			</ul>
-
-		</div>
-
-	</nav>
-
-</div>
-
+<?php include("Menu.php")?>
 <div class="new-wrapper">
-
 	<div id="main">
-
 		<div id="main-contents">
                             
                    <div id="wrapper">
 <div class="container">
-  <form action="/action_page.php">
+	<fieldset>
+                <legend>Ingrese el Subgrupo</legend>
     <div class="row">
       <div class="col-25">
-        <label for="fname">Codigo</label>
+        <label for="fname">Código</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Ingrese el codigo de subGrupo..">
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
       </div>
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="lname">SubGrupo</label>
+        <label for="Grupo">Grupo</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lastname" placeholder="Ingrese el nombre del SubGrupo..">
-      </div>
-    </div>
-   <!-- <div class="row">
-      <div class="col-25">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+      <?php ?>
+        <select id="Grupo" name="Grupo">
+          <option value="" selected="selected"></option>
+        <?php
+          //Cargar Combobox de Modelos
+          
+          include '../Conexion/Conexion.php';
+          
+          $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+          if ($Conexion->connect_error) 
+          {
+            die("Connection failed: " . $Conexion->connect_error);
+          } 
+          
+          $sql = "SELECT Codigo,Grupo FROM grupo";           
+          $result = $Conexion->query($sql);
+        ?>
+        <?php while($ri =  mysqli_fetch_array($result))
+              {
+              echo "<option value=".$ri['Codigo'].">".$ri['Grupo']."</option>";
+              }
+        ?>
         </select>
       </div>
-    </div>-->
-
-    <div class="row">
-      <input type="submit" value="Guardar">
     </div>
-  </form>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Subgrupo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="50" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-20">
+      </div>
+      <div class="col-75">
+          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
+      </div>
+    </div>
+    
+    <!--Modal de mensajes-->
+    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Subgrupo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body" style="color:black;" id="MSJ">
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+        </div>
+    </div>
+    
+    </fieldset>
 </div>
     </div>   
-
 		</div>
-
 	</div>
-
 </div>
-<!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="../assets/js/script.js"></script>
-
 </body>
+
+<script type="text/javascript">
+
+/*Cargar datos al abrir la pagina para consultar cuando se pulse el boton de ver*/
+window.onload = function() { 
+
+var Codigo=sessionStorage.getItem("Codigo");
+var Modificar=sessionStorage.getItem("Modificar");
+
+  if(Codigo!=null && Modificar!=null)
+  {
+    sessionStorage.clear();
+
+    document.getElementById('Codigo').readOnly = true;
+
+    $.ajax({
+            url: '../Logica/Subgrupo.php',
+            type: 'post',
+            data: 
+            {
+              MostrarDatos:'MostrarDatos',
+              Codigo:Codigo
+            },
+            dataType: 'json',
+            success:function(response){
+              
+                var len = response.length;
+
+                if(len > 0)
+                {
+                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('Subgrupo').value = response[0]['Subgrupo'];
+                  document.getElementById('Grupo').value = response[0]['Grupo'];   
+                  
+        		}
+              
+            }
+        });
+
+        return false;
+  }
+  else
+  {
+    document.getElementById('Codigo').readOnly = false;
+  }
+
+}
+  </script> 
+
+<script>
+	
+function Enviar()
+{//Funcion para Guardar o Modificar una generacion
+
+	if(document.getElementById('Codigo').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese un código de subgrupo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Grupo').value=='')
+	{
+		$("#MSJ").html('Error: Seleccione un grupo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Subgrupo').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese un subgrupo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else
+	{  
+		$.ajax({
+          url: '../Logica/Subgrupo.php',
+          type: 'post',
+          data: 
+          {
+             btnEnviar:"Enviar",
+             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('Codigo').value,
+             Grupo:document.getElementById('Grupo').value,
+             Subgrupo:document.getElementById('Subgrupo').value,             
+          },
+          dataType: 'json',
+          success:function(response){
+              
+              var len = response.length;
+
+              if(len > 0){
+                
+                var Respuesta=response[0]['Respuesta'];
+				var GuarMod=response[0]['GuarMod'];
+				
+				$("#MSJ").html(Respuesta);
+            	$("#ModalMSJ").modal("show");
+            	
+            	sessionStorage.setItem('GuarMod',GuarMod);
+              }
+              
+          }
+      });
+
+      return false;
+	}
+	
+}
+	
+</script>
+
+  <script>
+	
+$('#ModalMSJ').on('hide.bs.modal', function (e) {
+		
+	var GuarMod = sessionStorage.getItem("GuarMod");
+	
+	sessionStorage.clear();	
+		
+	if(GuarMod =='Guardo')
+	{
+		window.open('formsubgrupo.php', '_self');	
+	}
+	else if(GuarMod =='Modifico')
+	{
+		window.open('versubgrupos.php', '_self');	
+	}
+});
+	
+</script>
+
 </html>
