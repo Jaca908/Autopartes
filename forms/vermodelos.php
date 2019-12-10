@@ -60,7 +60,7 @@
 <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" placeholder="Buscar.." class="form-control">
         </div>
       </div>
-<table class="table table-striped table-class" id= "tableModelos">
+<table class="table table-striped table-class" id= "table">
   
 	
 <thead>
@@ -84,7 +84,12 @@
             die("Connection failed: " . $Conexion->connect_error);
           }
 
-          $sql = "SELECT Codigo,Modelo,Estado FROM modelo;";
+          $sql = "SELECT Codigo,Modelo,
+		 				 CASE Estado 
+		 					WHEN 'MuyBasico' THEN 'Muy Básico' 
+		 					ELSE Estado
+							END AS Estado 
+				  FROM modelo;";
           $result = $Conexion->query($sql);
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
@@ -129,7 +134,7 @@
 
 function ObtenerDatosFila(oButton)
 {
-	var dgvVerModelos = document.getElementById('tableModelos');
+	var dgvVerModelos = document.getElementById('table');
 
     sessionStorage.setItem("Codigo", dgvVerModelos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
     sessionStorage.setItem("Modificar", 'Modificar');

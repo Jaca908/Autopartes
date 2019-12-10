@@ -106,7 +106,7 @@ function FilterkeyWord_all_table() {
   var input_value =     document.getElementById("search_input_all").value;
         filter = input.value.toLowerCase();
   if(input_value !=''){
-        table = document.getElementById("table-id");
+        table = document.getElementById("table");
         tr = table.getElementsByTagName("tr");
 
         // Loop through all table rows, and hide those who don't match the search query
