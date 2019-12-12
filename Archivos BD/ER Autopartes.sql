@@ -54,7 +54,7 @@ CREATE TABLE `repuesto` (
     `4X2` BOOLEAN NOT NULL,
     `4X4` BOOLEAN NOT NULL,
     `Gasolina` BOOLEAN NOT NULL,
-    `Dielsel` BOOLEAN NOT NULL,
+    `Diesel` BOOLEAN NOT NULL,
     `Electrico` BOOLEAN NOT NULL,
     `Hibrido` BOOLEAN NOT NULL,
     `Caracteristica1` VARCHAR(100),

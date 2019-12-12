@@ -440,11 +440,36 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('Codigo').value = response[0]['Codigo'];
-                  document.getElementById('Generacion').value = response[0]['Generacion'];
-                  document.getElementById('Ano').value = response[0]['Ano'];
-                  document.getElementById('Modelo').value = response[0]['Modelo'];   
-                  
+                  	 document.getElementById('Modelo').value = response[0][''];
+		             document.getElementById('Generacion').value = response[0][''];
+		             document.getElementById('Grupo').value = response[0][''];
+		             document.getElementById('Subgrupo').value = response[0][''];
+		             document.getElementById('Codigo').value = response[0][''];
+		             document.getElementById('Marca').value = response[0][''];
+		             document.getElementById('CodigoMarca').value = response[0][''];
+		             document.getElementById('CodigoUniversal').value = response[0][''];
+		             document.getElementById('CodigoAlterno').value = response[0][''];
+		             document.getElementById('Repuesto').value = response[0][''];
+		             document.getElementById('Peso').value = response[0][''];
+		             document.getElementById('Dimension').value = response[0][''];
+		             document.getElementById('Medida').value = response[0][''];
+		             
+		             document.getElementById("Manual").checked
+					 document.getElementById("Automatico").checked
+					 document.getElementById("4X2").checked
+					 document.getElementById("4X4").checked
+					 document.getElementById("Gasolina").checked
+					 document.getElementById("Diesel").checked
+					 document.getElementById("Electrico").checked
+					 document.getElementById("Hibrido").checked
+		             
+		             document.getElementById("Caracteristica1").value = response[0][''];
+		             document.getElementById("Caracteristica2").value = response[0][''];
+		             document.getElementById("Caracteristica3").value = response[0][''];
+		             document.getElementById("PrecioCosto").value = response[0][''];
+		             document.getElementById("PrecioVenta").value = response[0][''];
+		             document.getElementById("Utilidad").value = response[0][''];
+		             document.getElementById("IVA").value = response[0][''];                  
         		}
               
             }

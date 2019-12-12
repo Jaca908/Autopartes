@@ -102,7 +102,7 @@ function GuardarOModificar()
 							4X2,
 							4X4,
 							Gasolina,
-							Dielsel,
+							Diesel,
 							Electrico,
 							Hibrido,
 							Caracteristica1,
@@ -191,7 +191,7 @@ function GuardarOModificar()
 						4X2=$t4X2,
 						4X4=$t4X4,
 						Gasolina=$Gasolina,
-						Dielsel=$Diesel,
+						Diesel=$Diesel,
 						Electrico=$Electrico,
 						Hibrido=$Hibrido,
 						Caracteristica1=$Caracteristica1,
@@ -237,7 +237,37 @@ function Consultar()
 		die("Connection failed: " . $Conexion->connect_error);
 	} 
 
-	$sql = "SELECT Codigo,Generacion,Ano,FK_modelo FROM generacion WHERE Codigo = '$Codigo'";
+	$sql = "SELECT 
+				FK_modelo,
+				FK_generacion,
+				FK_grupo,
+				FK_subgrupo,
+				Codigo,
+				FK_marca_repuesto,
+				CodigoMarca,
+				CodigoUniversal, 
+				CodigoAlterno, 
+				Repuesto,
+				Peso,
+				Dimension,
+				Medida,
+				Automatico,
+				Manual,
+				4X2,
+				4X4,
+				Gasolina,
+				Diesel,
+				Electrico,
+				Hibrido,
+				Caracteristica1,
+				Caracteristica2, 
+				Caracteristica3,
+				PrecioCosto,
+				PrecioVenta,
+				Utilidad,
+				IVA
+	 
+	 FROM repuesto WHERE Codigo = '$Codigo'";
 						
 	$result = $Conexion->query($sql);
 
@@ -245,10 +275,34 @@ function Consultar()
 	{
 		$row = $result->fetch_assoc();
 
-		$Codigo= $row["Codigo"];
-		$Generacion=$row["Generacion"];
-		$Ano=$row["Ano"];
-		$Modelo=$row["FK_modelo"];
+		$FK_modelo=$row["FK_modelo"];
+		$FK_generacion=$row["FK_generacion"];
+		$FK_grupo=$row["FK_grupo"];
+		$FK_subgrupo=$row["FK_subgrupo"];
+		$Codigo=$row["Codigo"];
+		$FK_marca_repuesto=$row["FK_marca_repuesto"];
+		$CodigoMarca=$row["CodigoMarca"];
+		$CodigoUniversal=$row["CodigoUniversal"];
+		$CodigoAlterno=$row["CodigoAlterno"]; 
+		$Repuesto=$row["Repuesto"];
+		$Peso=$row["Peso"];
+		$Dimension=$row["Dimension"];
+		$Medida=$row["Medida"];
+		$Automatico=$row["Automatico"];
+		$Manual=$row["Manual"];
+		$t4X2=$row["4X2"];
+		$t4X4=$row["4X4"];
+		$Gasolina=$row["Gasolina"];
+		$Diesel=$row["Diesel"];
+		$Electrico=$row["Electrico"];
+		$Hibrido=$row["Hibrido"];
+		$Caracteristica1=$row["Caracteristica1"];
+		$Caracteristica2=$row["Caracteristica2"]; 
+		$Caracteristica3=$row["Caracteristica3"];
+		$PrecioCosto=$row["PrecioCosto"];
+		$PrecioVenta=$row["PrecioVenta"];
+		$Utilidad=$row["Utilidad"];
+		$IVA=$row["IVA"];
 	}
 
 	$users_arr[] = array( 
