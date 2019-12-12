@@ -81,8 +81,8 @@
 					</ul>
 				</li>
 				
-				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+				<!--<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>-->
 			</ul>
 		</div>
 	</nav>

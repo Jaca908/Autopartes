@@ -2017,7 +2017,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFustjzu9FDxL8="
 							},
-							"name": "RepuestoFinal",
+							"name": "Repuesto",
 							"type": "VARCHAR",
 							"length": "100"
 						},
@@ -2137,7 +2137,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFustjzu9FDxL8="
 							},
-							"name": "Espacio1",
+							"name": "Caracteristica1",
 							"type": "VARCHAR",
 							"length": "100",
 							"nullable": true
@@ -2148,7 +2148,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFustjzu9FDxL8="
 							},
-							"name": "Espacio2",
+							"name": "Caracteristica2",
 							"type": "VARCHAR",
 							"length": "100",
 							"nullable": true
@@ -2159,7 +2159,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFustjzu9FDxL8="
 							},
-							"name": "Espacio3",
+							"name": "Caracteristica3",
 							"type": "VARCHAR",
 							"length": "100",
 							"nullable": true

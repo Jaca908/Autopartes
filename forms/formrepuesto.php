@@ -62,7 +62,7 @@ input[type=submit]:hover {
 
 .col-25 {
   float: left;
-  width: 15%;
+  width: 20%;
   margin-top: 6px;
 }
 .col-75 {
@@ -179,7 +179,7 @@ input[type=submit]:hover {
     
     <div class="row">
       <div class="col-25">
-        <label for="Generacion">Subgrupo</label>
+        <label for="Subgrupo">Subgrupo</label>
       </div>
       <div class="col-75">
         <select id="Subgrupo" name="Subgrupo">
@@ -291,18 +291,54 @@ input[type=submit]:hover {
       </div>
     </div>
     
-    
-    <!--Falta desde Automatico hasta Espacio 3 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <div class="row">
+			<div class="col-75">
+				
+        		<label><input type="checkbox" id="Manual" value="Manual"> Manual</label>
+	        	<label><input type="checkbox" id="Automatico" value="Automatico"> Automático</label>
+	        	
+	        	&nbsp;&nbsp;
+
+	        	<label><input type="checkbox" id="4X2" value="4X2"> 4X2</label>
+	        	<label><input type="checkbox" id="4X4" value="4X4"> 4X4</label>
+	        	
+	        	<br>
+	        	
+	        	<label><input type="checkbox" id="Gasolina" value="Gasolina"> Gasolina</label>
+		        <label><input type="checkbox" id="Diesel" value="Diesel"> Diesel</label>
+		        <label><input type="checkbox" id="Electrico" value="Electrico"> Eléctrico</label>
+		        <label><input type="checkbox" id="Hibrido" value="Hibrido"> Híbrido</label>
+	        	
+      		</div>
+    </div>
+       
+    <div class="row">
+      <div class="col-25">
+        <label for="caracte">Característica 1</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="Caracteristica1" name="Caracteristica1" placeholder="Caracteristica 1">
+      </div>
+    </div>
+      
+            <div class="row">
+      <div class="col-25">
+        <label for="caracte2">Característica 2</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="Caracteristica2" name="Caracteristica2" placeholder="Caracteristica 2">
+      </div>
+    </div>
+      
+         <div class="row">
+      <div class="col-25">
+        <label for="caracte3">Característica 3</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="Caracteristica3" name="Caracteristica3" placeholder="Caracteristica 3">
+      </div>
+    </div>
+      
     
     <div class="row">
       <div class="col-25">
@@ -509,6 +545,45 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 });
 	
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+//funciones para cambiar el subgrupo y generaciopn dependiendo de lo que seleccione el usuario
+
+  $('#Modelo').on('change',function(){
+        var Codigo = $(this).val();
+        if(Codigo){
+            $.ajax({
+                type:'POST',
+                url:'../Logica/CargarGeneracionWhenModeloSelected.php',
+                data:'Modelo='+Codigo,
+                success:function(html){
+                    $('#Generacion').html(html);
+                }
+            }); 
+        }else{
+            $('#Generacion').html('<option value=""></option>');
+        }
+    });
+    
+      $('#Grupo').on('change',function(){
+        var Codigo = $(this).val();
+        if(Codigo){
+            $.ajax({
+                type:'POST',
+                url:'../Logica/CargarSubgrupoWhenGrupoSelected.php',
+                data:'Grupo='+Codigo,
+                success:function(html){
+                    $('#Subgrupo').html(html);
+                }
+            }); 
+        }else{
+            $('#Subgrupo').html('<option value=""></option>');
+        }
+    });
+});
+</script>
+
 
 <script type="text/javascript">
   
