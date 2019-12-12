@@ -43,6 +43,7 @@ CREATE TABLE `repuesto` (
     `Codigo` CHAR(3) NOT NULL,
     `FK_marca_repuesto` INT NOT NULL,
     `CodigoMarca` VARCHAR(100),
+    `CodigoUniversal` VARCHAR(100),
     `CodigoAlterno` VARCHAR(100),
     `Repuesto` VARCHAR(100) NOT NULL,
     `Peso` DECIMAL(10,2) NOT NULL,

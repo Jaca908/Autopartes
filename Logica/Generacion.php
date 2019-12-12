@@ -47,7 +47,7 @@ function GuardarOModificar()
 
 		if ($result->num_rows > 0) 
 		{
-			$Respuesta = "Ya existe un generación con ese código";
+			$Respuesta = "Ya existe una generación con ese código";
 			$GuarMod='Error'; 
 		}
 		else # si no existe verificar que no haya otro grupo con el mismo nombre

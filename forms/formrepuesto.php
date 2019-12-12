@@ -275,19 +275,19 @@ input[type=submit]:hover {
     
     <div class="row">
       <div class="col-25">
-        <label for="lname">Dimensión</label>
+        <label for="lname">Dimensiones</label>
       </div>
       <div class="col-75">
-        <input type="text" maxlength="50" id="Dimension" name="txtDimension" placeholder="Dimensión"/>
+        <input type="text" maxlength="50" id="Dimension" name="txtDimension" placeholder="Dimensiones"/>
       </div>
     </div>
     
     <div class="row">
       <div class="col-25">
-        <label for="lname">Medida</label>
+        <label for="lname">Medidas</label>
       </div>
       <div class="col-75">
-        <input type="text" maxlength="50" id="Medida" name="txtMedida" placeholder="Medida"/>
+        <input type="text" maxlength="50" id="Medida" name="txtMedida" placeholder="Medidas"/>
       </div>
     </div>
     
@@ -426,7 +426,7 @@ var Modificar=sessionStorage.getItem("Modificar");
     document.getElementById('Codigo').readOnly = true;
 
     $.ajax({
-            url: '../Logica/Generacion.php',
+            url: '../Logica/Repuesto.php',
             type: 'post',
             data: 
             {
@@ -463,42 +463,138 @@ var Modificar=sessionStorage.getItem("Modificar");
 <script>
 	
 function Enviar()
-{//Funcion para Guardar o Modificar una generacion
+{//Funcion para Guardar o Modificar un repuesto
 
-	if(document.getElementById('Codigo').value=='')
-	{
-		$("#MSJ").html('Error: Ingrese un código de generación');
-    	$("#ModalMSJ").modal("show");	
-	}
-	else if(document.getElementById('Modelo').value=='')
+	if(document.getElementById('Modelo').value=='')
 	{
 		$("#MSJ").html('Error: Seleccione un modelo');
     	$("#ModalMSJ").modal("show");	
 	}
 	else if(document.getElementById('Generacion').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese una generación');
+		$("#MSJ").html('Error: Seleccione una generación');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Ano').value=='')
+	else if(document.getElementById('Grupo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese los años de la generación');
+		$("#MSJ").html('Error: Seleccione un grupo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Subgrupo').value=='')
+	{
+		$("#MSJ").html('Error: Seleccione un subgrupo');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Codigo').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese un consecutivo de repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Marca').value=='')
+	{
+		$("#MSJ").html('Error: Seleccione una marca de repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Repuesto').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese una descripción del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Peso').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese el peso del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Dimension').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese las dimensiones del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Medida').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese las medidas del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(!document.getElementById("Manual").checked && !document.getElementById("Automatico").checked)
+	{
+		$("#MSJ").html('Error: Seleccione un tipo de transmisión del vehículo: manual-automático');
+    	$("#ModalMSJ").modal("show");
+	}
+	else if(!document.getElementById("4X4").checked && !document.getElementById("4X2").checked)
+	{
+		$("#MSJ").html('Error: Seleccione un tipo de tracción del vehículo: 4X2-4X4');
+    	$("#ModalMSJ").modal("show");
+	}
+	else if(!document.getElementById("Gasolina").checked && !document.getElementById("Diesel").checked &&
+			!document.getElementById("Electrico").checked && !document.getElementById("Hibrido").checked)
+	{
+		$("#MSJ").html('Error: Seleccione un tipo de combustible del vehículo: gasolina, diesel, eléctrico, híbrido');
+    	$("#ModalMSJ").modal("show");
+	}
+	else if(document.getElementById('PrecioCosto').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese el precio de costo del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('PrecioVenta').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese el precio de venta del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Utilidad').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese el porcentaje de utilidad del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(parseFloat(document.getElementById('Utilidad').value)>999)
+    {
+		$("#MSJ").html("Error: el porcentaje de utilidad no puede ser mayor a 999%");
+      	$("#ModalMSJ").modal("show");
+	}
+	else if(document.getElementById('IVA').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese el porcentaje de IVA del repuesto');
     	$("#ModalMSJ").modal("show");	
 	}
 	else
 	{  
 		$.ajax({
-          url: '../Logica/Generacion.php',
+          url: '../Logica/Repuesto.php',
           type: 'post',
           data: 
           {
              btnEnviar:"Enviar",
              GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('Codigo').value,
              Modelo:document.getElementById('Modelo').value,
              Generacion:document.getElementById('Generacion').value,
-             Ano:document.getElementById('Ano').value,
+             Grupo:document.getElementById('Grupo').value,
+             Subgrupo:document.getElementById('Subgrupo').value,
+             Codigo:document.getElementById('Codigo').value,
+             Marca:document.getElementById('Marca').value,
+             CodigoMarca:document.getElementById('CodigoMarca').value,
+             CodigoUniversal:document.getElementById('CodigoUniversal').value,
+             CodigoAlterno:document.getElementById('CodigoAlterno').value,
+             Repuesto:document.getElementById('Repuesto').value,
+             Peso:document.getElementById('Peso').value,
+             Dimension:document.getElementById('Dimension').value,
+             Medida:document.getElementById('Medida').value,
              
+             Manual:(document.getElementById("Manual").checked)?1:0,
+			 Automatico:(document.getElementById("Automatico").checked)?1:0,
+			 t4X2:(document.getElementById("4X2").checked)?1:0,
+			 t4X4:(document.getElementById("4X4").checked)?1:0,
+			 Gasolina:(document.getElementById("Gasolina").checked)?1:0,
+			 Diesel:(document.getElementById("Diesel").checked)?1:0,
+			 Electrico:(document.getElementById("Electrico").checked)?1:0,
+			 Hibrido:(document.getElementById("Hibrido").checked)?1:0,
+             
+             Caracteristica1:document.getElementById("Caracteristica1").value,
+             Caracteristica2:document.getElementById("Caracteristica2").value,
+             Caracteristica3:document.getElementById("Caracteristica3").value,
+             PrecioCosto:document.getElementById("PrecioCosto").value,
+             PrecioVenta:document.getElementById("PrecioVenta").value,
+             Utilidad:document.getElementById("Utilidad").value,
+             IVA:document.getElementById("IVA").value,
           },
           dataType: 'json',
           success:function(response){
@@ -536,11 +632,11 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 		
 	if(GuarMod =='Guardo')
 	{
-		window.open('formgeneracion.php', '_self');	
+		window.open('formrepuesto.php', '_self');	
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('vergeneraciones.php', '_self');	
+		window.open('verrepuestos.php', '_self');	
 	}
 });
 	
