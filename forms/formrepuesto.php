@@ -416,7 +416,13 @@ input[type=submit]:hover {
 /*Cargar datos al abrir la pagina para consultar cuando se pulse el boton de ver*/
 window.onload = function() { 
 
+var CodModelo=sessionStorage.getItem("CodModelo");
+var CodGeneracion=sessionStorage.getItem("CodGeneracion");
+var CodGrupo=sessionStorage.getItem("CodGrupo");
+var CodSubgrupo=sessionStorage.getItem("CodSubgrupo");
+var CodMarca=sessionStorage.getItem("CodMarca");
 var Codigo=sessionStorage.getItem("Codigo");
+
 var Modificar=sessionStorage.getItem("Modificar");
 
   if(Codigo!=null && Modificar!=null)
@@ -431,6 +437,12 @@ var Modificar=sessionStorage.getItem("Modificar");
             data: 
             {
               MostrarDatos:'MostrarDatos',
+              
+              CodModelo:CodModelo,
+              CodGeneracion:CodGeneracion,
+              CodGrupo:CodGrupo,
+              CodSubgrupo:CodSubgrupo,
+              CodMarca:CodMarca,
               Codigo:Codigo
             },
             dataType: 'json',
@@ -440,36 +452,72 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  	 document.getElementById('Modelo').value = response[0][''];
-		             document.getElementById('Generacion').value = response[0][''];
-		             document.getElementById('Grupo').value = response[0][''];
-		             document.getElementById('Subgrupo').value = response[0][''];
-		             document.getElementById('Codigo').value = response[0][''];
-		             document.getElementById('Marca').value = response[0][''];
-		             document.getElementById('CodigoMarca').value = response[0][''];
-		             document.getElementById('CodigoUniversal').value = response[0][''];
-		             document.getElementById('CodigoAlterno').value = response[0][''];
-		             document.getElementById('Repuesto').value = response[0][''];
-		             document.getElementById('Peso').value = response[0][''];
-		             document.getElementById('Dimension').value = response[0][''];
-		             document.getElementById('Medida').value = response[0][''];
+                  	 document.getElementById('Modelo').value = response[0]['Modelo'];
 		             
-		             document.getElementById("Manual").checked
-					 document.getElementById("Automatico").checked
-					 document.getElementById("4X2").checked
-					 document.getElementById("4X4").checked
-					 document.getElementById("Gasolina").checked
-					 document.getElementById("Diesel").checked
-					 document.getElementById("Electrico").checked
-					 document.getElementById("Hibrido").checked
+		             document.getElementById('Grupo').value = response[0]['Grupo'];
 		             
-		             document.getElementById("Caracteristica1").value = response[0][''];
-		             document.getElementById("Caracteristica2").value = response[0][''];
-		             document.getElementById("Caracteristica3").value = response[0][''];
-		             document.getElementById("PrecioCosto").value = response[0][''];
-		             document.getElementById("PrecioVenta").value = response[0][''];
-		             document.getElementById("Utilidad").value = response[0][''];
-		             document.getElementById("IVA").value = response[0][''];                  
+		             document.getElementById('Codigo').value = response[0]['Codigo'];
+		             document.getElementById('Marca').value = response[0]['Marca'];
+		             document.getElementById('CodigoMarca').value = response[0]['CodigoMarca'];
+		             document.getElementById('CodigoUniversal').value = response[0]['CodigoUnversal'];
+		             document.getElementById('CodigoAlterno').value = response[0]['CodigoAlterno'];
+		             document.getElementById('Repuesto').value = response[0]['Repuesto'];
+		             document.getElementById('Peso').value = response[0]['Peso'];
+		             document.getElementById('Dimension').value = response[0]['Dimension'];
+		             document.getElementById('Medida').value = response[0]['Medida'];
+		             
+		             if(response[0]['Manual']==1){document.getElementById("Manual").checked=true;}
+		             if(response[0]['Automatico']==1){document.getElementById("Automatico").checked=true;}
+		             if(response[0]['4X2']==1){document.getElementById("4X2").checked=true;}
+		             if(response[0]['4X4']==1){document.getElementById("4X4").checked=true;}
+		             if(response[0]['Gasolina']==1){document.getElementById("Gasolina").checked=true;}
+		             if(response[0]['Diesel']==1){document.getElementById("Diesel").checked=true;}
+		             if(response[0]['Electrico']==1){document.getElementById("Electrico").checked=true;}
+		             if(response[0]['Hibrido']==1){document.getElementById("Hibrido").checked=true;}
+	             
+		             document.getElementById("Caracteristica1").value = response[0]['Caracteristica1'];
+		             document.getElementById("Caracteristica2").value = response[0]['Caracteristica2'];
+		             document.getElementById("Caracteristica3").value = response[0]['Caracteristica3'];
+		             document.getElementById("PrecioCosto").value = response[0]['PrecioCosto'];
+		             document.getElementById("PrecioVenta").value = response[0]['PrecioVenta'];
+		             document.getElementById("Utilidad").value = response[0]['Utilidad'];
+		             document.getElementById("IVA").value = response[0]['IVA'];
+		             
+		             
+				        var CodigoModelo = response[0]['Modelo'];
+				        
+				        if(CodigoModelo){
+				            $.ajax({
+				                type:'POST',
+				                url:'../Logica/CargarGeneracionWhenModeloSelected.php',
+				                data:'Modelo='+CodigoModelo,
+				                success:function(html){
+				                    $('#Generacion').html(html);
+				                    document.getElementById('Generacion').value = response[0]['Generacion'];
+				                }
+				            }); 
+				        }else{
+				            $('#Generacion').html('<option value=""></option>');
+				        }
+				        
+				        
+				       var CodigoGrupo = response[0]['Grupo'];
+				        
+				        if(CodigoGrupo){
+				            $.ajax({
+				                type:'POST',
+				                url:'../Logica/CargarSubgrupoWhenGrupoSelected.php',
+				                data:'Grupo='+CodigoGrupo,
+				                success:function(html){
+				                    $('#Subgrupo').html(html);
+				                    document.getElementById('Subgrupo').value = response[0]['Subgrupo'];
+				                }
+				            }); 
+				        }else{
+				            $('#Subgrupo').html('<option value=""></option>');
+				        }  
+				        
+				                    
         		}
               
             }
