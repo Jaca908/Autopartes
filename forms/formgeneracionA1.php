@@ -1,8 +1,9 @@
 <!--INCLUYE EL HEAD-->
 <?php include_once "headforms.php"?>
 
-<!--MENU-->
+<!-- INCLUYE EL MENU-->
 <?php include("Menu.php")?>
+<!-- INCLUYE EL MENU-->
 
 <div class="new-wrapper">
 	<div id="main">
@@ -10,24 +11,21 @@
                             
                    <div id="wrapper">
 <div class="container">
-	<fieldset>
-                <legend>Ingrese el Subgrupo</legend>
-    <div class="row">
-      <div class="col-25">
-        <label for="fname">Código</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="Grupo">Grupo</label>
-      </div>
-      <div class="col-75">
-      <?php ?>
-        <select id="Grupo" name="Grupo">
+
+<div class="form-inline">
+<legend>Ingrese la Generación</legend>
+  <label for="fname">Codigo<br>
+			  <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+	</label>
+	   
+
+	<label for="Modelo">Modelo<br>
+
+	<?php ?>
+        <select id="Modelo" name="Modelo" class="select">
           <option value="" selected="selected"></option>
+
+          <!--INICIA PHP-->
         <?php
           //Cargar Combobox de Modelos
           
@@ -40,40 +38,40 @@
             die("Connection failed: " . $Conexion->connect_error);
           } 
           
-          $sql = "SELECT Codigo,Grupo FROM grupo";           
+          $sql = "SELECT Codigo,Modelo FROM modelo";           
           $result = $Conexion->query($sql);
         ?>
+
         <?php while($ri =  mysqli_fetch_array($result))
               {
-              echo "<option value=".$ri['Codigo'].">".$ri['Grupo']."</option>";
+              echo "<option value=".$ri['Codigo'].">".$ri['Modelo']."</option>";
               }
         ?>
+        <!--TERMINA PHP-->
+
         </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Subgrupo</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="100" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-20">
-      </div>
-      <div class="col-75">
-          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
-      </div>
-    </div>
-    
-    <!--Modal de mensajes-->
-    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	</label>
+
+	<label for="lname">Generación<br>
+	<input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generación"/>
+	</label>
+
+	<label for="lname">Años<br>
+	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="Años"/>
+	</label>
+	</div>
+	<div id="divenviar">
+	<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar() ">
+	</div>
+
+
+
+	  <!--Modal de mensajes-->
+	  <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Subgrupo</h4>
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Generación</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -86,7 +84,7 @@
         </div>
         </div>
     </div>
-    
+    <!--FIN Modal de mensajes-->
     </fieldset>
 </div>
     </div>   
@@ -95,6 +93,8 @@
 </div>
 </body>
 
+
+<!--INICIO SCRIPTS JS-->
 <script type="text/javascript">
 
 /*Cargar datos al abrir la pagina para consultar cuando se pulse el boton de ver*/
@@ -110,7 +110,7 @@ var Modificar=sessionStorage.getItem("Modificar");
     document.getElementById('Codigo').readOnly = true;
 
     $.ajax({
-            url: '../Logica/Subgrupo.php',
+            url: '../Logica/Generacion.php',
             type: 'post',
             data: 
             {
@@ -125,8 +125,9 @@ var Modificar=sessionStorage.getItem("Modificar");
                 if(len > 0)
                 {
                   document.getElementById('Codigo').value = response[0]['Codigo'];
-                  document.getElementById('Subgrupo').value = response[0]['Subgrupo'];
-                  document.getElementById('Grupo').value = response[0]['Grupo'];   
+                  document.getElementById('Generacion').value = response[0]['Generacion'];
+                  document.getElementById('Ano').value = response[0]['Ano'];
+                  document.getElementById('Modelo').value = response[0]['Modelo'];   
                   
         		}
               
@@ -150,31 +151,38 @@ function Enviar()
 
 	if(document.getElementById('Codigo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de subgrupo');
+		$("#MSJ").html('Error: Ingrese un código de generación');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Grupo').value=='')
+	else if(document.getElementById('Modelo').value=='')
 	{
-		$("#MSJ").html('Error: Seleccione un grupo');
+		$("#MSJ").html('Error: Seleccione un modelo');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Subgrupo').value=='')
+	else if(document.getElementById('Generacion').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un subgrupo');
+		$("#MSJ").html('Error: Ingrese una generación');
+    	$("#ModalMSJ").modal("show");	
+	}
+	else if(document.getElementById('Ano').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese los años de la generación');
     	$("#ModalMSJ").modal("show");	
 	}
 	else
 	{  
 		$.ajax({
-          url: '../Logica/Subgrupo.php',
+          url: '../Logica/Generacion.php',
           type: 'post',
           data: 
           {
              btnEnviar:"Enviar",
              GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
              Codigo:document.getElementById('Codigo').value,
-             Grupo:document.getElementById('Grupo').value,
-             Subgrupo:document.getElementById('Subgrupo').value,             
+             Modelo:document.getElementById('Modelo').value,
+             Generacion:document.getElementById('Generacion').value,
+             Ano:document.getElementById('Ano').value,
+             
           },
           dataType: 'json',
           success:function(response){
@@ -212,14 +220,14 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 		
 	if(GuarMod =='Guardo')
 	{
-		window.open('formsubgrupo.php', '_self');	
+		window.open('formgeneracion.php', '_self');	
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('versubgrupos.php', '_self');	
+		window.open('vergeneraciones.php', '_self');	
 	}
 });
 	
 </script>
-
+<!--FIN SCRIPTS JS-->
 </html>

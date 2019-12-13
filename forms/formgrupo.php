@@ -1,99 +1,10 @@
-<!DOCTYPE html>
-<html lang="es" >
-<head>
-  <meta charset="UTF-8">
-  <title>Tu Honda APP</title>  
-
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-<link rel="stylesheet" href="../assets/css/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!--Letra comfortaa-->
-<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-
-<!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-<script  src="../assets/js/script.js"></script>
-
-<!--Librerias para el modal -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!--este es el estilo del boostrap que necesito pero que distorciona la pagina-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-</head>
-<style>
-* {
-  box-sizing: border-box;
-}
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  color: black;
-}
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-input[type=submit],#enviar {
-  background-color: #120B00;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-  margin-top: 40px;
-  margin-right: -35%;
-  position: absolute;
-  
-}
-input[type=submit]:hover {
-  background-color: #144033;
-}
-.container {
-  border-radius: 5px;
-  background-color: #120B00;
-  color: #fff;
-  padding: 20px;
-}
-
-.col-25 {
-  float: left;
-  width: 10%;
-  margin-top: 6px;
-}
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-@media (min-width: 1200px){
-.container {
-    width: 100%;
-}
-}
-</style>
-<body>
-<!-- partial:index.partial.html -->
+<!--INCLUYE EL HEAD-->
+<?php include_once "headforms.php"?>
 
 <!--Menu-->
 <?php include("Menu.php") ?>
+
+
 <div class="new-wrapper">
 	<div id="main">
 		<div id="main-contents">

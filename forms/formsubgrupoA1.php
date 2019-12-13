@@ -1,8 +1,10 @@
 <!--INCLUYE EL HEAD-->
 <?php include_once "headforms.php"?>
 
-<!--MENU-->
+<!-- INCLUYE EL MENU-->
 <?php include("Menu.php")?>
+<!-- INCLUYE EL MENU-->
+
 
 <div class="new-wrapper">
 	<div id="main">
@@ -10,23 +12,16 @@
                             
                    <div id="wrapper">
 <div class="container">
-	<fieldset>
-                <legend>Ingrese el Subgrupo</legend>
-    <div class="row">
-      <div class="col-25">
-        <label for="fname">Código</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="Grupo">Grupo</label>
-      </div>
-      <div class="col-75">
-      <?php ?>
-        <select id="Grupo" name="Grupo">
+
+<div class="form-inline">
+<legend>Ingrese el Subgrupo</legend>
+
+<label for="fname">Código<br>
+<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+</label>
+
+<label for="Grupo">Grupo<br>
+        <select id="Grupo" class="select" name="Grupo">
           <option value="" selected="selected"></option>
         <?php
           //Cargar Combobox de Modelos
@@ -49,27 +44,17 @@
               }
         ?>
         </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Subgrupo</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="100" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-20">
-      </div>
-      <div class="col-75">
-          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
-      </div>
-    </div>
-    
-    <!--Modal de mensajes-->
-    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    </label>
+
+    <label for="lname">Subgrupo<br>
+    <input type="text" maxlength="100" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
+</label>
+
+<div id="divenviar">
+<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+
+<!--Modal de mensajes-->
+<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
