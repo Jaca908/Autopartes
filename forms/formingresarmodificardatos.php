@@ -1,5 +1,5 @@
 <!--INCLUYE EL HEAD-->
-<?php include_once "headforms.php"?>
+<?php include("headforms.php")?>
 
 <!-- INCLUYE EL MENU-->
 <?php include("Menu.php")?>
@@ -15,8 +15,8 @@
 
 <div id="DIVModelo" class="form-inline">
 <legend>Ingrese el Modelo</legend>
-<label for="fname">Código<br>
-<input type="text" maxlength="3" id="CodigoModelo" name="txtCodigo" placeholder="Código"/>
+<label for="fname">C&oacute;digo<br>
+<input type="text" maxlength="3" id="CodigoModelo" name="txtCodigo" placeholder="C&oacute;digo"/>
 </label>
 
 <label for="lname">Modelo<br>
@@ -28,7 +28,7 @@
           <option value=""></option>
           <option value="Activo">Activo</option>
           <option value="Inactivo">Inactivo</option>
-          <option value="MuyBasico">Muy Básico</option>
+          <option value="MuyBasico">Muy B&aacute;sico</option>
         </select>
 </label>
 
@@ -58,9 +58,9 @@
 </div>
 
 <div id="DIVGeneracion" class="form-inline">
-<legend>Ingrese la Generación</legend>
-  <label for="fname">Codigo<br>
-			  <input type="text" maxlength="3" id="CodigoGeneracion" name="txtCodigo" placeholder="Código"/>
+<legend>Ingrese la Generaci&oacute;n</legend>
+  <label for="fname">C&oacute;digo<br>
+			  <input type="text" maxlength="3" id="CodigoGeneracion" name="txtCodigo" placeholder="C&oacute;digo"/>
 	</label>
 	   
 
@@ -97,12 +97,12 @@
         </select>
 	</label>
 
-	<label for="lname">Generación<br>
-	<input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generación"/>
+	<label for="lname">Generaci&oacute;n<br>
+	<input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generaci&oacute;n"/>
 	</label>
 
-	<label for="lname">Años<br>
-	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="Años"/>
+	<label for="lname">A&ntilde;os<br>
+	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="A&ntilde;os"/>
 	</label>
 	
 	<div id="divenviar">
@@ -116,7 +116,7 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Generación</h4>
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Generaci&oacute;n</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -135,8 +135,8 @@
 <div id="DIVGrupo" class="form-inline">
 <legend>Ingrese el Grupo</legend>
 
-<label for="fname">Código<br>
-<input type="text" maxlength="3" id="CodigoGrupo" name="txtCodigo" placeholder="Código"/>
+<label for="fname">C&oacute;digo<br>
+<input type="text" maxlength="3" id="CodigoGrupo" name="txtCodigo" placeholder="C&oacute;digo"/>
 </label>
 
 <label for="lname">Grupo<br>
@@ -171,8 +171,8 @@
 <div id="DIVSubgrupo" class="form-inline">
 <legend>Ingrese el Subgrupo</legend>
 
-<label for="fname">Código<br>
-<input type="text" maxlength="3" id="CodigoSubgrupo" name="txtCodigo" placeholder="Código"/>
+<label for="fname">C&oacute;digo<br>
+<input type="text" maxlength="3" id="CodigoSubgrupo" name="txtCodigo" placeholder="C&oacute;digo"/>
 </label>
 
 <label for="Grupo">Grupo<br>
@@ -401,7 +401,7 @@ function EnviarModelo()
 
 	if(document.getElementById('CodigoModelo').value=='')
 	{
-		$("#MSJModelo").html('Error: Ingrese un código de modelo');
+		$("#MSJModelo").html('Error: Ingrese un c&oacute;digo de modelo');
     	$("#ModalMSJModelo").modal("show");	
 	}
 	else if(document.getElementById('Modelo').value=='')
@@ -482,7 +482,7 @@ function EnviarGeneracion()
 
 	if(document.getElementById('CodigoGeneracion').value=='')
 	{
-		$("#MSJGeneracion").html('Error: Ingrese un código de generación');
+		$("#MSJGeneracion").html('Error: Ingrese un c&oacute;digo de generaci&oacute;n');
     	$("#ModalMSJGeneracion").modal("show");	
 	}
 	else if(document.getElementById('cmbModelo').value=='')
@@ -492,12 +492,12 @@ function EnviarGeneracion()
 	}
 	else if(document.getElementById('Generacion').value=='')
 	{
-		$("#MSJGeneracion").html('Error: Ingrese una generación');
+		$("#MSJGeneracion").html('Error: Ingrese una generaci&oacute;n');
     	$("#ModalMSJGeneracion").modal("show");	
 	}
 	else if(document.getElementById('Ano').value=='')
 	{
-		$("#MSJGeneracion").html('Error: Ingrese los años de la generación');
+		$("#MSJGeneracion").html('Error: Ingrese los a&ntilde;os de la generaci&oacute;n');
     	$("#ModalMSJGeneracion").modal("show");	
 	}
 	else
@@ -569,7 +569,7 @@ function EnviarGrupo()
 
 	if(document.getElementById('CodigoGrupo').value=='')
 	{
-		$("#MSJGrupo").html('Error: Ingrese un código de grupo');
+		$("#MSJGrupo").html('Error: Ingrese un c&oacute;digo de grupo');
     	$("#ModalMSJGrupo").modal("show");	
 	}
 	else if(document.getElementById('Grupo').value=='')
@@ -642,7 +642,7 @@ function EnviarSubgrupo()
 
 	if(document.getElementById('CodigoSubgrupo').value=='')
 	{
-		$("#MSJSubgrupo").html('Error: Ingrese un código de subgrupo');
+		$("#MSJSubgrupo").html('Error: Ingrese un c&oacute;digo de subgrupo');
     	$("#ModalMSJSubgrupo").modal("show");	
 	}
 	else if(document.getElementById('cmbGrupo').value=='')

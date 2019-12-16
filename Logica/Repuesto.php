@@ -306,7 +306,34 @@ function Consultar()
 	}
 
 	$users_arr[] = array( 
-                         "Codigo"=>$Codigo,"Generacion"=>$Generacion,"Ano"=>$Ano,"Modelo"=>$Modelo,
+                         "Modelo"=>$FK_modelo,
+                         "Generacion"=>$FK_generacion,
+                         "Grupo"=>$FK_grupo,
+                         "Subgrupo"=>$FK_subgrupo,
+                         "Codigo"=>$Codigo,
+                         "Marca"=>$FK_marca_repuesto,
+                         "CodigoMarca"=>$CodigoMarca,
+                         "CodigoUnversal"=>$CodigoUniversal,
+                         "CodigoAlterno"=>$CodigoAlterno,
+                         "Repuesto"=>$Repuesto,
+                         "Peso"=>$Peso,
+                         "Dimension"=>$Dimension,
+                         "Medida"=>$Medida,
+                         "Automatico"=>$Automatico,
+                         "Manual"=>$Manual,
+                         "4X2"=>$t4X2,
+                         "4X4"=>$t4X4,
+                         "Gasolina"=>$Gasolina,
+                         "Diesel"=>$Diesel,
+                         "Electrico"=>$Electrico,
+                         "Hibrido"=>$Hibrido,
+                         "Caracteristica1"=>$Caracteristica1,
+                         "Caracteristica2"=>$Caracteristica2,
+                         "Caracteristica3"=>$Caracteristica3,
+                         "PrecioCosto"=>$PrecioCosto,
+                         "PrecioVenta"=>$PrecioVenta,
+                         "Utilidad"=>$Utilidad,
+                         "IVA"=>$IVA,
                      );
 
     // encoding array to json format
