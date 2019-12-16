@@ -5,24 +5,30 @@
 <?php include("Menu.php")?>
 <!-- INCLUYE EL MENU-->
 
+
 <div class="new-wrapper">
 	<div id="main">
 		<div id="main-contents">
                             
                    <div id="wrapper">
 <div class="container">
-
-<div class="form-inline">
-<legend>Ingrese la Generación</legend>
-  <label for="fname">Codigo<br>
-			  <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-	</label>
-	   
-
-	<label for="Modelo">Modelo<br>
-
-	<?php ?>
-        <select id="Modelo" name="Modelo" class="select">
+	<fieldset>
+                <legend>Ingrese la Generación</legend>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Código</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="Modelo">Modelo</label>
+      </div>
+      <div class="col-75">
+      <?php ?>
+        <select id="Modelo" name="Modelo">
           <option value="" selected="selected"></option>
 
           <!--INICIA PHP-->
@@ -50,24 +56,35 @@
         <!--TERMINA PHP-->
 
         </select>
-	</label>
-
-	<label for="lname">Generación<br>
-	<input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generación"/>
-	</label>
-
-	<label for="lname">Años<br>
-	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="Años"/>
-	</label>
-	</div>
-	<div id="divenviar">
-	<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar() ">
-	</div>
-
-
-
-	  <!--Modal de mensajes-->
-	  <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Generación</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generación"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Años</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="Años"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-20">
+      </div>
+      <div class="col-75">
+          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
+      </div>
+    </div>
+    
+    <!--Modal de mensajes-->
+    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

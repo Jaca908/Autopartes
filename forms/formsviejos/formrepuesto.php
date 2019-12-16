@@ -1,4 +1,7 @@
-<?php include_once 'headforms.php' ?>
+<!--INCLUYE EL HEAD-->
+<?php include_once "headforms.php"?>
+
+<!-- MENU -->
 <?php include("Menu.php")?>
 
 
@@ -8,12 +11,18 @@
                             
                    <div id="wrapper">
 <div class="container">
-<div class="form-inline">
-<legend>Ingrese la Generación</legend>
-  <label for="email">Modelo<br>
-  <select id="Modelo" name="Modelo" class="select">
-  	  <option value="" selected="selected"></option>
-  	  <?php
+	<fieldset>
+                <legend>Ingrese el Repuesto</legend>
+                
+    <div class="row">
+      <div class="col-25">
+        <label for="Modelo">Modelo</label>
+      </div>
+      <div class="col-75">
+      <?php ?>
+        <select id="Modelo" name="Modelo">
+          <option value="" selected="selected"></option>
+        <?php
           //Cargar Combobox de Modelos
           
           include '../Conexion/Conexion.php';
@@ -33,57 +42,80 @@
               echo "<option value=".$ri['Codigo'].">".$ri['Modelo']."</option>";
               }
         ?>
-  </select></label>
-  
-  <label for="Generacion">Generación<br>
-  <select id="Generacion" name="Generacion" class="select">
+        </select>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="Generacion">Generación</label>
+      </div>
+      <div class="col-75">
+        <select id="Generacion" name="Generacion">
           <option value="" selected="selected"></option>
-  </select></label>
-  
-  <label for="Grupo">Grupo
-  <select id="Grupo" name="Grupo" class="select">
-      <option value="" selected="selected"></option>
-    <?php
-      //Cargar Combobox de Modelos
-      
-      include '../Conexion/Conexion.php';
-      
-      $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        </select>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="Grupo">Grupo</label>
+      </div>
+      <div class="col-75">
+      <?php ?>
+        <select id="Grupo" name="Grupo">
+          <option value="" selected="selected"></option>
+        <?php
+          //Cargar Combobox de Modelos
+          
+          include '../Conexion/Conexion.php';
+          
+          $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-      if ($Conexion->connect_error) 
-      {
-        die("Connection failed: " . $Conexion->connect_error);
-      } 
-      
-      $sql = "SELECT Codigo,Grupo FROM grupo";           
-      $result = $Conexion->query($sql);
-    ?>
-    <?php while($ri =  mysqli_fetch_array($result))
+          if ($Conexion->connect_error) 
           {
-          echo "<option value=".$ri['Codigo'].">".$ri['Grupo']."</option>";
-          }
-    ?>
-    </select></label>
+            die("Connection failed: " . $Conexion->connect_error);
+          } 
+          
+          $sql = "SELECT Codigo,Grupo FROM grupo";           
+          $result = $Conexion->query($sql);
+        ?>
+        <?php while($ri =  mysqli_fetch_array($result))
+              {
+              echo "<option value=".$ri['Codigo'].">".$ri['Grupo']."</option>";
+              }
+        ?>
+        </select>
+      </div>
+    </div>
     
-    
-    <label for="Subgrupo" >Subgrupo<br>
-    <select id="Subgrupo" name="Subgrupo" class="select">
+    <div class="row">
+      <div class="col-25">
+        <label for="Subgrupo">Subgrupo</label>
+      </div>
+      <div class="col-75">
+        <select id="Subgrupo" name="Subgrupo">
           <option value="" selected="selected"></option>
-    </select>
-    </label>
- 
-    <label for="fname">Consecutivo<br>
-     <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-     </label>
-
-</div>
-
-<br>   
-  
-<div class="form-inline">
-     
-     <label for="Grupo">Marca de Repuesto
-     <select id="Marca" name="Marca" class="select">
+        </select>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Consecutivo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="Grupo">Marca de Repuesto</label>
+      </div>
+      <div class="col-75">
+      <?php ?>
+        <select id="Marca" name="Marca">
           <option value="" selected="selected"></option>
         <?php
           //Cargar Combobox de Modelos
@@ -105,42 +137,76 @@
               echo "<option value=".$ri['Codigo'].">".$ri['MarcaRepuesto']."</option>";
               }
         ?>
-    </select>
-    </label>
+        </select>
+      </div>
+    </div>
     
-    <label for="fname">Código de Marca<br>
-    <input type="text" maxlength="100" id="CodigoMarca" name="txtCodigoMarca" placeholder="Código de Marca"/>
-    </label>
-    <label for="fname">Código Universal<br>
-    <input type="text" maxlength="100" id="CodigoUniversal" name="txtCodigoUniversal" placeholder="Código Universal"/>
-    </label>
-    <label for="fname">Código Alterno<br>
-    <input type="text" maxlength="100" id="CodigoAlterno" name="txtCodigoAlterno" placeholder="Código Alterno"/>
-    </label>
-</div>
-
-<div class="form-inline">
-	
-	<label for="lname">Repuesto<br>
-	<input type="text" maxlength="100" id="Repuesto" name="txtRepuesto" placeholder="Repuesto"/>
-  </label>
-  
-	<label for="lname">Peso<br>
-	<input type="text" maxlength="11" id="Peso" name="txtPeso" placeholder="Peso"/>
-  </label>
-  
-	<label for="lname">Dimensiones<br>
-	<input type="text" maxlength="50" id="Dimension" name="txtDimension" placeholder="Dimensiones"/>
-  </label>
-  
-	<label for="lname">Medidas<br>
-	<input type="text" maxlength="50" id="Medida" name="txtMedida" placeholder="Medidas"/>
-	</label>
-</div>    
-
-<div class="form-inline">
-	
-	<label><input type="checkbox" id="Manual" value="Manual"> Manual</label>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Código de Marca</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="100" id="CodigoMarca" name="txtCodigoMarca" placeholder="Código de Marca"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Código Universal</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="100" id="CodigoUniversal" name="txtCodigoUniversal" placeholder="Código Universal"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Código Alterno</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="100" id="CodigoAlterno" name="txtCodigoAlterno" placeholder="Código Alterno"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Repuesto</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="100" id="Repuesto" name="txtRepuesto" placeholder="Repuesto"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Peso</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="11" id="Peso" name="txtPeso" placeholder="Peso"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Dimensiones</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="50" id="Dimension" name="txtDimension" placeholder="Dimensiones"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Medidas</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="50" id="Medida" name="txtMedida" placeholder="Medidas"/>
+      </div>
+    </div>
+    
+    <div class="row">
+			<div class="col-75">
+				
+        		<label><input type="checkbox" id="Manual" value="Manual"> Manual</label>
 	        	<label><input type="checkbox" id="Automatico" value="Automatico"> Automático</label>
 	        	
 	        	&nbsp;&nbsp;
@@ -154,48 +220,83 @@
 		        <label><input type="checkbox" id="Diesel" value="Diesel"> Diesel</label>
 		        <label><input type="checkbox" id="Electrico" value="Electrico"> Eléctrico</label>
 		        <label><input type="checkbox" id="Hibrido" value="Hibrido"> Híbrido</label>
-	
-</div>
-
-<div class="form-inline">
-	
-	<label for="caracte">Característica 1<br>
-	<input type="text" id="Caracteristica1" name="Caracteristica1" placeholder="Caracteristica 1">
-  </label>
-  
-	<label for="caracte">Característica 2<br>
-  <input type="text" id="Caracteristica2" name="Caracteristica2" placeholder="Caracteristica 2">
-  </label>
-	
-	<label for="caracte">Característica 3<br>
-  <input type="text" id="Caracteristica3" name="Caracteristica3" placeholder="Caracteristica 3">
-  </label>
-	
-</div>
-
-<div class="form-inline">
-	
-	<label for="lname">Precio de Costo<br>
-  <input type="text" maxlength="11" id="PrecioCosto" name="txtPrecioCosto" placeholder="Precio de Costo"/>
-  </label>
-	
-	<label for="lname">Precio de Venta<br>
-  <input type="text" maxlength="11" id="PrecioVenta" name="txtPrecioVenta" placeholder="Precio de Venta"/>
-  </label>
-	
-	<label for="lname">Utilidad<br>
-  <input type="text" maxlength="11" id="Utilidad" name="txtUtilidad" placeholder="Utilidad"/>
-  </label>
-	
-	<label for="lname">IVA<br>
-  <input type="text" maxlength="6" id="IVA" name="txtIVA" placeholder="IVA"/>
-  </label>
-	
-</div>
-<div id="divenviar">
-  <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar() ">
-</div>
-<!--Modal de mensajes-->
+	        	
+      		</div>
+    </div>
+       
+    <div class="row">
+      <div class="col-25">
+        <label for="caracte">Característica 1</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="Caracteristica1" name="Caracteristica1" placeholder="Caracteristica 1">
+      </div>
+    </div>
+      
+            <div class="row">
+      <div class="col-25">
+        <label for="caracte2">Característica 2</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="Caracteristica2" name="Caracteristica2" placeholder="Caracteristica 2">
+      </div>
+    </div>
+      
+         <div class="row">
+      <div class="col-25">
+        <label for="caracte3">Característica 3</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="Caracteristica3" name="Caracteristica3" placeholder="Caracteristica 3">
+      </div>
+    </div>
+      
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Precio de Costo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="11" id="PrecioCosto" name="txtPrecioCosto" placeholder="Precio de Costo"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Precio de Venta</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="11" id="PrecioVenta" name="txtPrecioVenta" placeholder="Precio de Venta"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Utilidad</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="11" id="Utilidad" name="txtUtilidad" placeholder="Utilidad"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">IVA</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="6" id="IVA" name="txtIVA" placeholder="IVA"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-20">
+      </div>
+      <div class="col-75">
+          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
+      </div>
+    </div>
+    
+    <!--Modal de mensajes-->
     <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -213,12 +314,13 @@
         </div>
         </div>
     </div>
-     </div>
-      </div>
-       </div>
-        </div>
-         </div>
-
+    
+    </fieldset>
+</div>
+    </div>   
+		</div>
+	</div>
+</div>
 </body>
 
 <script type="text/javascript">

@@ -1,11 +1,10 @@
 <!--INCLUYE EL HEAD-->
 <?php include_once "headforms.php"?>
 
+<!-- INCLUYE EL MENU-->
+<?php include("Menu.php")?>
+<!-- INCLUYE EL MENU-->
 
-
-
-<!--Menu-->
-<?php include("Menu.php") ?>
 
 <div class="new-wrapper">
 	<div id="main">
@@ -13,34 +12,22 @@
                             
                    <div id="wrapper">
 <div class="container">
-	<fieldset>
-                <legend>Ingrese la Marca de Repuesto</legend>
-    <div class="row">
-      <div class="col-25">
-        <label style="display: none" for="fname">Código</label>
-      </div>
-      <div class="col-75">
-        <input type="hidden" id="Codigo" name="txtCodigo" placeholder="Código"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Marca</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="100" id="Marca" name="txtMarca" placeholder="Marca de Repuesto"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-20">
-      </div>
-      <div class="col-75">
-          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
-      </div>
-    </div>
-    
-    <!--Modal de mensajes-->
-    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="form-inline">
+<legend>Ingrese la Marca de Repuesto</legend>
+<label style="display: none" for="fname">Código<br>
+<input type="hidden" id="Codigo" name="txtCodigo" placeholder="Código"/>
+</label>
+<label for="lname">Marca<br>
+<input type="text" maxlength="100" id="Marca" name="txtMarca" placeholder="Marca de Repuesto"/>
+</label>
+</div>
+
+<div id="divenviar">
+<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+
+<!--Modal de mensajes-->
+<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

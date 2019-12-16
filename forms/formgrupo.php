@@ -1,8 +1,9 @@
 <!--INCLUYE EL HEAD-->
 <?php include_once "headforms.php"?>
 
-<!--Menu-->
-<?php include("Menu.php") ?>
+<!-- INCLUYE EL MENU-->
+<?php include("Menu.php")?>
+<!-- INCLUYE EL MENU-->
 
 
 <div class="new-wrapper">
@@ -11,34 +12,25 @@
                             
                    <div id="wrapper">
 <div class="container">
-	<fieldset>
-                <legend>Ingrese el Grupo</legend>
-    <div class="row">
-      <div class="col-25">
-        <label for="fname">Código</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="lname">Grupo</label>
-      </div>
-      <div class="col-75">
-        <input type="text" maxlength="50" id="Grupo" name="txtGrupo" placeholder="Grupo"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-20">
-      </div>
-      <div class="col-75">
-          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
-      </div>
-    </div>
-    
-    <!--Modal de mensajes-->
-    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="form-inline">
+<legend>Ingrese el Grupo</legend>
+
+<label for="fname">Código<br>
+<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+</label>
+
+<label for="lname">Grupo<br>
+<input type="text" maxlength="50" id="Grupo" name="txtGrupo" placeholder="Grupo"/>
+</div>
+</label>
+
+<div id="divenviar">
+<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+
+
+ <!--Modal de mensajes-->
+ <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

@@ -1,11 +1,8 @@
 <!--INCLUYE EL HEAD-->
 <?php include_once "headforms.php"?>
 
-
-<!-- INCLUYE EL MENU-->
+<!--MENU-->
 <?php include("Menu.php")?>
-<!-- INCLUYE EL MENU-->
-
 
 <div class="new-wrapper">
 	<div id="main">
@@ -13,37 +10,70 @@
                             
                    <div id="wrapper">
 <div class="container">
+	<fieldset>
+                <legend>Ingrese el Subgrupo</legend>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Código</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="Grupo">Grupo</label>
+      </div>
+      <div class="col-75">
+      <?php ?>
+        <select id="Grupo" name="Grupo">
+          <option value="" selected="selected"></option>
+        <?php
+          //Cargar Combobox de Modelos
+          
+          include '../Conexion/Conexion.php';
+          
+          $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-<div class="form-inline">
-<legend>Ingrese el Modelo</legend>
-<label for="fname">Código<br>
-<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-</label>
-
-<label for="lname">Modelo<br>
-<input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
-</label>
-
-<label for="Estado">Estado<br>
-<select id="Estado" class="select" name="Estado">
-          <option value=""></option>
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
-          <option value="MuyBasico">Muy Básico</option>
+          if ($Conexion->connect_error) 
+          {
+            die("Connection failed: " . $Conexion->connect_error);
+          } 
+          
+          $sql = "SELECT Codigo,Grupo FROM grupo";           
+          $result = $Conexion->query($sql);
+        ?>
+        <?php while($ri =  mysqli_fetch_array($result))
+              {
+              echo "<option value=".$ri['Codigo'].">".$ri['Grupo']."</option>";
+              }
+        ?>
         </select>
-</label>
-
-<div id="divenviar">
-<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
-
-
-
-<!--Modal de mensajes-->
-<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Subgrupo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="100" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-20">
+      </div>
+      <div class="col-75">
+          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
+      </div>
+    </div>
+    
+    <!--Modal de mensajes-->
+    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Modelo</h4>
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Subgrupo</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,7 +110,7 @@ var Modificar=sessionStorage.getItem("Modificar");
     document.getElementById('Codigo').readOnly = true;
 
     $.ajax({
-            url: '../Logica/Modelo.php',
+            url: '../Logica/Subgrupo.php',
             type: 'post',
             data: 
             {
@@ -95,8 +125,8 @@ var Modificar=sessionStorage.getItem("Modificar");
                 if(len > 0)
                 {
                   document.getElementById('Codigo').value = response[0]['Codigo'];
-                  document.getElementById('Modelo').value = response[0]['Modelo'];  
-                  document.getElementById('Estado').value = response[0]['Estado'];  
+                  document.getElementById('Subgrupo').value = response[0]['Subgrupo'];
+                  document.getElementById('Grupo').value = response[0]['Grupo'];   
                   
         		}
               
@@ -116,36 +146,35 @@ var Modificar=sessionStorage.getItem("Modificar");
 <script>
 	
 function Enviar()
-{//Funcion para Guardar o Modificar un modelo
+{//Funcion para Guardar o Modificar una generacion
 
 	if(document.getElementById('Codigo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de modelo');
+		$("#MSJ").html('Error: Ingrese un código de subgrupo');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Modelo').value=='')
+	else if(document.getElementById('Grupo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un modelo');
+		$("#MSJ").html('Error: Seleccione un grupo');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Estado').value=='')
+	else if(document.getElementById('Subgrupo').value=='')
 	{
-		$("#MSJ").html('Error: Seleccione un estado');
+		$("#MSJ").html('Error: Ingrese un subgrupo');
     	$("#ModalMSJ").modal("show");	
 	}
 	else
 	{  
 		$.ajax({
-          url: '../Logica/Modelo.php',
+          url: '../Logica/Subgrupo.php',
           type: 'post',
           data: 
           {
              btnEnviar:"Enviar",
              GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
              Codigo:document.getElementById('Codigo').value,
-             Modelo:document.getElementById('Modelo').value,
-             Estado:document.getElementById('Estado').value,
-             
+             Grupo:document.getElementById('Grupo').value,
+             Subgrupo:document.getElementById('Subgrupo').value,             
           },
           dataType: 'json',
           success:function(response){
@@ -183,15 +212,14 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 		
 	if(GuarMod =='Guardo')
 	{
-		window.open('formmodelo.php', '_self');	
+		window.open('formsubgrupo.php', '_self');	
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('vermodelos.php', '_self');	
+		window.open('versubgrupos.php', '_self');	
 	}
 });
 	
 </script>
-  
 
 </html>

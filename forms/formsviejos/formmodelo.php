@@ -1,11 +1,8 @@
 <!--INCLUYE EL HEAD-->
 <?php include_once "headforms.php"?>
 
-
-<!-- INCLUYE EL MENU-->
-<?php include("Menu.php")?>
-<!-- INCLUYE EL MENU-->
-
+<!--Menu-->
+<?php include("Menu.php") ?>
 
 <div class="new-wrapper">
 	<div id="main">
@@ -13,33 +10,47 @@
                             
                    <div id="wrapper">
 <div class="container">
-
-<div class="form-inline">
-<legend>Ingrese el Modelo</legend>
-<label for="fname">Código<br>
-<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
-</label>
-
-<label for="lname">Modelo<br>
-<input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
-</label>
-
-<label for="Estado">Estado<br>
-<select id="Estado" class="select" name="Estado">
+	<fieldset>
+                <legend>Ingrese el Modelo</legend>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Código</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Modelo</label>
+      </div>
+      <div class="col-75">
+        <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="Estado">Estado</label>
+      </div>
+      <div class="col-75">
+        <select id="Estado" name="Estado">
           <option value=""></option>
           <option value="Activo">Activo</option>
           <option value="Inactivo">Inactivo</option>
           <option value="MuyBasico">Muy Básico</option>
         </select>
-</label>
-
-<div id="divenviar">
-<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
-
-
-
-<!--Modal de mensajes-->
-<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-20">
+      </div>
+      <div class="col-75">
+          <input type="button" id="enviar" value="Enviar" onclick="Enviar()">
+      </div>
+    </div>
+    
+    <!--Modal de mensajes-->
+    <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -180,7 +191,7 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	
 	sessionStorage.clear();	
-		
+		 
 	if(GuarMod =='Guardo')
 	{
 		window.open('formmodelo.php', '_self');	
@@ -192,6 +203,6 @@ $('#ModalMSJ').on('hide.bs.modal', function (e) {
 });
 	
 </script>
-  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="../assets/js/script.js"></script>
 
 </html>
