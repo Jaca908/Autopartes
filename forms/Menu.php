@@ -10,10 +10,10 @@
 
 			<li class="menu-hasdropdown">
 					<a href="#">Ingresar Datos</a><span class="icon"><i class="fa fa-gear"></i></span>
-					<label title="toggle menu" for="modelo">
+					<label title="toggle menu" for="IngDatos">
                                             <span class="downarrow"><i class="fa fa-caret-down"></i></span>
                                         </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="modelo" />
+					<input type="checkbox" class="sub-menu-checkbox" id="IngDatos" />
 					<ul class="sub-menu-dropdown">
 						<li><a href="formmodelo.php">Ingresar Datos</a></li>      
 					</ul>
