@@ -15,7 +15,7 @@
                                         </label>
 					<input type="checkbox" class="sub-menu-checkbox" id="IngDatos" />
 					<ul class="sub-menu-dropdown">
-						<li><a href="formmodelo.php">Ingresar Datos</a></li>      
+						<li><a href="formingresarmodificardatos.php">Ingresar Datos</a></li>      
 					</ul>
 				</li>
 				

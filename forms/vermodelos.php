@@ -137,9 +137,10 @@ function ObtenerDatosFila(oButton)
 	var dgvVerModelos = document.getElementById('table');
 
     sessionStorage.setItem("Codigo", dgvVerModelos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
+    sessionStorage.setItem("Form",'Modelo');
     sessionStorage.setItem("Modificar", 'Modificar');
 
-    location.href = "formmodelo.php";
+    location.href = "formingresarmodificardatos.php";
 }
 
 </script>
