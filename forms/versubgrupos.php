@@ -132,9 +132,10 @@ function ObtenerDatosFila(oButton)
 	var dgvVerSubgrupos = document.getElementById('table');
 
     sessionStorage.setItem("Codigo", dgvVerSubgrupos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
+    sessionStorage.setItem("Form", 'Subgrupo');
     sessionStorage.setItem("Modificar", 'Modificar');
 
-    location.href = "formsubgrupo.php";
+    location.href = "formingresarmodificardatos.php";
 }
 
 </script>

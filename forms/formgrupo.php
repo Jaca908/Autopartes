@@ -13,24 +13,24 @@
                    <div id="wrapper">
 <div class="container">
 
-<div class="form-inline">
+<div id="DIVGrupo" class="form-inline">
 <legend>Ingrese el Grupo</legend>
 
 <label for="fname">Código<br>
-<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+<input type="text" maxlength="3" id="CodigoGrupo" name="txtCodigo" placeholder="Código"/>
 </label>
 
 <label for="lname">Grupo<br>
 <input type="text" maxlength="50" id="Grupo" name="txtGrupo" placeholder="Grupo"/>
-</div>
+
 </label>
 
 <div id="divenviar">
-<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+<input type="button" id="EnviarGrupo" class="btnenviar" value="Enviar" onclick="EnviarGrupo()"></div>
 
 
  <!--Modal de mensajes-->
- <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="ModalMSJGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -39,7 +39,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
-          <div class="modal-body" style="color:black;" id="MSJ">
+          <div class="modal-body" style="color:black;" id="MSJGrupo">
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -47,8 +47,6 @@
         </div>
         </div>
     </div>
-    
-    </fieldset>
 </div>
     </div>   
 		</div>
@@ -68,7 +66,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   {
     sessionStorage.clear();
 
-    document.getElementById('Codigo').readOnly = true;
+    document.getElementById('CodigoGrupo').readOnly = true;
 
     $.ajax({
             url: '../Logica/Grupo.php',
@@ -85,7 +83,7 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('CodigoGrupo').value = response[0]['Codigo'];
                   document.getElementById('Grupo').value = response[0]['Grupo'];                    
         		}
               
@@ -96,7 +94,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   }
   else
   {
-    document.getElementById('Codigo').readOnly = false;
+    document.getElementById('CodigoGrupo').readOnly = false;
   }
 
 }
@@ -104,18 +102,18 @@ var Modificar=sessionStorage.getItem("Modificar");
 
 <script>
 	
-function Enviar()
+function EnviarGrupo()
 {//Funcion para Guardar o Modificar un grupo
 
-	if(document.getElementById('Codigo').value=='')
+	if(document.getElementById('CodigoGrupo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de grupo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJGrupo").html('Error: Ingrese un código de grupo');
+    	$("#ModalMSJGrupo").modal("show");	
 	}
 	else if(document.getElementById('Grupo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un grupo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJGrupo").html('Error: Ingrese un grupo');
+    	$("#ModalMSJGrupo").modal("show");	
 	}
 	else
 	{  
@@ -125,8 +123,8 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('Codigo').value,
+             GuardarModificar:($('#CodigoGrupo').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('CodigoGrupo').value,
              Grupo:document.getElementById('Grupo').value,             
           },
           dataType: 'json',
@@ -139,8 +137,8 @@ function Enviar()
                 var Respuesta=response[0]['Respuesta'];
 				var GuarMod=response[0]['GuarMod'];
 				
-				$("#MSJ").html(Respuesta);
-            	$("#ModalMSJ").modal("show");
+				$("#MSJGrupo").html(Respuesta);
+            	$("#ModalMSJGrupo").modal("show");
             	
             	sessionStorage.setItem('GuarMod',GuarMod);
               }
@@ -157,7 +155,7 @@ function Enviar()
 
   <script>
 	
-$('#ModalMSJ').on('hide.bs.modal', function (e) {
+$('#ModalMSJGrupo').on('hide.bs.modal', function (e) {
 		
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	

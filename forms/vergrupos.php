@@ -130,9 +130,10 @@ function ObtenerDatosFila(oButton)
 	var dgvVerGrupos = document.getElementById('table');
 
     sessionStorage.setItem("Codigo", dgvVerGrupos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
+    sessionStorage.setItem("Form", 'Grupo');
     sessionStorage.setItem("Modificar", 'Modificar');
 
-    location.href = "formgrupo.php";
+    location.href = "formingresarmodificardatos.php";
 }
 
 </script>
