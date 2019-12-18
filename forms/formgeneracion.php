@@ -12,17 +12,17 @@
                    <div id="wrapper">
 <div class="container">
 
-<div class="form-inline">
+<div id="DIVGeneracion" class="form-inline">
 <legend>Ingrese la Generación</legend>
   <label for="fname">Codigo<br>
-			  <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+			  <input type="text" maxlength="3" id="CodigoGeneracion" name="txtCodigo" placeholder="Código"/>
 	</label>
 	   
 
 	<label for="Modelo">Modelo<br>
 
 	<?php ?>
-        <select id="Modelo" name="Modelo" class="select">
+        <select id="cmbModelo" name="Modelo" class="select">
           <option value="" selected="selected"></option>
 
           <!--INICIA PHP-->
@@ -59,15 +59,15 @@
 	<label for="lname">Años<br>
 	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="Años"/>
 	</label>
-	</div>
+	
 	<div id="divenviar">
-	<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar() ">
+	<input type="button" id="EnviarGeneracion" class="btnenviar" value="Enviar" onclick="EnviarGeneracion() ">
 	</div>
 
 
 
 	  <!--Modal de mensajes-->
-	  <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal fade" id="ModalMSJGeneracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -76,7 +76,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
-          <div class="modal-body" style="color:black;" id="MSJ">
+          <div class="modal-body" style="color:black;" id="MSJGeneracion">
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -85,7 +85,6 @@
         </div>
     </div>
     <!--FIN Modal de mensajes-->
-    </fieldset>
 </div>
     </div>   
 		</div>
@@ -107,7 +106,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   {
     sessionStorage.clear();
 
-    document.getElementById('Codigo').readOnly = true;
+    document.getElementById('CodigoGeneracion').readOnly = true;
 
     $.ajax({
             url: '../Logica/Generacion.php',
@@ -124,10 +123,10 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('CodigoGeneracion').value = response[0]['Codigo'];
                   document.getElementById('Generacion').value = response[0]['Generacion'];
                   document.getElementById('Ano').value = response[0]['Ano'];
-                  document.getElementById('Modelo').value = response[0]['Modelo'];   
+                  document.getElementById('cmbModelo').value = response[0]['Modelo'];   
                   
         		}
               
@@ -138,7 +137,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   }
   else
   {
-    document.getElementById('Codigo').readOnly = false;
+    document.getElementById('CodigoGeneracion').readOnly = false;
   }
 
 }
@@ -146,28 +145,28 @@ var Modificar=sessionStorage.getItem("Modificar");
 
 <script>
 	
-function Enviar()
+function EnviarGeneracion()
 {//Funcion para Guardar o Modificar una generacion
 
-	if(document.getElementById('Codigo').value=='')
+	if(document.getElementById('CodigoGeneracion').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de generación');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJGeneracion").html('Error: Ingrese un código de generación');
+    	$("#ModalMSJGeneracion").modal("show");	
 	}
-	else if(document.getElementById('Modelo').value=='')
+	else if(document.getElementById('cmbModelo').value=='')
 	{
-		$("#MSJ").html('Error: Seleccione un modelo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJGeneracion").html('Error: Seleccione un modelo');
+    	$("#ModalMSJGeneracion").modal("show");	
 	}
 	else if(document.getElementById('Generacion').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese una generación');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJGeneracion").html('Error: Ingrese una generación');
+    	$("#ModalMSJGeneracion").modal("show");	
 	}
 	else if(document.getElementById('Ano').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese los años de la generación');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJGeneracion").html('Error: Ingrese los años de la generación');
+    	$("#ModalMSJGeneracion").modal("show");	
 	}
 	else
 	{  
@@ -177,9 +176,9 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('Codigo').value,
-             Modelo:document.getElementById('Modelo').value,
+             GuardarModificar:($('#CodigoGeneracion').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('CodigoGeneracion').value,
+             Modelo:document.getElementById('cmbModelo').value,
              Generacion:document.getElementById('Generacion').value,
              Ano:document.getElementById('Ano').value,
              
@@ -194,8 +193,8 @@ function Enviar()
                 var Respuesta=response[0]['Respuesta'];
 				var GuarMod=response[0]['GuarMod'];
 				
-				$("#MSJ").html(Respuesta);
-            	$("#ModalMSJ").modal("show");
+				$("#MSJGeneracion").html(Respuesta);
+            	$("#ModalMSJGeneracion").modal("show");
             	
             	sessionStorage.setItem('GuarMod',GuarMod);
               }
@@ -212,7 +211,7 @@ function Enviar()
 
   <script>
 	
-$('#ModalMSJ').on('hide.bs.modal', function (e) {
+$('#ModalMSJGeneracion').on('hide.bs.modal', function (e) {
 		
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	

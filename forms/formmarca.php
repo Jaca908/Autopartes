@@ -13,21 +13,20 @@
                    <div id="wrapper">
 <div class="container">
 
-<div class="form-inline">
+<div id="DIVMarca" class="form-inline">
 <legend>Ingrese la Marca de Repuesto</legend>
 <label style="display: none" for="fname">Código<br>
-<input type="hidden" id="Codigo" name="txtCodigo" placeholder="Código"/>
+<input type="hidden" id="CodigoMarca" name="txtCodigo" placeholder="Código"/>
 </label>
 <label for="lname">Marca<br>
 <input type="text" maxlength="100" id="Marca" name="txtMarca" placeholder="Marca de Repuesto"/>
 </label>
-</div>
 
 <div id="divenviar">
 <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
 
 <!--Modal de mensajes-->
-<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalMSJMarca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -36,7 +35,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
-          <div class="modal-body" style="color:black;" id="MSJ">
+          <div class="modal-body" style="color:black;" id="MSJMarca">
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -44,8 +43,7 @@
         </div>
         </div>
     </div>
-    
-    </fieldset>
+
 </div>
     </div>   
 		</div>
@@ -65,7 +63,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   {
     sessionStorage.clear();
 
-    document.getElementById('Codigo').readOnly = true;
+    document.getElementById('CodigoMarca').readOnly = true;
 
     $.ajax({
             url: '../Logica/Marca.php',
@@ -82,7 +80,7 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('CodigoMarca').value = response[0]['Codigo'];
                   document.getElementById('Marca').value = response[0]['Marca'];                    
         		}
               
@@ -93,7 +91,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   }
   else
   {
-    document.getElementById('Codigo').readOnly = false;
+    document.getElementById('CodigoMarca').readOnly = false;
   }
 
 }
@@ -106,13 +104,13 @@ function Enviar()
 
 	/*if(document.getElementById('Codigo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de marca de repuesto');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJMarca").html('Error: Ingrese un código de marca de repuesto');
+    	$("#ModalMSJMarca").modal("show");	
 	}
 	else*/ if(document.getElementById('Marca').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese una marca de repuesto');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJMarca").html('Error: Ingrese una marca de repuesto');
+    	$("#ModalMSJMarca").modal("show");	
 	}
 	else
 	{  
@@ -122,8 +120,8 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('Codigo').value,
+             GuardarModificar:($('#CodigoMarca').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('CodigoMarca').value,
              Marca:document.getElementById('Marca').value,             
           },
           dataType: 'json',
@@ -136,8 +134,8 @@ function Enviar()
                 var Respuesta=response[0]['Respuesta'];
 				var GuarMod=response[0]['GuarMod'];
 				
-				$("#MSJ").html(Respuesta);
-            	$("#ModalMSJ").modal("show");
+				$("#MSJMarca").html(Respuesta);
+            	$("#ModalMSJMarca").modal("show");
             	
             	sessionStorage.setItem('GuarMod',GuarMod);
               }
@@ -154,7 +152,7 @@ function Enviar()
 
   <script>
 	
-$('#ModalMSJ').on('hide.bs.modal', function (e) {
+$('#ModalMSJMarca').on('hide.bs.modal', function (e) {
 		
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	

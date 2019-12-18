@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" >
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Tu Honda APP</title>  
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,800" rel="stylesheet">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
@@ -19,7 +19,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
-
+</html>
 <!--STYLE FORMULARIOS-->
 <style>
 body {font-family: Comfortaa;
@@ -67,6 +67,7 @@ legend{
   color:black;
   outline: none;
 }
+
 
 .form-inline button {
   padding: 10px 20px;

@@ -4,18 +4,79 @@
 </button>
 	<nav role="navigation" class="menu">
 		<a href="#" class="logotype">TUHONDA<span>APP</span></a>
+		<!--Menu Nuevo-->
 		<div class="overflow-container">
 			<ul class="menu-dropdown">
 
 
 			<li class="menu-hasdropdown">
 					<a href="#">Ingresar Datos</a><span class="icon"><i class="fa fa-gear"></i></span>
+					<label title="toggle menu" for="IngDatos">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="IngDatos" />
+					<ul class="sub-menu-dropdown">
+						<li><a href="formingresarmodificardatos.php">Ingresar Datos</a></li>      
+					</ul>
+				</li>
+				
+				<li class="menu-hasdropdown">
+					<a href="#">Ver Datos</a><span class="icon"><i class="fa fa-gear"></i></span>
 					<label title="toggle menu" for="modelo">
                                             <span class="downarrow"><i class="fa fa-caret-down"></i></span>
                                         </label>
 					<input type="checkbox" class="sub-menu-checkbox" id="modelo" />
 					<ul class="sub-menu-dropdown">
-						<li><a href="formmodelo.php">Ingresar Datos</a></li>      
+                        <li><a href="vermodelos.php">Ver Modelos</a></li>
+                        <li><a href="vergeneraciones.php">Ver Generaciones</a></li>
+                        <li><a href="vergrupos.php">Ver Grupo</a></li>
+                        <li><a href="versubgrupos.php">Ver Subgrupos</a></li>
+					</ul>
+				</li>				
+								<li class="menu-hasdropdown">
+					<a href="#">Marcas de Repuestos</a><span class="icon"><i class="fa fa-gear"></i></span>
+
+					<label title="toggle menu" for="marca">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="marca" />
+
+					<ul class="sub-menu-dropdown">
+						<li><a href="formmarca.php">Ingresar Marcas de Repuestos</a></li>
+						<li><a href="vermarcas.php">Ver Marcas de Repuestos</a></li>
+					</ul>
+				</li>
+                                
+                                <li class="menu-hasdropdown">
+					<a href="#">Repuesto</a><span class="icon"><i class="fa fa-gear"></i></span>
+					<label title="toggle menu" for="repuesto">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="repuesto" />
+					<ul class="sub-menu-dropdown">
+						<li><a href="formrepuesto.php">Ingresar Repuesto</a></li>
+						<li><a href="verrepuestos.php">Ver Repuestos</a></li>
+					</ul>
+				</li>
+				
+				<!--<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>-->
+			</ul>
+		</div>
+		
+		<!--Menu Viejo-->
+		<div style="display: none" class="overflow-container">
+			<ul class="menu-dropdown">
+
+
+			<li class="menu-hasdropdown">
+					<a href="#">Ingresar Datos</a><span class="icon"><i class="fa fa-gear"></i></span>
+					<label title="toggle menu" for="IngDatos">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="IngDatos" />
+					<ul class="sub-menu-dropdown">
+						<li><a href="formingresarmodificardatos.php">Ingresar Datos</a></li>      
 					</ul>
 				</li>
 				
@@ -66,18 +127,6 @@
 						<li><a href="versubgrupos.php">Ver SubGrupo</a></li>
 					</ul>
 				</li>
-                                
-                                <li class="menu-hasdropdown">
-					<a href="#">Repuesto</a><span class="icon"><i class="fa fa-gear"></i></span>
-					<label title="toggle menu" for="repuesto">
-                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
-                                        </label>
-					<input type="checkbox" class="sub-menu-checkbox" id="repuesto" />
-					<ul class="sub-menu-dropdown">
-						<li><a href="formrepuesto.php">Ingresar Repuesto</a></li>
-						<li><a href="verrepuestos.php">Ver Repuestos</a></li>
-					</ul>
-				</li>
 				
 								<li class="menu-hasdropdown">
 					<a href="#">Marcas de Repuestos</a><span class="icon"><i class="fa fa-gear"></i></span>
@@ -90,6 +139,18 @@
 					<ul class="sub-menu-dropdown">
 						<li><a href="formmarca.php">Ingresar Marcas de Repuestos</a></li>
 						<li><a href="vermarcas.php">Ver Marcas de Repuestos</a></li>
+					</ul>
+				</li>
+                                
+                                <li class="menu-hasdropdown">
+					<a href="#">Repuesto</a><span class="icon"><i class="fa fa-gear"></i></span>
+					<label title="toggle menu" for="repuesto">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+					<input type="checkbox" class="sub-menu-checkbox" id="repuesto" />
+					<ul class="sub-menu-dropdown">
+						<li><a href="formrepuesto.php">Ingresar Repuesto</a></li>
+						<li><a href="verrepuestos.php">Ver Repuestos</a></li>
 					</ul>
 				</li>
 				

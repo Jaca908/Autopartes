@@ -14,10 +14,10 @@
                    <div id="wrapper">
 <div class="container">
 
-<div class="form-inline">
+<div id="DIVModelo" class="form-inline">
 <legend>Ingrese el Modelo</legend>
 <label for="fname">Código<br>
-<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+<input type="text" maxlength="3" id="CodigoModelo" name="txtCodigo" placeholder="Código"/>
 </label>
 
 <label for="lname">Modelo<br>
@@ -34,12 +34,12 @@
 </label>
 
 <div id="divenviar">
-<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+<input type="button" id="EnviarModelo" class="btnenviar" value="Enviar" onclick="EnviarModelo()"></div>
 
 
 
 <!--Modal de mensajes-->
-<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalMSJModelo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -48,7 +48,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
-          <div class="modal-body" style="color:black;" id="MSJ">
+          <div class="modal-body" style="color:black;" id="MSJModelo">
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -56,9 +56,11 @@
         </div>
         </div>
     </div>
-    
-    </fieldset>
 </div>
+
+
+
+
     </div>   
 		</div>
 	</div>
@@ -77,7 +79,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   {
     sessionStorage.clear();
 
-    document.getElementById('Codigo').readOnly = true;
+    document.getElementById('CodigoModelo').readOnly = true;
 
     $.ajax({
             url: '../Logica/Modelo.php',
@@ -94,7 +96,7 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('CodigoModelo').value = response[0]['Codigo'];
                   document.getElementById('Modelo').value = response[0]['Modelo'];  
                   document.getElementById('Estado').value = response[0]['Estado'];  
                   
@@ -107,7 +109,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   }
   else
   {
-    document.getElementById('Codigo').readOnly = false;
+    document.getElementById('CodigoModelo').readOnly = false;
   }
 
 }
@@ -115,23 +117,23 @@ var Modificar=sessionStorage.getItem("Modificar");
 
 <script>
 	
-function Enviar()
+function EnviarModelo()
 {//Funcion para Guardar o Modificar un modelo
 
-	if(document.getElementById('Codigo').value=='')
+	if(document.getElementById('CodigoModelo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de modelo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJModelo").html('Error: Ingrese un código de modelo');
+    	$("#ModalMSJModelo").modal("show");	
 	}
 	else if(document.getElementById('Modelo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un modelo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJModelo").html('Error: Ingrese un modelo');
+    	$("#ModalMSJModelo").modal("show");	
 	}
 	else if(document.getElementById('Estado').value=='')
 	{
-		$("#MSJ").html('Error: Seleccione un estado');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJModelo").html('Error: Seleccione un estado');
+    	$("#ModalMSJModelo").modal("show");	
 	}
 	else
 	{  
@@ -141,8 +143,8 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('Codigo').value,
+             GuardarModificar:($('#CodigoModelo').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('CodigoModelo').value,
              Modelo:document.getElementById('Modelo').value,
              Estado:document.getElementById('Estado').value,
              
@@ -157,8 +159,8 @@ function Enviar()
                 var Respuesta=response[0]['Respuesta'];
 				var GuarMod=response[0]['GuarMod'];
 				
-				$("#MSJ").html(Respuesta);
-            	$("#ModalMSJ").modal("show");
+				$("#MSJModelo").html(Respuesta);
+            	$("#ModalMSJModelo").modal("show");
             	
             	sessionStorage.setItem('GuarMod',GuarMod);
               }
@@ -175,7 +177,7 @@ function Enviar()
 
   <script>
 	
-$('#ModalMSJ').on('hide.bs.modal', function (e) {
+$('#ModalMSJModelo').on('hide.bs.modal', function (e) {
 		
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	

@@ -13,15 +13,15 @@
                    <div id="wrapper">
 <div class="container">
 
-<div class="form-inline">
+<div id="DIVSubgrupo" class="form-inline">
 <legend>Ingrese el Subgrupo</legend>
 
 <label for="fname">Código<br>
-<input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
+<input type="text" maxlength="3" id="CodigoSubgrupo" name="txtCodigo" placeholder="Código"/>
 </label>
 
 <label for="Grupo">Grupo<br>
-        <select id="Grupo" class="select" name="Grupo">
+        <select id="cmbGrupo" class="select" name="Grupo">
           <option value="" selected="selected"></option>
         <?php
           //Cargar Combobox de Modelos
@@ -51,10 +51,10 @@
 </label>
 
 <div id="divenviar">
-<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+<input type="button" id="enviarSubgrupo" class="btnenviar" value="Enviar" onclick="EnviarSubgrupo()"></div>
 
 <!--Modal de mensajes-->
-<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalMSJSubgrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -63,7 +63,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
-          <div class="modal-body" style="color:black;" id="MSJ">
+          <div class="modal-body" style="color:black;" id="MSJSubgrupo">
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -71,8 +71,6 @@
         </div>
         </div>
     </div>
-    
-    </fieldset>
 </div>
     </div>   
 		</div>
@@ -92,7 +90,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   {
     sessionStorage.clear();
 
-    document.getElementById('Codigo').readOnly = true;
+    document.getElementById('CodigoSubgrupo').readOnly = true;
 
     $.ajax({
             url: '../Logica/Subgrupo.php',
@@ -109,9 +107,9 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('Codigo').value = response[0]['Codigo'];
+                  document.getElementById('CodigoSubgrupo').value = response[0]['Codigo'];
                   document.getElementById('Subgrupo').value = response[0]['Subgrupo'];
-                  document.getElementById('Grupo').value = response[0]['Grupo'];   
+                  document.getElementById('cmbGrupo').value = response[0]['Grupo'];   
                   
         		}
               
@@ -122,7 +120,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   }
   else
   {
-    document.getElementById('Codigo').readOnly = false;
+    document.getElementById('CodigoSubgrupo').readOnly = false;
   }
 
 }
@@ -130,23 +128,23 @@ var Modificar=sessionStorage.getItem("Modificar");
 
 <script>
 	
-function Enviar()
+function EnviarSubgrupo()
 {//Funcion para Guardar o Modificar una generacion
 
-	if(document.getElementById('Codigo').value=='')
+	if(document.getElementById('CodigoSubgrupo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un código de subgrupo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJSubgrupo").html('Error: Ingrese un código de subgrupo');
+    	$("#ModalMSJSubgrupo").modal("show");	
 	}
-	else if(document.getElementById('Grupo').value=='')
+	else if(document.getElementById('cmbGrupo').value=='')
 	{
-		$("#MSJ").html('Error: Seleccione un grupo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJSubgrupo").html('Error: Seleccione un grupo');
+    	$("#ModalMSJSubgrupo").modal("show");	
 	}
 	else if(document.getElementById('Subgrupo').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese un subgrupo');
-    	$("#ModalMSJ").modal("show");	
+		$("#MSJSubgrupo").html('Error: Ingrese un subgrupo');
+    	$("#ModalMSJSubgrupo").modal("show");	
 	}
 	else
 	{  
@@ -156,9 +154,9 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('Codigo').value,
-             Grupo:document.getElementById('Grupo').value,
+             GuardarModificar:($('#CodigoSubgrupo').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('CodigoSubgrupo').value,
+             Grupo:document.getElementById('cmbGrupo').value,
              Subgrupo:document.getElementById('Subgrupo').value,             
           },
           dataType: 'json',
@@ -171,8 +169,8 @@ function Enviar()
                 var Respuesta=response[0]['Respuesta'];
 				var GuarMod=response[0]['GuarMod'];
 				
-				$("#MSJ").html(Respuesta);
-            	$("#ModalMSJ").modal("show");
+				$("#MSJSubgrupo").html(Respuesta);
+            	$("#ModalMSJSubgrupo").modal("show");
             	
             	sessionStorage.setItem('GuarMod',GuarMod);
               }
@@ -189,7 +187,7 @@ function Enviar()
 
   <script>
 	
-$('#ModalMSJ').on('hide.bs.modal', function (e) {
+$('#ModalMSJSubgrupo').on('hide.bs.modal', function (e) {
 		
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	
