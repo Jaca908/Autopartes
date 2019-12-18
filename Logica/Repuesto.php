@@ -38,9 +38,9 @@ function GuardarOModificar()
 	     $CodigoUniversal=(!empty($_POST['CodigoUniversal']))?"'".$_POST['CodigoUniversal']."'":'NULL';
 	     $CodigoAlterno=(!empty($_POST['CodigoAlterno']))?"'".$_POST['CodigoAlterno']."'":'NULL';
 	     $Repuesto=$_POST['Repuesto'];
-	     $Peso=$_POST['Peso'];
-	     $Dimension=$_POST['Dimension'];
-	     $Medida=$_POST['Medida'];
+	     $Peso=(!empty($_POST['Peso']))?"".$_POST['Peso']."":'NULL';
+	     $Categoria=$_POST['Categoria'];
+	     $Medida=(!empty($_POST['Medida']))?"'".$_POST['Medida']."'":'NULL';
 
 	     $Manual=$_POST["Manual"];
 		 $Automatico=$_POST["Automatico"];
@@ -51,9 +51,13 @@ function GuardarOModificar()
 		 $Electrico=$_POST["Electrico"];
 		 $Hibrido=$_POST["Hibrido"];
 
-	     $Caracteristica1=(!empty($_POST['Caracteristica1']))?"'".$_POST['Caracteristica1']."'":'NULL';
-	     $Caracteristica2=(!empty($_POST['Caracteristica2']))?"'".$_POST['Caracteristica2']."'":'NULL';
-	     $Caracteristica3=(!empty($_POST['Caracteristica3']))?"'".$_POST['Caracteristica3']."'":'NULL';
+	     $CaractRep1=(!empty($_POST['CaractRep1']))?"'".$_POST['CaractRep1']."'":'NULL';
+	     $CaractRep2=(!empty($_POST['CaractRep2']))?"'".$_POST['CaractRep2']."'":'NULL';
+	     $CaractRep3=(!empty($_POST['CaractRep3']))?"'".$_POST['CaractRep3']."'":'NULL';
+	     $CaractAuto1=(!empty($_POST['CaractAuto1']))?"'".$_POST['CaractAuto1']."'":'NULL';
+	     $CaractAuto2=(!empty($_POST['CaractAuto2']))?"'".$_POST['CaractAuto2']."'":'NULL';
+	     $CaractAuto3=(!empty($_POST['CaractAuto3']))?"'".$_POST['CaractAuto3']."'":'NULL';
+	     
 	     $PrecioCosto=$_POST["PrecioCosto"];
 	     $PrecioVenta=$_POST["PrecioVenta"];
 	     $Utilidad=$_POST["Utilidad"];
@@ -71,7 +75,7 @@ function GuardarOModificar()
 				FROM repuesto 
 				WHERE Codigo = '$Codigo' AND FK_modelo='$Modelo' 
 				AND FK_generacion='$Generacion' AND FK_grupo='$Grupo'
-				AND FK_subgrupo='$Subgrupo' AND FK_marca_repuesto='$Marca'";
+				AND FK_subgrupo='$Subgrupo' AND FK_marca_repuesto=$Marca and FK_categoria=$Categoria";
 							
 		$result = $Conexion->query($sql);
 
@@ -95,7 +99,7 @@ function GuardarOModificar()
 							CodigoAlterno, 
 							Repuesto,
 							Peso,
-							Dimension,
+							FK_categoria,
 							Medida,
 							Automatico,
 							Manual,
@@ -105,17 +109,20 @@ function GuardarOModificar()
 							Diesel,
 							Electrico,
 							Hibrido,
-							Caracteristica1,
-							Caracteristica2, 
-							Caracteristica3,
+							CaractRep1,
+							CaractRep2, 
+							CaractRep3,
+							CaractAuto1,
+							CaractAuto2, 
+							CaractAuto3,
 							PrecioCosto,
 							PrecioVenta,
 							Utilidad,
 							IVA)
 							VALUES('$Modelo','$Generacion','$Grupo','$Subgrupo','$Codigo',$Marca,$CodigoMarca,$CodigoUniversal,
-							$CodigoAlterno,'$Repuesto',$Peso,'$Dimension','$Medida',$Automatico,$Manual,$t4X2,$t4X4,$Gasolina,
-							$Diesel,$Electrico,$Hibrido,$Caracteristica1,$Caracteristica2,$Caracteristica3,$PrecioCosto,
-							$PrecioVenta,$Utilidad,$IVA);";
+							$CodigoAlterno,'$Repuesto',$Peso,$Categoria,$Medida,$Automatico,$Manual,$t4X2,$t4X4,$Gasolina,
+							$Diesel,$Electrico,$Hibrido,$CaractRep1,$CaractRep2,$CaractRep3,$CaractAuto1,$CaractAuto2,$CaractAuto3,
+							$PrecioCosto,$PrecioVenta,$Utilidad,$IVA);";
 								
 				if($Conexion->query($sql) === TRUE) 
 				{   
@@ -144,9 +151,9 @@ function GuardarOModificar()
 	     $CodigoUniversal=(!empty($_POST['CodigoUniversal']))?"'".$_POST['CodigoUniversal']."'":'NULL';
 	     $CodigoAlterno=(!empty($_POST['CodigoAlterno']))?"'".$_POST['CodigoAlterno']."'":'NULL';
 	     $Repuesto=$_POST['Repuesto'];
-	     $Peso=$_POST['Peso'];
-	     $Dimension=$_POST['Dimension'];
-	     $Medida=$_POST['Medida'];
+	     $Peso=(!empty($_POST['Peso']))?"".$_POST['Peso']."":'NULL';
+	     $Categoria=$_POST['Categoria'];
+	     $Medida=(!empty($_POST['Medida']))?"'".$_POST['Medida']."'":'NULL';
 
 	     $Manual=$_POST["Manual"];
 		 $Automatico=$_POST["Automatico"];
@@ -157,9 +164,13 @@ function GuardarOModificar()
 		 $Electrico=$_POST["Electrico"];
 		 $Hibrido=$_POST["Hibrido"];
 
-	     $Caracteristica1=(!empty($_POST['Caracteristica1']))?"'".$_POST['Caracteristica1']."'":'NULL';
-	     $Caracteristica2=(!empty($_POST['Caracteristica2']))?"'".$_POST['Caracteristica2']."'":'NULL';
-	     $Caracteristica3=(!empty($_POST['Caracteristica3']))?"'".$_POST['Caracteristica3']."'":'NULL';
+	     $CaractRep1=(!empty($_POST['CaractRep1']))?"'".$_POST['CaractRep1']."'":'NULL';
+	     $CaractRep2=(!empty($_POST['CaractRep2']))?"'".$_POST['CaractRep2']."'":'NULL';
+	     $CaractRep3=(!empty($_POST['CaractRep3']))?"'".$_POST['CaractRep3']."'":'NULL';
+	     $CaractAuto1=(!empty($_POST['CaractAuto1']))?"'".$_POST['CaractAuto1']."'":'NULL';
+	     $CaractAuto2=(!empty($_POST['CaractAuto2']))?"'".$_POST['CaractAuto2']."'":'NULL';
+	     $CaractAuto3=(!empty($_POST['CaractAuto3']))?"'".$_POST['CaractAuto3']."'":'NULL';
+	     
 	     $PrecioCosto=$_POST["PrecioCosto"];
 	     $PrecioVenta=$_POST["PrecioVenta"];
 	     $Utilidad=$_POST["Utilidad"];
@@ -184,8 +195,8 @@ function GuardarOModificar()
 						CodigoAlterno=$CodigoAlterno, 
 						Repuesto='$Repuesto',
 						Peso=$Peso,
-						Dimension='$Dimension',
-						Medida='$Medida',
+						FK_categoria='$Categoria',
+						Medida=$Medida,
 						Automatico=$Automatico,
 						Manual=$Manual,
 						4X2=$t4X2,
@@ -194,9 +205,12 @@ function GuardarOModificar()
 						Diesel=$Diesel,
 						Electrico=$Electrico,
 						Hibrido=$Hibrido,
-						Caracteristica1=$Caracteristica1,
-						Caracteristica2=$Caracteristica2, 
-						Caracteristica3=$Caracteristica3,
+						CaractRep1=$CaractRep1,
+						CaractRep2=$CaractRep2, 
+						CaractRep3=$CaractRep3,
+						CaractAuto1=$CaractAuto1,
+						CaractAuto2=$CaractAuto2, 
+						CaractAuto3=$CaractAuto3,
 						PrecioCosto=$PrecioCosto,
 						PrecioVenta=$PrecioVenta,
 						Utilidad=$Utilidad,
@@ -227,7 +241,13 @@ function GuardarOModificar()
 
 function Consultar()
 {
-	$Codigo=$_POST['Codigo'];
+	  $CodModelo=$_POST['CodModelo'];
+	  $CodGeneracion=$_POST['CodGeneracion'];
+	  $CodGrupo=$_POST['CodGrupo'];
+	  $CodSubgrupo=$_POST['CodSubgrupo'];
+	  $CodMarca=$_POST['CodMarca'];
+	  $CodCategoria=$_POST['CodCategoria'];
+	  $Codigo=$_POST['Codigo'];
 	//$FK_Usuario=$_SESSION['IDUsuario'];
 
 	$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -238,36 +258,42 @@ function Consultar()
 	} 
 
 	$sql = "SELECT 
-				FK_modelo,
-				FK_generacion,
-				FK_grupo,
-				FK_subgrupo,
-				Codigo,
-				FK_marca_repuesto,
-				CodigoMarca,
-				CodigoUniversal, 
-				CodigoAlterno, 
-				Repuesto,
-				Peso,
-				Dimension,
-				Medida,
-				Automatico,
-				Manual,
-				4X2,
-				4X4,
-				Gasolina,
-				Diesel,
-				Electrico,
-				Hibrido,
-				Caracteristica1,
-				Caracteristica2, 
-				Caracteristica3,
-				PrecioCosto,
-				PrecioVenta,
-				Utilidad,
-				IVA
+				R.FK_modelo,
+				R.FK_generacion,
+				R.FK_grupo,
+				R.FK_subgrupo,
+				R.Codigo,
+				R.FK_marca_repuesto,
+				R.CodigoMarca,
+				R.CodigoUniversal, 
+				R.CodigoAlterno, 
+				R.Repuesto,
+				R.Peso,
+				R.FK_categoria,
+				R.Medida,
+				R.Automatico,
+				R.Manual,
+				R.4X2,
+				R.4X4,
+				R.Gasolina,
+				R.Diesel,
+				R.Electrico,
+				R.Hibrido,
+				R.CaractRep1,
+				R.CaractRep2, 
+				R.CaractRep3,
+				R.CaractAuto1,
+				R.CaractAuto2, 
+				R.CaractAuto3,
+				R.PrecioCosto,
+				R.PrecioVenta,
+				R.Utilidad,
+				R.IVA
 	 
-	 FROM repuesto WHERE Codigo = '$Codigo'";
+	  FROM repuesto R 	 
+	  WHERE R.Codigo = '$Codigo' AND R.FK_modelo='$CodModelo' AND R.FK_generacion='$CodGeneracion' AND 
+	  		R.FK_grupo='$CodGrupo' AND R.FK_subgrupo='$CodSubgrupo' AND R.FK_marca_repuesto=$CodMarca AND 
+	  		R.FK_categoria=$CodCategoria;";
 						
 	$result = $Conexion->query($sql);
 
@@ -286,7 +312,7 @@ function Consultar()
 		$CodigoAlterno=$row["CodigoAlterno"]; 
 		$Repuesto=$row["Repuesto"];
 		$Peso=$row["Peso"];
-		$Dimension=$row["Dimension"];
+		$Categoria=$row["FK_categoria"];
 		$Medida=$row["Medida"];
 		$Automatico=$row["Automatico"];
 		$Manual=$row["Manual"];
@@ -296,9 +322,12 @@ function Consultar()
 		$Diesel=$row["Diesel"];
 		$Electrico=$row["Electrico"];
 		$Hibrido=$row["Hibrido"];
-		$Caracteristica1=$row["Caracteristica1"];
-		$Caracteristica2=$row["Caracteristica2"]; 
-		$Caracteristica3=$row["Caracteristica3"];
+		$CaractRep1=$row["CaractRep1"];
+		$CaractRep2=$row["CaractRep2"]; 
+		$CaractRep3=$row["CaractRep3"];
+		$CaractAuto1=$row["CaractAuto1"];
+		$CaractAuto2=$row["CaractAuto2"]; 
+		$CaractAuto3=$row["CaractAuto3"];
 		$PrecioCosto=$row["PrecioCosto"];
 		$PrecioVenta=$row["PrecioVenta"];
 		$Utilidad=$row["Utilidad"];
@@ -317,7 +346,7 @@ function Consultar()
                          "CodigoAlterno"=>$CodigoAlterno,
                          "Repuesto"=>$Repuesto,
                          "Peso"=>$Peso,
-                         "Dimension"=>$Dimension,
+                         "Categoria"=>$Categoria,
                          "Medida"=>$Medida,
                          "Automatico"=>$Automatico,
                          "Manual"=>$Manual,
@@ -327,9 +356,12 @@ function Consultar()
                          "Diesel"=>$Diesel,
                          "Electrico"=>$Electrico,
                          "Hibrido"=>$Hibrido,
-                         "Caracteristica1"=>$Caracteristica1,
-                         "Caracteristica2"=>$Caracteristica2,
-                         "Caracteristica3"=>$Caracteristica3,
+                         "CaractRep1"=>$CaractRep1,
+                         "CaractRep2"=>$CaractRep2,
+                         "CaractRep3"=>$CaractRep3,
+                         "CaractAuto1"=>$CaractAuto1,
+                         "CaractAuto2"=>$CaractAuto2,
+                         "CaractAuto3"=>$CaractAuto3,
                          "PrecioCosto"=>$PrecioCosto,
                          "PrecioVenta"=>$PrecioVenta,
                          "Utilidad"=>$Utilidad,

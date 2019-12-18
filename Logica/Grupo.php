@@ -126,7 +126,7 @@ function Consultar()
 	 	die("Connection failed: " . $Conexion->connect_error);
 	} 
 	
-	$sql="SELECT Codigo,Grupo FROM grupo WHERE Codigo=$Codigo;";
+	$sql="SELECT Codigo,Grupo FROM grupo WHERE Codigo='$Codigo';";
 	
 	$result = $Conexion->query($sql);
 

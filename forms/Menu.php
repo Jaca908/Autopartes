@@ -32,7 +32,22 @@
                         <li><a href="vergrupos.php">Ver Grupo</a></li>
                         <li><a href="versubgrupos.php">Ver Subgrupos</a></li>
 					</ul>
-				</li>				
+				</li>
+				
+								<li class="menu-hasdropdown">
+                        <a href="#">Categorías de <br> Repuestos</a><span class="icon"><i class="fa fa-gear"></i></span>
+
+                        <label title="toggle menu" for="categoria">
+                                            <span class="downarrow"><i class="fa fa-caret-down"></i></span>
+                                        </label>
+                        <input type="checkbox" class="sub-menu-checkbox" id="categoria" />
+
+                        <ul class="sub-menu-dropdown">
+                            <li><a href="formcategoria.php">Ingresar Categorías de <br> Repuestos</a></li>
+                            <li><a href="vercategorias.php">Ver Categorías de <br> Repuestos</a></li>
+                        </ul>
+                    </li>
+								
 								<li class="menu-hasdropdown">
 					<a href="#">Marcas de Repuestos</a><span class="icon"><i class="fa fa-gear"></i></span>
 

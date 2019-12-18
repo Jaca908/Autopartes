@@ -29,8 +29,7 @@ function GuardarOModificar()
 		//Guardar
 
 		$Codigo=$_POST["Codigo"];
-		$Modelo=$_POST["Modelo"];
-		$Estado=$_POST["Estado"];
+		$Categoria=$_POST["Categoria"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -38,52 +37,40 @@ function GuardarOModificar()
 		if ($Conexion->connect_error) 
 		{
 			die("Connection failed: " . $Conexion->connect_error);
-		} 
-
-		$sql = "SELECT Codigo,Modelo FROM modelo WHERE Codigo = '$Codigo'";
-							
+		}
+		 		
+		$sql = "SELECT Codigo,Categoria FROM categoria WHERE Categoria like '$Categoria'";
+						
 		$result = $Conexion->query($sql);
 
 		if ($result->num_rows > 0) 
 		{
-		$Respuesta = "Ya existe un modelo con ese código";
-		$GuarMod='Error'; 
+			$Respuesta = "Ya existe una categoría de repuesto con ese nombre"; 
 		}
-		else # si no existe verificar que no haya otro grupo con el mismo nombre
-		{		
-			$sql = "SELECT Codigo,Modelo FROM modelo WHERE Modelo like '$Modelo'";
+		else
+		{
+			//sanitize el sql
+			$sql = "INSERT INTO categoria(Categoria)values('$Categoria');";
 							
-			$result = $Conexion->query($sql);
-
-			if ($result->num_rows > 0) 
+			if($Conexion->query($sql) === TRUE) 
+			{   
+			  $Respuesta = "Categoría de repuesto guardada exitosamente";
+			  $GuarMod='Guardo'; 			  
+			} 
+			else 
 			{
-				$Respuesta = "Ya existe un modelo con ese nombre"; 
+			  $Respuesta = "Error al guardar la categoria de repuesto";
+			  $GuarMod='Error';
 			}
-			else
-			{
-				//sanitize el sql
-				$sql = "INSERT INTO modelo(Codigo,Modelo,Estado)values('$Codigo','$Modelo','$Estado');";
-								
-				if($Conexion->query($sql) === TRUE) 
-				{   
-				  $Respuesta = "Modelo guardado exitosamente";
-				  $GuarMod='Guardo'; 			  
-				} 
-				else 
-				{
-				  $Respuesta = "Error al guardar el modelo";
-				  $GuarMod='Error';
-				}
-			}		
 		}		
+				
 	}			
 	else if($GuardarModificar=="Modificar")
 	{
 		//modificar
 		
 		$Codigo=$_POST["Codigo"];
-		$Modelo=$_POST["Modelo"];
-		$Estado=$_POST["Estado"];
+		$Categoria=$_POST["Categoria"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -93,16 +80,16 @@ function GuardarOModificar()
 		 	die("Connection failed: " . $Conexion->connect_error);
 		} 
 			//sanitize el sql
-			$sql = "UPDATE modelo SET Modelo='$Modelo', Estado='$Estado' WHERE Codigo='$Codigo'";
+			$sql = "UPDATE categoria SET Categoria='$Categoria' WHERE Codigo=$Codigo";
 							
 			if($Conexion->query($sql) === TRUE) 
 			{   
-			  $Respuesta = "Modelo modificado exitosamente";
+			  $Respuesta = "Categoría de repuesto modificada exitosamente";
 			  $GuarMod = 'Modifico'; 			  
 			} 
 			else 
 			{
-				 $Respuesta = "Error al modificar el modelo";
+				 $Respuesta = "Error al modificar la categoría de repuesto";
 				 $GuarMod='Error';
 			}		
 	}
@@ -128,7 +115,7 @@ function Consultar()
 	 	die("Connection failed: " . $Conexion->connect_error);
 	} 
 	
-	$sql="SELECT Codigo,Modelo,Estado FROM modelo WHERE Codigo='$Codigo';";
+	$sql="SELECT Codigo,Categoria FROM categoria WHERE Codigo=$Codigo;";
 	
 	$result = $Conexion->query($sql);
 
@@ -137,12 +124,11 @@ function Consultar()
 		$row = $result->fetch_assoc();
 
 		$Codigo= $row["Codigo"];
-		$Modelo=$row["Modelo"];
-		$Estado=$row["Estado"];
+		$Categoria=$row["Categoria"];
 	}
 
 	$users_arr[] = array( 
-                         "Codigo"=>$Codigo,"Modelo"=>$Modelo,"Estado"=>$Estado,
+                         "Codigo"=>$Codigo,"Categoria"=>$Categoria,
                      );
 
     // encoding array to json format

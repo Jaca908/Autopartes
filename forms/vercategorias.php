@@ -65,23 +65,10 @@
 	
 <thead>
 <tr>
-		<th>CodModelo</th>
-		<th>CodGeneración</th>
-		<th>CodGrupo</th>
-		<th>CodSubgrupo</th>
-		<th>CodMarca</th>
-		<th>CodCategoria</th>
-		
-		<th>Código</th>
-		<th>Repuesto</th>
-		<th>Modelo</th>
-        <th>Generación</th>
-        <th>Grupo</th>
-        <th>Subgrupo</th>
-        <th>Marca Repuesto</th>
-        <th>Categoría Repuesto</th>
+		<th style="display: none">Código</th>
+		<th>Categoría de Repuesto</th>
         <th>Acciones</th>
-        
+
 	</tr>
   </thead>
 <tbody>
@@ -96,34 +83,12 @@
             die("Connection failed: " . $Conexion->connect_error);
           }
 
-          $sql = "SELECT M.Codigo AS CodModelo,G.Codigo AS CodGeneracion,Gr.Codigo AS CodGrupo,
-          				 SGr.Codigo AS CodSubgrupo,MR.Codigo AS CodMarca,C.Codigo AS CodCategoria,R.Codigo,
-          				 R.Repuesto,M.Modelo,G.Generacion,Gr.Grupo,SGr.Subgrupo,MR.MarcaRepuesto,C.Categoria
-				  FROM repuesto R INNER JOIN modelo M ON R.FK_modelo=M.Codigo
-					 			  INNER JOIN generacion G ON R.FK_generacion=G.Codigo
-					 			  INNER JOIN grupo Gr ON R.FK_grupo=Gr.Codigo
-								  INNER JOIN subgrupo SGr ON R.FK_subgrupo=SGr.Codigo
-								  INNER JOIN marca_repuesto MR ON R.FK_marca_repuesto=MR.Codigo
-								  INNER JOIN categoria C ON R.FK_categoria=C.Codigo
-				 ORDER BY R.Codigo";
+          $sql = "SELECT Codigo,Categoria FROM categoria;";
           $result = $Conexion->query($sql);
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" . $ri['CodModelo'] . "</td>";
-            echo "<td>" . $ri['CodGeneracion'] . "</td>";
-            echo "<td>" . $ri['CodGrupo'] . "</td>";
-            echo "<td>" . $ri['CodSubgrupo'] . "</td>";
-            echo "<td>" . $ri['CodMarca'] . "</td>";
-            echo "<td>" . $ri['CodCategoria'] . "</td>"; 
-            
-            echo "<td>" . $ri['Codigo'] . "</td>";
-            echo "<td>" . $ri['Repuesto'] . "</td>";
-            echo "<td>" . $ri['Modelo'] . "</td>";
-            echo "<td>" . $ri['Generacion'] . "</td>";
-            echo "<td>" . $ri['Grupo'] . "</td>";
-            echo "<td>" . $ri['Subgrupo'] . "</td>";
-            echo "<td>" . $ri['MarcaRepuesto'] . "</td>";
+            echo "<td style='display: none'>" . $ri['Codigo'] . "</td>";
             echo "<td>" . $ri['Categoria'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
@@ -162,18 +127,12 @@
 
 function ObtenerDatosFila(oButton)
 {
-	var dgvVerRepuestos = document.getElementById('table');
+	var dgvVerMarcas = document.getElementById('table');
 
-    sessionStorage.setItem("CodModelo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
-    sessionStorage.setItem("CodGeneracion", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[1].innerHTML);
-    sessionStorage.setItem("CodGrupo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[2].innerHTML);
-    sessionStorage.setItem("CodSubgrupo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[3].innerHTML);
-    sessionStorage.setItem("CodMarca", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[4].innerHTML);
-    sessionStorage.setItem("CodCategoria", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[5].innerHTML);
-    sessionStorage.setItem("Codigo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[6].innerHTML);
+    sessionStorage.setItem("Codigo", dgvVerMarcas.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
     sessionStorage.setItem("Modificar", 'Modificar');
 
-    location.href = "formrepuesto.php";
+    location.href = "formcategoria.php";
 }
 
 </script>
