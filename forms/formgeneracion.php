@@ -64,7 +64,7 @@
 	<input type="button" id="EnviarGeneracion" class="btnenviar" value="Enviar" onclick="EnviarGeneracion() ">
 	</div>
 
-
+	
 
 	  <!--Modal de mensajes-->
 	  <div class="modal fade" id="ModalMSJGeneracion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

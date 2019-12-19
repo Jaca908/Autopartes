@@ -10,7 +10,7 @@
 <div class="container">
 <div class="form-inline">
 <legend>Ingrese el Repuesto</legend>
-  <label for="email">Modelo<br>
+  <label for="email"><span style="color:#ff0000; font-size: 25px">*</span>Modelo<br>
   <select id="Modelo" name="Modelo" class="select">
   	  <option value="" selected="selected"></option>
   	  <?php
@@ -35,12 +35,12 @@
         ?>
   </select></label>
   
-  <label for="Generacion">Generación<br>
+  <label for="Generacion"><span style="color:#ff0000; font-size: 25px">*</span>Generación<br>
   <select id="Generacion" name="Generacion" class="select">
           <option value="" selected="selected"></option>
   </select></label>
   
-  <label for="Grupo">Grupo
+  <label for="Grupo"><span style="color:#ff0000; font-size: 25px">*</span>Grupo
   <select id="Grupo" name="Grupo" class="select">
       <option value="" selected="selected"></option>
     <?php
@@ -66,13 +66,13 @@
     </select></label>
     
     
-    <label for="Subgrupo" >Subgrupo<br>
+    <label for="Subgrupo" ><span style="color:#ff0000; font-size: 25px">*</span>Subgrupo<br>
     <select id="Subgrupo" name="Subgrupo" class="select">
           <option value="" selected="selected"></option>
     </select>
     </label>
  
-    <label for="fname">Consecutivo<br>
+    <label for="fname"><span style="color:#ff0000; font-size: 25px">*</span>Consecutivo<br>
      <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
      </label>
 
@@ -81,8 +81,7 @@
 <br>   
   
 <div class="form-inline">
-     
-     <label for="Grupo">Marca de Repuesto
+     <label for="Grupo"><span style="color:#ff0000; font-size: 25px">*</span>Marca de Repuesto
      <select id="Marca" name="Marca" class="select">
           <option value="" selected="selected"></option>
         <?php
@@ -121,7 +120,7 @@
 
 <div class="form-inline">
 	
-	<label for="lname">Repuesto<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Repuesto<br>
 	<input type="text" maxlength="100" id="Repuesto" name="txtRepuesto" placeholder="Repuesto"/>
   </label>
   
@@ -129,7 +128,7 @@
 	<input type="text" maxlength="11" id="Peso" name="txtPeso" placeholder="Peso"/>
   </label>
   
-	<label for="lname">Categoría
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Categoría
 	<select id="Categoria" name="Categoria" class="select">
           <option value="" selected="selected"></option>
         <?php
@@ -162,20 +161,21 @@
 
 <div class="form-inline">
 	
-	<label><input type="checkbox" id="Manual" value="Manual"> Manual</label>
-	        	<label><input type="checkbox" id="Automatico" value="Automatico"> Automático</label>
-	        	
-	        	&nbsp;&nbsp;
+<span style="color:#ff0000; font-size: 25px">*</span>
+	<label><input type="checkbox" id="Manual" value="Manual">Manual</label>
+	<label><input type="checkbox" id="Automatico" value="Automatico">Automático</label>
 
-	        	<label><input type="checkbox" id="4X2" value="4X2"> 4X2</label>
-	        	<label><input type="checkbox" id="4X4" value="4X4"> 4X4</label>
-	        	
-	        	<br>
-	        	
-	        	<label><input type="checkbox" id="Gasolina" value="Gasolina"> Gasolina</label>
-		        <label><input type="checkbox" id="Diesel" value="Diesel"> Diesel</label>
-		        <label><input type="checkbox" id="Electrico" value="Electrico"> Eléctrico</label>
-		        <label><input type="checkbox" id="Hibrido" value="Hibrido"> Híbrido</label>
+	&nbsp;&nbsp;
+<span style="color:#ff0000; font-size: 25px">*</span>
+	<label><input type="checkbox" id="4X2" value="4X2">4X2</label>
+	<label><input type="checkbox" id="4X4" value="4X4">4X4</label>
+
+	&nbsp;&nbsp;
+<span style="color:#ff0000; font-size: 25px">*</span>
+	<label><input type="checkbox" id="Gasolina" value="Gasolina">Gasolina</label>
+    <label><input type="checkbox" id="Diesel" value="Diesel">Diesel</label>
+    <label><input type="checkbox" id="Electrico" value="Electrico">Eléctrico</label>
+    <label><input type="checkbox" id="Hibrido" value="Hibrido">Híbrido</label>
 	
 </div>
 
@@ -213,25 +213,28 @@
 
 <div class="form-inline">
 	
-	<label for="lname">Precio de Costo<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Precio de Costo<br>
   <input type="text" maxlength="11" id="PrecioCosto" name="txtPrecioCosto" placeholder="Precio de Costo"/>
   </label>
 	
-	<label for="lname">Precio de Venta<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Precio de Venta<br>
   <input type="text" maxlength="11" id="PrecioVenta" name="txtPrecioVenta" placeholder="Precio de Venta"/>
   </label>
 	
-	<label for="lname">Utilidad<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Utilidad<br>
   <input type="text" maxlength="11" id="Utilidad" name="txtUtilidad" placeholder="Utilidad"/>
   </label>
 	
-	<label for="lname">IVA<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>IVA<br>
   <input type="text" maxlength="6" id="IVA" name="txtIVA" placeholder="IVA"/>
   </label>
 	
 </div>
 <div id="divenviar">
-  <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar() ">
+  <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()">
+  <div class="campobli">
+			<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+  </div>
 </div>
 <!--Modal de mensajes-->
     <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -597,6 +600,18 @@ $(document).ready(function(){
         }else{
             $('#Subgrupo').html('<option value=""></option>');
         }
+    });
+
+//funcion para que al seleccionar el subgrupo, el repuesto tenga el nombre del subgrupo. Siempre y cuando no se vaya a modificar un repuesto, solo si se agrega uno nuevo
+  
+    $('#Subgrupo').on('change',function(){
+        
+        if(!$('#Codigo').is('[readonly]'))
+        {
+			var Subgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].text;
+			
+        	document.getElementById('Repuesto').value=Subgrupo;	
+		}
     });
 });
 </script>

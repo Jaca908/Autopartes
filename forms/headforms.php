@@ -30,6 +30,14 @@ legend{
   color: #fff;
 }
 
+.campobli{
+	background: transparent;
+    float: right;
+    width: 30%;
+    margin-left: 40%;
+	
+}
+
 #divenviar{
   width: 69%;
   background: transparent;

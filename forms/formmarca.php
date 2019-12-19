@@ -18,12 +18,16 @@
 <label style="display: none" for="fname">Código<br>
 <input type="hidden" id="CodigoMarca" name="txtCodigo" placeholder="Código"/>
 </label>
-<label for="lname">Marca<br>
+<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Marca<br>
 <input type="text" maxlength="100" id="Marca" name="txtMarca" placeholder="Marca de Repuesto"/>
 </label>
 
 <div id="divenviar">
-<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()"></div>
+<input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()">
+<div class="campobli">
+		<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+	</div>	
+</div>
 
 <!--Modal de mensajes-->
 <div class="modal fade" id="ModalMSJMarca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

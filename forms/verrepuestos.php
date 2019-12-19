@@ -30,6 +30,11 @@
     div.new-wrapper{
         font-family: Comfortaa;
     }
+    
+    .thtd{
+		display: none;
+	}
+
 </style>
 
 <body>
@@ -65,12 +70,12 @@
 	
 <thead>
 <tr>
-		<th>CodModelo</th>
-		<th>CodGeneración</th>
-		<th>CodGrupo</th>
-		<th>CodSubgrupo</th>
-		<th>CodMarca</th>
-		<th>CodCategoria</th>
+		<th class="thtd">CodModelo</th>
+		<th class="thtd">CodGeneración</th>
+		<th class="thtd">CodGrupo</th>
+		<th class="thtd">CodSubgrupo</th>
+		<th class="thtd">CodMarca</th>
+		<th class="thtd">CodCategoria</th>
 		
 		<th>Código</th>
 		<th>Repuesto</th>
@@ -110,12 +115,12 @@
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" . $ri['CodModelo'] . "</td>";
-            echo "<td>" . $ri['CodGeneracion'] . "</td>";
-            echo "<td>" . $ri['CodGrupo'] . "</td>";
-            echo "<td>" . $ri['CodSubgrupo'] . "</td>";
-            echo "<td>" . $ri['CodMarca'] . "</td>";
-            echo "<td>" . $ri['CodCategoria'] . "</td>"; 
+            echo "<td class='thtd'>" . $ri['CodModelo'] . "</td>";
+            echo "<td class='thtd'>" . $ri['CodGeneracion'] . "</td>";
+            echo "<td class='thtd'>" . $ri['CodGrupo'] . "</td>";
+            echo "<td class='thtd'>" . $ri['CodSubgrupo'] . "</td>";
+            echo "<td class='thtd'>" . $ri['CodMarca'] . "</td>";
+            echo "<td class='thtd'>" . $ri['CodCategoria'] . "</td>"; 
             
             echo "<td>" . $ri['Codigo'] . "</td>";
             echo "<td>" . $ri['Repuesto'] . "</td>";
