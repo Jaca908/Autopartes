@@ -15,15 +15,15 @@
 
 <div id="DIVModelo" class="form-inline">
 <legend>Ingrese el Modelo</legend>
-<label for="fname">C&oacute;digo<br>
+<label for="fname"><span style="color:#ff0000; font-size: 25px">*</span>C&oacute;digo<br>
 <input type="text" maxlength="3" id="CodigoModelo" name="txtCodigo" placeholder="C&oacute;digo"/>
 </label>
 
-<label for="lname">Modelo<br>
+<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Modelo<br>
 <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
 </label>
 
-<label for="Estado">Estado<br>
+<label for="Estado"><span style="color:#ff0000; font-size: 25px">*</span>Estado<br>
 <select id="Estado" class="select" name="Estado">
           <option value=""></option>
           <option value="Activo">Activo</option>
@@ -33,7 +33,11 @@
 </label>
 
 <div id="divenviar">
-<input type="button" id="EnviarModelo" class="btnenviar" value="Enviar" onclick="EnviarModelo()"></div>
+<input type="button" id="EnviarModelo" class="btnenviar" value="Enviar" onclick="EnviarModelo()">
+	<div class="campobli">
+			<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+	</div>
+</div>
 
 
 
@@ -59,12 +63,12 @@
 
 <div id="DIVGeneracion" class="form-inline">
 <legend>Ingrese la Generaci&oacute;n</legend>
-  <label for="fname">C&oacute;digo<br>
+  <label for="fname"><span style="color:#ff0000; font-size: 25px">*</span>C&oacute;digo<br>
 			  <input type="text" maxlength="3" id="CodigoGeneracion" name="txtCodigo" placeholder="C&oacute;digo"/>
 	</label>
 	   
 
-	<label for="Modelo">Modelo<br>
+	<label for="Modelo"><span style="color:#ff0000; font-size: 25px">*</span>Modelo<br>
 
 	<?php ?>
         <select id="cmbModelo" name="Modelo" class="select">
@@ -97,16 +101,19 @@
         </select>
 	</label>
 
-	<label for="lname">Generaci&oacute;n<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Generaci&oacute;n<br>
 	<input type="text" maxlength="50" id="Generacion" name="txtGeneracion" placeholder="Generaci&oacute;n"/>
 	</label>
 
-	<label for="lname">A&ntilde;os<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>A&ntilde;os<br>
 	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="A&ntilde;os"/>
 	</label>
 	
 	<div id="divenviar">
 	<input type="button" id="EnviarGeneracion" class="btnenviar" value="Enviar" onclick="EnviarGeneracion() ">
+		<div class="campobli">
+			<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+		</div>
 	</div>
 
 
@@ -135,17 +142,21 @@
 <div id="DIVGrupo" class="form-inline">
 <legend>Ingrese el Grupo</legend>
 
-<label for="fname">C&oacute;digo<br>
+<label for="fname"><span style="color:#ff0000; font-size: 25px">*</span>C&oacute;digo<br>
 <input type="text" maxlength="3" id="CodigoGrupo" name="txtCodigo" placeholder="C&oacute;digo"/>
 </label>
 
-<label for="lname">Grupo<br>
+<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Grupo<br>
 <input type="text" maxlength="50" id="Grupo" name="txtGrupo" placeholder="Grupo"/>
 
 </label>
 
 <div id="divenviar">
-<input type="button" id="EnviarGrupo" class="btnenviar" value="Enviar" onclick="EnviarGrupo()"></div>
+<input type="button" id="EnviarGrupo" class="btnenviar" value="Enviar" onclick="EnviarGrupo()">
+	<div class="campobli">
+			<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+	</div>
+</div>
 
 
  <!--Modal de mensajes-->
@@ -171,11 +182,11 @@
 <div id="DIVSubgrupo" class="form-inline">
 <legend>Ingrese el Subgrupo</legend>
 
-<label for="fname">C&oacute;digo<br>
+<label for="fname"><span style="color:#ff0000; font-size: 25px">*</span>C&oacute;digo<br>
 <input type="text" maxlength="3" id="CodigoSubgrupo" name="txtCodigo" placeholder="C&oacute;digo"/>
 </label>
 
-<label for="Grupo">Grupo<br>
+<label for="Grupo"><span style="color:#ff0000; font-size: 25px">*</span>Grupo<br>
         <select id="cmbGrupo" class="select" name="Grupo">
           <option value="" selected="selected"></option>
         <?php
@@ -201,12 +212,16 @@
         </select>
     </label>
 
-    <label for="lname">Subgrupo<br>
+    <label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Subgrupo<br>
     <input type="text" maxlength="100" id="Subgrupo" name="txtSubgrupo" placeholder="Subgrupo"/>
 </label>
 
 <div id="divenviar">
-<input type="button" id="enviarSubgrupo" class="btnenviar" value="Enviar" onclick="EnviarSubgrupo()"></div>
+<input type="button" id="enviarSubgrupo" class="btnenviar" value="Enviar" onclick="EnviarSubgrupo()">
+	<div class="campobli">
+			<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+	</div>
+</div>
 
 <!--Modal de mensajes-->
 <div class="modal fade" id="ModalMSJSubgrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -26,8 +26,8 @@
 </label>
 
 <div id="divenviar">
-<input type="button" id="EnviarGrupo" class="btnenviar" value="Enviar" onclick="EnviarGrupo()"></div>
-
+<input type="button" id="EnviarGrupo" class="btnenviar" value="Enviar" onclick="EnviarGrupo()">
+</div>
 
  <!--Modal de mensajes-->
  <div class="modal fade" id="ModalMSJGrupo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

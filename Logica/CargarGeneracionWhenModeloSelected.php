@@ -3,7 +3,7 @@ include '../Conexion/Conexion.php';
 
 if(!empty($_POST["Modelo"])){
     //obtener todas las generaciones del modelo seleccionado
-    $query = $con->query("SELECT * FROM generacion WHERE FK_modelo = ".$_POST['Modelo'].";");
+    $query = $con->query("SELECT * FROM generacion WHERE FK_modelo = '".$_POST['Modelo']."';");
     
     //contar la cantidad de datos obtenidos
     $rowCount = $query->num_rows;

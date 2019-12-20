@@ -9,8 +9,8 @@
                    <div id="wrapper">
 <div class="container">
 <div class="form-inline">
-<legend>Ingrese la Generación</legend>
-  <label for="email">Modelo<br>
+<legend>Ingrese el Repuesto</legend>
+  <label for="email"><span style="color:#ff0000; font-size: 25px">*</span>Modelo<br>
   <select id="Modelo" name="Modelo" class="select">
   	  <option value="" selected="selected"></option>
   	  <?php
@@ -35,12 +35,12 @@
         ?>
   </select></label>
   
-  <label for="Generacion">Generación<br>
+  <label for="Generacion"><span style="color:#ff0000; font-size: 25px">*</span>Generación<br>
   <select id="Generacion" name="Generacion" class="select">
           <option value="" selected="selected"></option>
   </select></label>
   
-  <label for="Grupo">Grupo
+  <label for="Grupo"><span style="color:#ff0000; font-size: 25px">*</span>Grupo
   <select id="Grupo" name="Grupo" class="select">
       <option value="" selected="selected"></option>
     <?php
@@ -66,13 +66,13 @@
     </select></label>
     
     
-    <label for="Subgrupo" >Subgrupo<br>
+    <label for="Subgrupo" ><span style="color:#ff0000; font-size: 25px">*</span>Subgrupo<br>
     <select id="Subgrupo" name="Subgrupo" class="select">
           <option value="" selected="selected"></option>
     </select>
     </label>
  
-    <label for="fname">Consecutivo<br>
+    <label for="fname"><span style="color:#ff0000; font-size: 25px">*</span>Consecutivo<br>
      <input type="text" maxlength="3" id="Codigo" name="txtCodigo" placeholder="Código"/>
      </label>
 
@@ -81,8 +81,7 @@
 <br>   
   
 <div class="form-inline">
-     
-     <label for="Grupo">Marca de Repuesto
+     <label for="Grupo"><span style="color:#ff0000; font-size: 25px">*</span>Marca de Repuesto
      <select id="Marca" name="Marca" class="select">
           <option value="" selected="selected"></option>
         <?php
@@ -121,7 +120,7 @@
 
 <div class="form-inline">
 	
-	<label for="lname">Repuesto<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Repuesto<br>
 	<input type="text" maxlength="100" id="Repuesto" name="txtRepuesto" placeholder="Repuesto"/>
   </label>
   
@@ -129,8 +128,30 @@
 	<input type="text" maxlength="11" id="Peso" name="txtPeso" placeholder="Peso"/>
   </label>
   
-	<label for="lname">Dimensiones<br>
-	<input type="text" maxlength="50" id="Dimension" name="txtDimension" placeholder="Dimensiones"/>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Categoría
+	<select id="Categoria" name="Categoria" class="select">
+          <option value="" selected="selected"></option>
+        <?php
+          //Cargar Combobox de Modelos
+          
+          include '../Conexion/Conexion.php';
+          
+          $Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+          if ($Conexion->connect_error) 
+          {
+            die("Connection failed: " . $Conexion->connect_error);
+          } 
+          
+          $sql = "SELECT Codigo,Categoria FROM categoria";           
+          $result = $Conexion->query($sql);
+        ?>
+        <?php while($ri =  mysqli_fetch_array($result))
+              {
+              echo "<option value=".$ri['Codigo'].">".$ri['Categoria']."</option>";
+              }
+        ?>
+    </select>
   </label>
   
 	<label for="lname">Medidas<br>
@@ -140,60 +161,80 @@
 
 <div class="form-inline">
 	
-	<label><input type="checkbox" id="Manual" value="Manual"> Manual</label>
-	        	<label><input type="checkbox" id="Automatico" value="Automatico"> Automático</label>
-	        	
-	        	&nbsp;&nbsp;
+<span style="color:#ff0000; font-size: 25px">*</span>
+	<label><input type="checkbox" id="Manual" value="Manual">Manual</label>
+	<label><input type="checkbox" id="Automatico" value="Automatico">Automático</label>
 
-	        	<label><input type="checkbox" id="4X2" value="4X2"> 4X2</label>
-	        	<label><input type="checkbox" id="4X4" value="4X4"> 4X4</label>
-	        	
-	        	<br>
-	        	
-	        	<label><input type="checkbox" id="Gasolina" value="Gasolina"> Gasolina</label>
-		        <label><input type="checkbox" id="Diesel" value="Diesel"> Diesel</label>
-		        <label><input type="checkbox" id="Electrico" value="Electrico"> Eléctrico</label>
-		        <label><input type="checkbox" id="Hibrido" value="Hibrido"> Híbrido</label>
+	&nbsp;&nbsp;
+<span style="color:#ff0000; font-size: 25px">*</span>
+	<label><input type="checkbox" id="4X2" value="4X2">4X2</label>
+	<label><input type="checkbox" id="4X4" value="4X4">4X4</label>
+
+	&nbsp;&nbsp;
+<span style="color:#ff0000; font-size: 25px">*</span>
+	<label><input type="checkbox" id="Gasolina" value="Gasolina">Gasolina</label>
+    <label><input type="checkbox" id="Diesel" value="Diesel">Diesel</label>
+    <label><input type="checkbox" id="Electrico" value="Electrico">Eléctrico</label>
+    <label><input type="checkbox" id="Hibrido" value="Hibrido">Híbrido</label>
 	
 </div>
 
 <div class="form-inline">
 	
-	<label for="caracte">Característica 1<br>
-	<input type="text" id="Caracteristica1" name="Caracteristica1" placeholder="Caracteristica 1">
+	<label for="caracte">Caract. Repuesto 1<br>
+	<input type="text" id="CaractRep1" name="CaractRep1" placeholder="Caract. Repuesto 1">
   </label>
   
-	<label for="caracte">Característica 2<br>
-  <input type="text" id="Caracteristica2" name="Caracteristica2" placeholder="Caracteristica 2">
+	<label for="caracte">Caract. Repuesto 2<br>
+  <input type="text" id="CaractRep2" name="CaractRep2" placeholder="Caract. Repuesto 2">
   </label>
 	
-	<label for="caracte">Característica 3<br>
-  <input type="text" id="Caracteristica3" name="Caracteristica3" placeholder="Caracteristica 3">
+	<label for="caracte">Caract. Repuesto 3<br>
+  <input type="text" id="CaractRep3" name="CaractRep3" placeholder="Caract. Repuesto 3">
   </label>
 	
 </div>
 
 <div class="form-inline">
 	
-	<label for="lname">Precio de Costo<br>
+	<label for="caracte">Caract. Auto 1<br>
+	<input type="text" id="CaractAuto1" name="CaractAuto1" placeholder="Caract. Auto 1">
+  </label>
+  
+	<label for="caracte">Caract. Auto 2<br>
+  <input type="text" id="CaractAuto2" name="CaractAuto2" placeholder="Caract. Auto 2">
+  </label>
+	
+	<label for="caracte">Caract. Auto 3<br>
+  <input type="text" id="CaractAuto3" name="CaractAuto3" placeholder="Caract. Auto 3">
+  </label>
+	
+</div>
+
+<div class="form-inline">
+	
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Precio de Costo<br>
   <input type="text" maxlength="11" id="PrecioCosto" name="txtPrecioCosto" placeholder="Precio de Costo"/>
   </label>
 	
-	<label for="lname">Precio de Venta<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Precio de Venta<br>
   <input type="text" maxlength="11" id="PrecioVenta" name="txtPrecioVenta" placeholder="Precio de Venta"/>
   </label>
 	
-	<label for="lname">Utilidad<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Utilidad<br>
   <input type="text" maxlength="11" id="Utilidad" name="txtUtilidad" placeholder="Utilidad"/>
   </label>
 	
-	<label for="lname">IVA<br>
+	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>IVA<br>
   <input type="text" maxlength="6" id="IVA" name="txtIVA" placeholder="IVA"/>
   </label>
 	
 </div>
 <div id="divenviar">
-  <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar() ">
+  <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()">
+  <div class="campobli">
+			<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
+  </div>
 </div>
 <!--Modal de mensajes-->
     <div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -231,6 +272,7 @@ var CodGeneracion=sessionStorage.getItem("CodGeneracion");
 var CodGrupo=sessionStorage.getItem("CodGrupo");
 var CodSubgrupo=sessionStorage.getItem("CodSubgrupo");
 var CodMarca=sessionStorage.getItem("CodMarca");
+var CodCategoria=sessionStorage.getItem("CodCategoria");
 var Codigo=sessionStorage.getItem("Codigo");
 
 var Modificar=sessionStorage.getItem("Modificar");
@@ -253,6 +295,7 @@ var Modificar=sessionStorage.getItem("Modificar");
               CodGrupo:CodGrupo,
               CodSubgrupo:CodSubgrupo,
               CodMarca:CodMarca,
+              CodCategoria:CodCategoria,
               Codigo:Codigo
             },
             dataType: 'json',
@@ -273,7 +316,7 @@ var Modificar=sessionStorage.getItem("Modificar");
 		             document.getElementById('CodigoAlterno').value = response[0]['CodigoAlterno'];
 		             document.getElementById('Repuesto').value = response[0]['Repuesto'];
 		             document.getElementById('Peso').value = response[0]['Peso'];
-		             document.getElementById('Dimension').value = response[0]['Dimension'];
+		             document.getElementById('Categoria').value = response[0]['Categoria'];
 		             document.getElementById('Medida').value = response[0]['Medida'];
 		             
 		             if(response[0]['Manual']==1){document.getElementById("Manual").checked=true;}
@@ -285,9 +328,12 @@ var Modificar=sessionStorage.getItem("Modificar");
 		             if(response[0]['Electrico']==1){document.getElementById("Electrico").checked=true;}
 		             if(response[0]['Hibrido']==1){document.getElementById("Hibrido").checked=true;}
 	             
-		             document.getElementById("Caracteristica1").value = response[0]['Caracteristica1'];
-		             document.getElementById("Caracteristica2").value = response[0]['Caracteristica2'];
-		             document.getElementById("Caracteristica3").value = response[0]['Caracteristica3'];
+		             document.getElementById("CaractRep1").value = response[0]['CaractRep1'];
+		             document.getElementById("CaractRep2").value = response[0]['CaractRep2'];
+		             document.getElementById("CaractRep3").value = response[0]['CaractRep3'];
+		             document.getElementById("CaractAuto1").value = response[0]['CaractAuto1'];
+		             document.getElementById("CaractAuto2").value = response[0]['CaractAuto2'];
+		             document.getElementById("CaractAuto3").value = response[0]['CaractAuto3'];
 		             document.getElementById("PrecioCosto").value = response[0]['PrecioCosto'];
 		             document.getElementById("PrecioVenta").value = response[0]['PrecioVenta'];
 		             document.getElementById("Utilidad").value = response[0]['Utilidad'];
@@ -383,19 +429,9 @@ function Enviar()
 		$("#MSJ").html('Error: Ingrese una descripción del repuesto');
     	$("#ModalMSJ").modal("show");	
 	}
-	else if(document.getElementById('Peso').value=='')
+	else if(document.getElementById('Categoria').value=='')
 	{
-		$("#MSJ").html('Error: Ingrese el peso del repuesto');
-    	$("#ModalMSJ").modal("show");	
-	}
-	else if(document.getElementById('Dimension').value=='')
-	{
-		$("#MSJ").html('Error: Ingrese las dimensiones del repuesto');
-    	$("#ModalMSJ").modal("show");	
-	}
-	else if(document.getElementById('Medida').value=='')
-	{
-		$("#MSJ").html('Error: Ingrese las medidas del repuesto');
+		$("#MSJ").html('Error: Seleccione la categoría del repuesto');
     	$("#ModalMSJ").modal("show");	
 	}
 	else if(!document.getElementById("Manual").checked && !document.getElementById("Automatico").checked)
@@ -459,7 +495,7 @@ function Enviar()
              CodigoAlterno:document.getElementById('CodigoAlterno').value,
              Repuesto:document.getElementById('Repuesto').value,
              Peso:document.getElementById('Peso').value,
-             Dimension:document.getElementById('Dimension').value,
+             Categoria:document.getElementById('Categoria').value,
              Medida:document.getElementById('Medida').value,
              
              Manual:(document.getElementById("Manual").checked)?1:0,
@@ -471,9 +507,14 @@ function Enviar()
 			 Electrico:(document.getElementById("Electrico").checked)?1:0,
 			 Hibrido:(document.getElementById("Hibrido").checked)?1:0,
              
-             Caracteristica1:document.getElementById("Caracteristica1").value,
-             Caracteristica2:document.getElementById("Caracteristica2").value,
-             Caracteristica3:document.getElementById("Caracteristica3").value,
+             CaractRep1:document.getElementById("CaractRep1").value,
+             CaractRep2:document.getElementById("CaractRep2").value,
+             CaractRep3:document.getElementById("CaractRep3").value,
+             
+             CaractAuto1:document.getElementById("CaractAuto1").value,
+             CaractAuto2:document.getElementById("CaractAuto2").value,
+             CaractAuto3:document.getElementById("CaractAuto3").value,
+             
              PrecioCosto:document.getElementById("PrecioCosto").value,
              PrecioVenta:document.getElementById("PrecioVenta").value,
              Utilidad:document.getElementById("Utilidad").value,
@@ -559,6 +600,18 @@ $(document).ready(function(){
         }else{
             $('#Subgrupo').html('<option value=""></option>');
         }
+    });
+
+//funcion para que al seleccionar el subgrupo, el repuesto tenga el nombre del subgrupo. Siempre y cuando no se vaya a modificar un repuesto, solo si se agrega uno nuevo
+  
+    $('#Subgrupo').on('change',function(){
+        
+        if(!$('#Codigo').is('[readonly]'))
+        {
+			var Subgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].text;
+			
+        	document.getElementById('Repuesto').value=Subgrupo;	
+		}
     });
 });
 </script>

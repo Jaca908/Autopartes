@@ -3,8 +3,11 @@
 include '../Conexion/Conexion.php';
 
 if(!empty($_POST["Grupo"])){
+	
+	$query="SELECT * FROM subgrupo WHERE FK_grupo = '".$_POST['Grupo']."';";
+	
     //obtener todas los subgrupos del modelo seleccionado
-    $query = $con->query("SELECT * FROM subgrupo WHERE FK_grupo = ".$_POST['Grupo'].";");
+    $query = $con->query($query);
     
     //contar la cantidad de datos obtenidos
     $rowCount = $query->num_rows;

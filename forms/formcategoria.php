@@ -13,33 +13,35 @@
                    <div id="wrapper">
 <div class="container">
 
-<div id="DIVMarca" class="form-inline">
-<legend>Ingrese la Marca de Repuesto</legend>
+<div id="DIVCategoria" class="form-inline">
+<legend>Ingrese la Categoría de Repuesto</legend>
 <label style="display: none" for="fname">Código<br>
-<input type="hidden" id="CodigoMarca" name="txtCodigo" placeholder="Código"/>
+<input type="hidden" id="CodigoCategoria" name="txtCodigo" placeholder="Código"/>
 </label>
-<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Marca<br>
-<input type="text" maxlength="100" id="Marca" name="txtMarca" placeholder="Marca de Repuesto"/>
+<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Categoría<br>
+<input type="text" maxlength="100" id="Categoria" name="txtCategoria" placeholder="Categoría de Repuesto"/>
 </label>
 
 <div id="divenviar">
 <input type="button" id="enviar" class="btnenviar" value="Enviar" onclick="Enviar()">
 <div class="campobli">
 		<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span> Campos Obligatorios</label>
-	</div>	
+</div>
 </div>
 
+
+
 <!--Modal de mensajes-->
-<div class="modal fade" id="ModalMSJMarca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalMSJCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Marca de Repuesto</h4>
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Categoria de Repuesto</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
           </div>
-          <div class="modal-body" style="color:black;" id="MSJMarca">
+          <div class="modal-body" style="color:black;" id="MSJCategoria">
           </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -67,10 +69,10 @@ var Modificar=sessionStorage.getItem("Modificar");
   {
     sessionStorage.clear();
 
-    document.getElementById('CodigoMarca').readOnly = true;
+    document.getElementById('CodigoCategoria').readOnly = true;
 
     $.ajax({
-            url: '../Logica/Marca.php',
+            url: '../Logica/Categoria.php',
             type: 'post',
             data: 
             {
@@ -84,8 +86,8 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
-                  document.getElementById('CodigoMarca').value = response[0]['Codigo'];
-                  document.getElementById('Marca').value = response[0]['Marca'];                    
+                  document.getElementById('CodigoCategoria').value = response[0]['Codigo'];
+                  document.getElementById('Categoria').value = response[0]['Categoria'];                    
         		}
               
             }
@@ -95,7 +97,7 @@ var Modificar=sessionStorage.getItem("Modificar");
   }
   else
   {
-    document.getElementById('CodigoMarca').readOnly = false;
+    document.getElementById('CodigoCategoria').readOnly = false;
   }
 
 }
@@ -108,25 +110,25 @@ function Enviar()
 
 	/*if(document.getElementById('Codigo').value=='')
 	{
-		$("#MSJMarca").html('Error: Ingrese un código de marca de repuesto');
-    	$("#ModalMSJMarca").modal("show");	
+		$("#MSJCategoria").html('Error: Ingrese un código de marca de repuesto');
+    	$("#ModalMSJCategoria").modal("show");	
 	}
-	else*/ if(document.getElementById('Marca').value=='')
+	else*/ if(document.getElementById('Categoria').value=='')
 	{
-		$("#MSJMarca").html('Error: Ingrese una marca de repuesto');
-    	$("#ModalMSJMarca").modal("show");	
+		$("#MSJCategoria").html('Error: Ingrese una marca de repuesto');
+    	$("#ModalMSJCategoria").modal("show");	
 	}
 	else
 	{  
 		$.ajax({
-          url: '../Logica/Marca.php',
+          url: '../Logica/Categoria.php',
           type: 'post',
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#CodigoMarca').is('[readonly]'))?"Modificar":"Guardar", 
-             Codigo:document.getElementById('CodigoMarca').value,
-             Marca:document.getElementById('Marca').value,             
+             GuardarModificar:($('#CodigoCategoria').is('[readonly]'))?"Modificar":"Guardar", 
+             Codigo:document.getElementById('CodigoCategoria').value,
+             Categoria:document.getElementById('Categoria').value,             
           },
           dataType: 'json',
           success:function(response){
@@ -138,8 +140,8 @@ function Enviar()
                 var Respuesta=response[0]['Respuesta'];
 				var GuarMod=response[0]['GuarMod'];
 				
-				$("#MSJMarca").html(Respuesta);
-            	$("#ModalMSJMarca").modal("show");
+				$("#MSJCategoria").html(Respuesta);
+            	$("#ModalMSJCategoria").modal("show");
             	
             	sessionStorage.setItem('GuarMod',GuarMod);
               }
@@ -156,7 +158,7 @@ function Enviar()
 
   <script>
 	
-$('#ModalMSJMarca').on('hide.bs.modal', function (e) {
+$('#ModalMSJCategoria').on('hide.bs.modal', function (e) {
 		
 	var GuarMod = sessionStorage.getItem("GuarMod");
 	
@@ -164,11 +166,11 @@ $('#ModalMSJMarca').on('hide.bs.modal', function (e) {
 		
 	if(GuarMod =='Guardo')
 	{
-		window.open('formmarca.php', '_self');	
+		window.open('formcategoria.php', '_self');	
 	}
 	else if(GuarMod =='Modifico')
 	{
-		window.open('vermarcas.php', '_self');	
+		window.open('vercategorias.php', '_self');	
 	}
 });
 	
