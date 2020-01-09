@@ -10,6 +10,14 @@
 <div class="container">
 <div class="form-inline">
 <legend>Ingrese el Repuesto</legend>
+
+  <label for="fname">Código General<br>
+  <input type="text" readonly="true" maxlength="13" id="CodigoGeneral" name="txtCodigoGeneral" placeholder="Código General"/>
+  </label>
+</div>
+<br>
+<div class="form-inline">	
+
   <label for="email"><span style="color:#ff0000; font-size: 25px">*</span>Modelo<br>
   <select id="Modelo" name="Modelo" class="select">
   	  <option value="" selected="selected"></option>
@@ -208,6 +216,10 @@
 	<label for="caracte">Caract. Auto 3<br>
   <input type="text" id="CaractAuto3" name="CaractAuto3" placeholder="Caract. Auto 3">
   </label>
+  
+  <label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>Cantidad Mínima<br>
+    <input type="text" maxlength="7" id="CantMinima" name="txtCantMinima" placeholder="Cantidad Mínima"/>
+    </label>
 	
 </div>
 
@@ -305,6 +317,8 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
+                  	 document.getElementById('CodigoGeneral').value = response[0]['CodigoGeneral'];
+                  	 
                   	 document.getElementById('Modelo').value = response[0]['Modelo'];
 		             
 		             document.getElementById('Grupo').value = response[0]['Grupo'];
@@ -338,6 +352,7 @@ var Modificar=sessionStorage.getItem("Modificar");
 		             document.getElementById("PrecioVenta").value = response[0]['PrecioVenta'];
 		             document.getElementById("Utilidad").value = response[0]['Utilidad'];
 		             document.getElementById("IVA").value = response[0]['IVA'];
+		             document.getElementById("CantMinima").value = response[0]['CantMinima'];
 		             
 		             
 				        var CodigoModelo = response[0]['Modelo'];
@@ -450,6 +465,11 @@ function Enviar()
 		$("#MSJ").html('Error: Seleccione un tipo de combustible del vehículo: gasolina, diesel, eléctrico, híbrido');
     	$("#ModalMSJ").modal("show");
 	}
+	else if(document.getElementById('CantMinima').value=='')
+	{
+		$("#MSJ").html('Error: Ingrese la cantidad mínima del repuesto');
+    	$("#ModalMSJ").modal("show");	
+	}
 	else if(document.getElementById('PrecioCosto').value=='')
 	{
 		$("#MSJ").html('Error: Ingrese el precio de costo del repuesto');
@@ -484,6 +504,8 @@ function Enviar()
           {
              btnEnviar:"Enviar",
              GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
+             
+             CodigoGeneral:document.getElementById('CodigoGeneral').value,
              Modelo:document.getElementById('Modelo').value,
              Generacion:document.getElementById('Generacion').value,
              Grupo:document.getElementById('Grupo').value,
@@ -515,6 +537,8 @@ function Enviar()
              CaractAuto2:document.getElementById("CaractAuto2").value,
              CaractAuto3:document.getElementById("CaractAuto3").value,
              
+             CantMinima:document.getElementById("CantMinima").value,
+
              PrecioCosto:document.getElementById("PrecioCosto").value,
              PrecioVenta:document.getElementById("PrecioVenta").value,
              Utilidad:document.getElementById("Utilidad").value,
@@ -602,17 +626,56 @@ $(document).ready(function(){
         }
     });
 
-//funcion para que al seleccionar el subgrupo, el repuesto tenga el nombre del subgrupo. Siempre y cuando no se vaya a modificar un repuesto, solo si se agrega uno nuevo
+//Funciones para generar el codigo de producto conforme se vayan seleccionando el modelo, generacion, subgrupo, y se inserte el consecutivo
   
+    $('#Modelo').on('change',function(){
+
+		var Modelo = document.getElementById('Modelo').options[document.getElementById('Modelo').selectedIndex].value;
+		var Generacion = document.getElementById('Generacion').options[document.getElementById('Generacion').selectedIndex].value;
+		var CodSubgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].value;
+		var Consecutivo = document.getElementById('Codigo').value;
+				
+        document.getElementById('CodigoGeneral').value=Modelo+Generacion+"-"+CodSubgrupo+Consecutivo;
+    });
+    
+    $('#Generacion').on('change',function(){
+
+		var Modelo = document.getElementById('Modelo').options[document.getElementById('Modelo').selectedIndex].value;
+		var Generacion = document.getElementById('Generacion').options[document.getElementById('Generacion').selectedIndex].value;
+		var CodSubgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].value;
+		var Consecutivo = document.getElementById('Codigo').value;
+				
+        document.getElementById('CodigoGeneral').value=Modelo+Generacion+"-"+CodSubgrupo+Consecutivo;
+    });
+    
+    //funcion para que al seleccionar el subgrupo, el repuesto tenga el nombre del subgrupo. Siempre y cuando no se vaya a modificar un repuesto, solo si se agrega uno nuevo
+    
     $('#Subgrupo').on('change',function(){
         
         if(!$('#Codigo').is('[readonly]'))
         {
 			var Subgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].text;
 			
+			var Modelo = document.getElementById('Modelo').options[document.getElementById('Modelo').selectedIndex].value;
+		var Generacion = document.getElementById('Generacion').options[document.getElementById('Generacion').selectedIndex].value;
+			var CodSubgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].value;
+			var Consecutivo = document.getElementById('Codigo').value;
+			
         	document.getElementById('Repuesto').value=Subgrupo;	
+        	document.getElementById('CodigoGeneral').value=Modelo+Generacion+"-"+CodSubgrupo+Consecutivo;
 		}
     });
+    
+    $('#Codigo').on("input keydown keyup mousedown mouseup select contextmenu drop",function(){
+
+		var Modelo = document.getElementById('Modelo').options[document.getElementById('Modelo').selectedIndex].value;
+		var Generacion = document.getElementById('Generacion').options[document.getElementById('Generacion').selectedIndex].value;
+		var CodSubgrupo = document.getElementById('Subgrupo').options[document.getElementById('Subgrupo').selectedIndex].value;
+		var Consecutivo = document.getElementById('Codigo').value;
+				
+        document.getElementById('CodigoGeneral').value=Modelo+Generacion+"-"+CodSubgrupo+Consecutivo;
+    });
+      
 });
 </script>
 
@@ -653,7 +716,9 @@ setInputFilter(document.getElementById("Utilidad"), function(value) {
 
 setInputFilter(document.getElementById("IVA"), function(value) {
   return /^\d*$/.test(value); });
-
+  
+setInputFilter(document.getElementById("CantMinima"), function(value) {
+  return /^\d*[.]?\d{0,2}$/.test(value); });
 
 </script>
 

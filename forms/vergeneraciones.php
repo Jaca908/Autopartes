@@ -69,6 +69,7 @@
 		<th>Modelo</th>
 		<th>Generación</th>
 		<th>Años</th>
+		<th>Estado</th>
         <th>Acciones</th>
 
 	</tr>
@@ -85,7 +86,14 @@
             die("Connection failed: " . $Conexion->connect_error);
           }
 
-          $sql = "SELECT G.Codigo,G.Generacion,G.Ano,M.Modelo FROM generacion G INNER JOIN modelo M on G.FK_modelo=M.Codigo;";
+          $sql = "SELECT G.Codigo,G.Generacion,G.Ano,M.Modelo,
+          					
+          					CASE G.Estado 
+		 					WHEN 'MuyBasico' THEN 'Muy Básico' 
+		 					ELSE G.Estado
+							END AS Estado 
+							
+				 FROM generacion G INNER JOIN modelo M on G.FK_modelo=M.Codigo;";
           $result = $Conexion->query($sql);
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
@@ -94,6 +102,7 @@
             echo "<td>" . $ri['Modelo'] . "</td>";
             echo "<td>" . $ri['Generacion'] . "</td>";
             echo "<td>" . $ri['Ano'] . "</td>";
+            echo "<td>" . $ri['Estado'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";

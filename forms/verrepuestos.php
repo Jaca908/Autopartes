@@ -76,15 +76,15 @@
 		<th class="thtd">CodSubgrupo</th>
 		<th class="thtd">CodMarca</th>
 		<th class="thtd">CodCategoria</th>
-		
-		<th>Código</th>
-		<th>Repuesto</th>
-		<th>Modelo</th>
+		<th class="thtd">Código</th>
+
+		<th>Código General</th>
+		<th>Código de Marca</th>
+		<th>Subgrupo</th>
+		<th>Caráct Auto</th>
+		<th>Caráct Repuesto</th>
+		<th>Marca Repuesto</th>
         <th>Generación</th>
-        <th>Grupo</th>
-        <th>Subgrupo</th>
-        <th>Marca Repuesto</th>
-        <th>Categoría Repuesto</th>
         <th>Acciones</th>
         
 	</tr>
@@ -103,7 +103,8 @@
 
           $sql = "SELECT M.Codigo AS CodModelo,G.Codigo AS CodGeneracion,Gr.Codigo AS CodGrupo,
           				 SGr.Codigo AS CodSubgrupo,MR.Codigo AS CodMarca,C.Codigo AS CodCategoria,R.Codigo,
-          				 R.Repuesto,M.Modelo,G.Generacion,Gr.Grupo,SGr.Subgrupo,MR.MarcaRepuesto,C.Categoria
+          				 
+          				 R.CodigoGeneral,R.CodigoMarca,SGr.Subgrupo,CaractAuto1,R.CaractRep1,MR.MarcaRepuesto,G.Generacion
 				  FROM repuesto R INNER JOIN modelo M ON R.FK_modelo=M.Codigo
 					 			  INNER JOIN generacion G ON R.FK_generacion=G.Codigo
 					 			  INNER JOIN grupo Gr ON R.FK_grupo=Gr.Codigo
@@ -121,15 +122,15 @@
             echo "<td class='thtd'>" . $ri['CodSubgrupo'] . "</td>";
             echo "<td class='thtd'>" . $ri['CodMarca'] . "</td>";
             echo "<td class='thtd'>" . $ri['CodCategoria'] . "</td>"; 
+            echo "<td class='thtd'>" . $ri['Codigo'] . "</td>";
             
-            echo "<td>" . $ri['Codigo'] . "</td>";
-            echo "<td>" . $ri['Repuesto'] . "</td>";
-            echo "<td>" . $ri['Modelo'] . "</td>";
-            echo "<td>" . $ri['Generacion'] . "</td>";
-            echo "<td>" . $ri['Grupo'] . "</td>";
+            echo "<td>" . $ri['CodigoGeneral'] . "</td>";
+            echo "<td>" . $ri['CodigoMarca'] . "</td>";
             echo "<td>" . $ri['Subgrupo'] . "</td>";
+            echo "<td>" . $ri['CaractAuto1'] . "</td>";
+            echo "<td>" . $ri['CaractRep1'] . "</td>";
             echo "<td>" . $ri['MarcaRepuesto'] . "</td>";
-            echo "<td>" . $ri['Categoria'] . "</td>";
+            echo "<td>" . $ri['Generacion'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";

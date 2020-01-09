@@ -32,6 +32,7 @@ function GuardarOModificar()
 		$Modelo=$_POST["Modelo"];
 		$Generacion=$_POST["Generacion"];
 		$Ano=$_POST["Ano"];
+		$Estado=$_POST["Estado"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -63,7 +64,7 @@ function GuardarOModificar()
 			else
 			{
 				//sanitize el sql
-				$sql = "INSERT INTO generacion(Codigo,Generacion,Ano,FK_modelo)values('$Codigo','$Generacion','$Ano','$Modelo');";
+				$sql = "INSERT INTO generacion(Codigo,Generacion,Ano,Estado,FK_modelo)values('$Codigo','$Generacion','$Ano','$Estado','$Modelo');";
 								
 				if($Conexion->query($sql) === TRUE) 
 				{   
@@ -86,6 +87,7 @@ function GuardarOModificar()
 		$Modelo=$_POST["Modelo"];
 		$Generacion=$_POST["Generacion"];
 		$Ano=$_POST["Ano"];
+		$Estado=$_POST["Estado"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -95,7 +97,7 @@ function GuardarOModificar()
 		 	die("Connection failed: " . $Conexion->connect_error);
 		} 
 			//sanitize el sql
-			$sql = "UPDATE generacion SET Generacion='$Generacion',Ano='$Ano',FK_modelo='$Modelo' WHERE Codigo='$Codigo'";
+			$sql = "UPDATE generacion SET Generacion='$Generacion',Ano='$Ano',Estado='$Estado',FK_modelo='$Modelo' WHERE Codigo='$Codigo'";
 							
 			if($Conexion->query($sql) === TRUE) 
 			{   
@@ -131,7 +133,7 @@ function Consultar()
 		die("Connection failed: " . $Conexion->connect_error);
 	} 
 
-	$sql = "SELECT Codigo,Generacion,Ano,FK_modelo FROM generacion WHERE Codigo = '$Codigo'";
+	$sql = "SELECT Codigo,Generacion,Ano,Estado,FK_modelo FROM generacion WHERE Codigo = '$Codigo'";
 						
 	$result = $Conexion->query($sql);
 
@@ -142,11 +144,12 @@ function Consultar()
 		$Codigo= $row["Codigo"];
 		$Generacion=$row["Generacion"];
 		$Ano=$row["Ano"];
+		$Estado=$row["Estado"];
 		$Modelo=$row["FK_modelo"];
 	}
 
 	$users_arr[] = array( 
-                         "Codigo"=>$Codigo,"Generacion"=>$Generacion,"Ano"=>$Ano,"Modelo"=>$Modelo,
+                         "Codigo"=>$Codigo,"Generacion"=>$Generacion,"Ano"=>$Ano,"Modelo"=>$Modelo,"Estado"=>$Estado,
                      );
 
     // encoding array to json format

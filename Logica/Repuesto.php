@@ -27,7 +27,7 @@ function GuardarOModificar()
 	if($GuardarModificar=="Guardar")
 	{
 		//Guardar
-
+		 $CodigoGeneral=$_POST['CodigoGeneral'];
 		 $Modelo=$_POST['Modelo'];
 	     $Generacion=$_POST['Generacion'];
 	     $Grupo=$_POST['Grupo'];
@@ -58,6 +58,8 @@ function GuardarOModificar()
 	     $CaractAuto2=(!empty($_POST['CaractAuto2']))?"'".$_POST['CaractAuto2']."'":'NULL';
 	     $CaractAuto3=(!empty($_POST['CaractAuto3']))?"'".$_POST['CaractAuto3']."'":'NULL';
 	     
+	     $CantMinima=$_POST["CantMinima"];
+	     
 	     $PrecioCosto=$_POST["PrecioCosto"];
 	     $PrecioVenta=$_POST["PrecioVenta"];
 	     $Utilidad=$_POST["Utilidad"];
@@ -71,7 +73,7 @@ function GuardarOModificar()
 			die("Connection failed: " . $Conexion->connect_error);
 		} 
 
-		$sql = "SELECT Codigo,Repuesto 
+		$sql = "SELECT CodigoGeneral, Codigo,Repuesto 
 				FROM repuesto 
 				WHERE Codigo = '$Codigo' AND FK_modelo='$Modelo' 
 				AND FK_generacion='$Generacion' AND FK_grupo='$Grupo'
@@ -88,7 +90,8 @@ function GuardarOModificar()
 		{		
 				//sanitize el sql
 				$sql = "INSERT INTO repuesto
-						   (FK_modelo,
+						   (CodigoGeneral,
+						    FK_modelo,
 							FK_generacion,
 							FK_grupo,
 							FK_subgrupo,
@@ -115,14 +118,15 @@ function GuardarOModificar()
 							CaractAuto1,
 							CaractAuto2, 
 							CaractAuto3,
+							CantidadMinima,
 							PrecioCosto,
 							PrecioVenta,
 							Utilidad,
 							IVA)
-							VALUES('$Modelo','$Generacion','$Grupo','$Subgrupo','$Codigo',$Marca,$CodigoMarca,$CodigoUniversal,
+							VALUES('$CodigoGeneral','$Modelo','$Generacion','$Grupo','$Subgrupo','$Codigo',$Marca,$CodigoMarca,$CodigoUniversal,
 							$CodigoAlterno,'$Repuesto',$Peso,$Categoria,$Medida,$Automatico,$Manual,$t4X2,$t4X4,$Gasolina,
 							$Diesel,$Electrico,$Hibrido,$CaractRep1,$CaractRep2,$CaractRep3,$CaractAuto1,$CaractAuto2,$CaractAuto3,
-							$PrecioCosto,$PrecioVenta,$Utilidad,$IVA);";
+							$CantMinima,$PrecioCosto,$PrecioVenta,$Utilidad,$IVA);";
 								
 				if($Conexion->query($sql) === TRUE) 
 				{   
@@ -140,7 +144,7 @@ function GuardarOModificar()
 	else if($GuardarModificar=="Modificar")
 	{
 		//modificar
-		
+		 $CodigoGeneral=$_POST['CodigoGeneral'];
 		 $Modelo=$_POST['Modelo'];
 	     $Generacion=$_POST['Generacion'];
 	     $Grupo=$_POST['Grupo'];
@@ -171,6 +175,8 @@ function GuardarOModificar()
 	     $CaractAuto2=(!empty($_POST['CaractAuto2']))?"'".$_POST['CaractAuto2']."'":'NULL';
 	     $CaractAuto3=(!empty($_POST['CaractAuto3']))?"'".$_POST['CaractAuto3']."'":'NULL';
 	     
+	     $CantMinima=$_POST["CantMinima"];
+	     
 	     $PrecioCosto=$_POST["PrecioCosto"];
 	     $PrecioVenta=$_POST["PrecioVenta"];
 	     $Utilidad=$_POST["Utilidad"];
@@ -185,7 +191,8 @@ function GuardarOModificar()
 		} 
 			//sanitize el sql
 			$sql = "UPDATE repuesto 
-					SET FK_modelo='$Modelo',
+					SET CodigoGeneral='$CodigoGeneral',
+						FK_modelo='$Modelo',
 						FK_generacion='$Generacion',
 						FK_grupo='$Grupo',
 						FK_subgrupo='$Subgrupo',
@@ -211,6 +218,7 @@ function GuardarOModificar()
 						CaractAuto1=$CaractAuto1,
 						CaractAuto2=$CaractAuto2, 
 						CaractAuto3=$CaractAuto3,
+						CantidadMinima=$CantMinima,
 						PrecioCosto=$PrecioCosto,
 						PrecioVenta=$PrecioVenta,
 						Utilidad=$Utilidad,
@@ -258,6 +266,7 @@ function Consultar()
 	} 
 
 	$sql = "SELECT 
+				R.CodigoGeneral,
 				R.FK_modelo,
 				R.FK_generacion,
 				R.FK_grupo,
@@ -285,6 +294,7 @@ function Consultar()
 				R.CaractAuto1,
 				R.CaractAuto2, 
 				R.CaractAuto3,
+				R.CantidadMinima,
 				R.PrecioCosto,
 				R.PrecioVenta,
 				R.Utilidad,
@@ -301,6 +311,7 @@ function Consultar()
 	{
 		$row = $result->fetch_assoc();
 
+		$CodigoGeneral=$row['CodigoGeneral'];
 		$FK_modelo=$row["FK_modelo"];
 		$FK_generacion=$row["FK_generacion"];
 		$FK_grupo=$row["FK_grupo"];
@@ -328,6 +339,7 @@ function Consultar()
 		$CaractAuto1=$row["CaractAuto1"];
 		$CaractAuto2=$row["CaractAuto2"]; 
 		$CaractAuto3=$row["CaractAuto3"];
+		$CantMinima=$row["CantidadMinima"];
 		$PrecioCosto=$row["PrecioCosto"];
 		$PrecioVenta=$row["PrecioVenta"];
 		$Utilidad=$row["Utilidad"];
@@ -335,6 +347,7 @@ function Consultar()
 	}
 
 	$users_arr[] = array( 
+                         "CodigoGeneral"=>$CodigoGeneral,
                          "Modelo"=>$FK_modelo,
                          "Generacion"=>$FK_generacion,
                          "Grupo"=>$FK_grupo,
@@ -362,6 +375,7 @@ function Consultar()
                          "CaractAuto1"=>$CaractAuto1,
                          "CaractAuto2"=>$CaractAuto2,
                          "CaractAuto3"=>$CaractAuto3,
+                         "CantMinima"=>$CantMinima,
                          "PrecioCosto"=>$PrecioCosto,
                          "PrecioVenta"=>$PrecioVenta,
                          "Utilidad"=>$Utilidad,

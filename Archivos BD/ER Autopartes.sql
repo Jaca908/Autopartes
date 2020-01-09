@@ -11,7 +11,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE `modelo` (
     `Codigo` VARCHAR(3) NOT NULL,
     `Modelo` VARCHAR(50) NOT NULL,
-    `Estado` VARCHAR(10) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );
 
@@ -19,6 +18,7 @@ CREATE TABLE `generacion` (
     `Codigo` VARCHAR(3) NOT NULL,
     `Generacion` VARCHAR(50) NOT NULL,
     `Ano` VARCHAR(50) NOT NULL,
+    `Estado` VARCHAR(10) NOT NULL,
     `FK_modelo` VARCHAR(3) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );
@@ -37,6 +37,7 @@ CREATE TABLE `subgrupo` (
 );
 
 CREATE TABLE `repuesto` (
+    `CodigoGeneral` VARCHAR(13) NOT NULL,
     `FK_modelo` VARCHAR(3) NOT NULL,
     `FK_generacion` VARCHAR(3) NOT NULL,
     `FK_grupo` VARCHAR(3) NOT NULL,
@@ -64,6 +65,7 @@ CREATE TABLE `repuesto` (
     `CaractAuto1` VARCHAR(100),
     `CaractAuto2` VARCHAR(100),
     `CaractAuto3` VARCHAR(100),
+    `CantidadMinima` DECIMAL(10,2) NOT NULL,
     `PrecioCosto` DECIMAL(10,2) NOT NULL,
     `PrecioVenta` DECIMAL(10,2) NOT NULL,
     `Utilidad` DECIMAL(10,2) NOT NULL,

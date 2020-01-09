@@ -23,15 +23,6 @@
 <input type="text" maxlength="50" id="Modelo" name="txtModelo" placeholder="Modelo"/>
 </label>
 
-<label for="Estado"><span style="color:#ff0000; font-size: 25px">*</span>Estado<br>
-<select id="Estado" class="select" name="Estado">
-          <option value=""></option>
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
-          <option value="MuyBasico">Muy B&aacute;sico</option>
-        </select>
-</label>
-
 <div id="divenviar">
 <input type="button" id="EnviarModelo" class="btnenviar" value="Enviar" onclick="EnviarModelo()">
 	<div class="campobli">
@@ -108,6 +99,15 @@
 	<label for="lname"><span style="color:#ff0000; font-size: 25px">*</span>A&ntilde;os<br>
 	<input type="text" maxlength="50" id="Ano" name="txtAno" placeholder="A&ntilde;os"/>
 	</label>
+	
+	<label for="Estado"><span style="color:#ff0000; font-size: 25px">*</span>Estado<br>
+<select id="Estado" class="select" name="Estado">
+          <option value=""></option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+          <option value="MuyBasico">Muy B&aacute;sico</option>
+        </select>
+</label>
 	
 	<div id="divenviar">
 	<input type="button" id="EnviarGeneracion" class="btnenviar" value="Enviar" onclick="EnviarGeneracion() ">
@@ -284,9 +284,7 @@ var Form=sessionStorage.getItem("Form");
                 if(len > 0)
                 {
                   document.getElementById('CodigoModelo').value = response[0]['Codigo'];
-                  document.getElementById('Modelo').value = response[0]['Modelo'];  
-                  document.getElementById('Estado').value = response[0]['Estado'];  
-                  
+                  document.getElementById('Modelo').value = response[0]['Modelo'];                    
         		}
               
             }
@@ -316,6 +314,7 @@ var Form=sessionStorage.getItem("Form");
                   document.getElementById('CodigoGeneracion').value = response[0]['Codigo'];
                   document.getElementById('Generacion').value = response[0]['Generacion'];
                   document.getElementById('Ano').value = response[0]['Ano'];
+                  document.getElementById('Estado').value = response[0]['Estado'];
                   document.getElementById('cmbModelo').value = response[0]['Modelo'];   
                   
         		}
@@ -424,11 +423,6 @@ function EnviarModelo()
 		$("#MSJModelo").html('Error: Ingrese un modelo');
     	$("#ModalMSJModelo").modal("show");	
 	}
-	else if(document.getElementById('Estado').value=='')
-	{
-		$("#MSJModelo").html('Error: Seleccione un estado');
-    	$("#ModalMSJModelo").modal("show");	
-	}
 	else
 	{  
 		$.ajax({
@@ -439,9 +433,7 @@ function EnviarModelo()
              btnEnviar:"Enviar",
              GuardarModificar:($('#CodigoModelo').is('[readonly]'))?"Modificar":"Guardar", 
              Codigo:document.getElementById('CodigoModelo').value,
-             Modelo:document.getElementById('Modelo').value,
-             Estado:document.getElementById('Estado').value,
-             
+             Modelo:document.getElementById('Modelo').value,             
           },
           dataType: 'json',
           success:function(response){
@@ -515,6 +507,11 @@ function EnviarGeneracion()
 		$("#MSJGeneracion").html('Error: Ingrese los a&ntilde;os de la generaci&oacute;n');
     	$("#ModalMSJGeneracion").modal("show");	
 	}
+	else if(document.getElementById('Estado').value=='')
+	{
+		$("#MSJModelo").html('Error: Seleccione un estado');
+    	$("#ModalMSJModelo").modal("show");	
+	}
 	else
 	{  
 		$.ajax({
@@ -528,7 +525,7 @@ function EnviarGeneracion()
              Modelo:document.getElementById('cmbModelo').value,
              Generacion:document.getElementById('Generacion').value,
              Ano:document.getElementById('Ano').value,
-             
+             Estado:document.getElementById('Estado').value,
           },
           dataType: 'json',
           success:function(response){

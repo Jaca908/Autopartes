@@ -30,7 +30,6 @@ function GuardarOModificar()
 
 		$Codigo=$_POST["Codigo"];
 		$Modelo=$_POST["Modelo"];
-		$Estado=$_POST["Estado"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -62,7 +61,7 @@ function GuardarOModificar()
 			else
 			{
 				//sanitize el sql
-				$sql = "INSERT INTO modelo(Codigo,Modelo,Estado)values('$Codigo','$Modelo','$Estado');";
+				$sql = "INSERT INTO modelo(Codigo,Modelo)values('$Codigo','$Modelo');";
 								
 				if($Conexion->query($sql) === TRUE) 
 				{   
@@ -83,7 +82,6 @@ function GuardarOModificar()
 		
 		$Codigo=$_POST["Codigo"];
 		$Modelo=$_POST["Modelo"];
-		$Estado=$_POST["Estado"];
 		//$FK_Usuario=$_SESSION['IDUsuario'];
 		
 		$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -93,7 +91,7 @@ function GuardarOModificar()
 		 	die("Connection failed: " . $Conexion->connect_error);
 		} 
 			//sanitize el sql
-			$sql = "UPDATE modelo SET Modelo='$Modelo', Estado='$Estado' WHERE Codigo='$Codigo'";
+			$sql = "UPDATE modelo SET Modelo='$Modelo' WHERE Codigo='$Codigo'";
 							
 			if($Conexion->query($sql) === TRUE) 
 			{   
@@ -128,7 +126,7 @@ function Consultar()
 	 	die("Connection failed: " . $Conexion->connect_error);
 	} 
 	
-	$sql="SELECT Codigo,Modelo,Estado FROM modelo WHERE Codigo='$Codigo';";
+	$sql="SELECT Codigo,Modelo FROM modelo WHERE Codigo='$Codigo';";
 	
 	$result = $Conexion->query($sql);
 
@@ -138,11 +136,10 @@ function Consultar()
 
 		$Codigo= $row["Codigo"];
 		$Modelo=$row["Modelo"];
-		$Estado=$row["Estado"];
 	}
 
 	$users_arr[] = array( 
-                         "Codigo"=>$Codigo,"Modelo"=>$Modelo,"Estado"=>$Estado,
+                         "Codigo"=>$Codigo,"Modelo"=>$Modelo,
                      );
 
     // encoding array to json format
