@@ -93,7 +93,7 @@
             echo "<td>" . $ri['Grupo'] . "</td>";
             echo "<td>" . $ri['Subgrupo'] . "</td>";
             echo "<td>";
-            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
+            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i id="ver_editar_icon" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";
             echo "</tr>";
           } ?>

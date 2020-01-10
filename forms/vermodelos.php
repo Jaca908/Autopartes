@@ -91,7 +91,7 @@
             echo "<td>" . $ri['Codigo'] . "</td>";
             echo "<td>" . $ri['Modelo'] . "</td>";
             echo "<td>";
-            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
+            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i id="ver&editaricon" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";
             echo "</tr>";
           } ?>

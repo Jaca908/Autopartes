@@ -81,10 +81,10 @@
 		<th>Código General</th>
 		<th>Código de Marca</th>
 		<th>Subgrupo</th>
-		<th>Caráct Auto</th>
-		<th>Caráct Repuesto</th>
+		<th>Caráct. Repuesto</th>
 		<th>Marca Repuesto</th>
         <th>Generación</th>
+        <th>Caráct. Auto</th>
         <th>Acciones</th>
         
 	</tr>
@@ -127,12 +127,12 @@
             echo "<td>" . $ri['CodigoGeneral'] . "</td>";
             echo "<td>" . $ri['CodigoMarca'] . "</td>";
             echo "<td>" . $ri['Subgrupo'] . "</td>";
-            echo "<td>" . $ri['CaractAuto1'] . "</td>";
             echo "<td>" . $ri['CaractRep1'] . "</td>";
             echo "<td>" . $ri['MarcaRepuesto'] . "</td>";
             echo "<td>" . $ri['Generacion'] . "</td>";
+            echo "<td>" . $ri['CaractAuto1'] . "</td>";
             echo "<td>";
-            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i style="color:#000000" class="material-icons">&#xE417;</i></a></button>';
+            echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i id="ver_editar_icon" class="material-icons">&#xE417;</i></a></button>';
             echo "</td>";
             echo "</tr>";
           } ?>
