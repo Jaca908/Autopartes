@@ -84,6 +84,7 @@
 		<th>Caráct. Repuesto</th>
 		<th>Marca Repuesto</th>
         <th>Generación</th>
+        <th>Años</th>
         <th>Caráct. Auto</th>
         <th>Acciones</th>
         
@@ -104,7 +105,7 @@
           $sql = "SELECT M.Codigo AS CodModelo,G.Codigo AS CodGeneracion,Gr.Codigo AS CodGrupo,
           				 SGr.Codigo AS CodSubgrupo,MR.Codigo AS CodMarca,C.Codigo AS CodCategoria,R.Codigo,
           				 
-          				 R.CodigoGeneral,R.CodigoMarca,SGr.Subgrupo,CaractAuto1,R.CaractRep1,MR.MarcaRepuesto,G.Generacion
+          				 R.CodigoGeneral,R.CodigoMarca,SGr.Subgrupo,CaractAuto1,R.CaractRep1,MR.MarcaRepuesto,G.Generacion,G.Ano
 				  FROM repuesto R INNER JOIN modelo M ON R.FK_modelo=M.Codigo
 					 			  INNER JOIN generacion G ON R.FK_generacion=G.Codigo
 					 			  INNER JOIN grupo Gr ON R.FK_grupo=Gr.Codigo
@@ -130,6 +131,7 @@
             echo "<td>" . $ri['CaractRep1'] . "</td>";
             echo "<td>" . $ri['MarcaRepuesto'] . "</td>";
             echo "<td>" . $ri['Generacion'] . "</td>";
+            echo "<td>" . $ri['Ano'] . "</td>";
             echo "<td>" . $ri['CaractAuto1'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i id="ver_editar_icon" class="material-icons">&#xE417;</i></a></button>';
