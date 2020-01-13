@@ -70,6 +70,7 @@
 	
 <thead>
 <tr>
+		<th class="thtd">CodigoInterno</th>
 		<th class="thtd">CodModelo</th>
 		<th class="thtd">CodGeneración</th>
 		<th class="thtd">CodGrupo</th>
@@ -102,9 +103,7 @@
             die("Connection failed: " . $Conexion->connect_error);
           }
 
-          $sql = "SELECT M.Codigo AS CodModelo,G.Codigo AS CodGeneracion,Gr.Codigo AS CodGrupo,
-          				 SGr.Codigo AS CodSubgrupo,MR.Codigo AS CodMarca,C.Codigo AS CodCategoria,R.Codigo,
-          				 
+          $sql = "SELECT R.CodigoInterno,        				 
           				 R.CodigoGeneral,R.CodigoMarca,SGr.Subgrupo,CaractAuto1,R.CaractRep1,MR.MarcaRepuesto,G.Generacion,G.Ano
 				  FROM repuesto R INNER JOIN modelo M ON R.FK_modelo=M.Codigo
 					 			  INNER JOIN generacion G ON R.FK_generacion=G.Codigo
@@ -117,13 +116,7 @@
           ?>
           <?php while ($ri =  mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td class='thtd'>" . $ri['CodModelo'] . "</td>";
-            echo "<td class='thtd'>" . $ri['CodGeneracion'] . "</td>";
-            echo "<td class='thtd'>" . $ri['CodGrupo'] . "</td>";
-            echo "<td class='thtd'>" . $ri['CodSubgrupo'] . "</td>";
-            echo "<td class='thtd'>" . $ri['CodMarca'] . "</td>";
-            echo "<td class='thtd'>" . $ri['CodCategoria'] . "</td>"; 
-            echo "<td class='thtd'>" . $ri['Codigo'] . "</td>";
+            echo "<td class='thtd'>" . $ri['CodigoInterno'] . "</td>";
             
             echo "<td>" . $ri['CodigoGeneral'] . "</td>";
             echo "<td>" . $ri['CodigoMarca'] . "</td>";
@@ -172,13 +165,7 @@ function ObtenerDatosFila(oButton)
 {
 	var dgvVerRepuestos = document.getElementById('table');
 
-    sessionStorage.setItem("CodModelo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
-    sessionStorage.setItem("CodGeneracion", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[1].innerHTML);
-    sessionStorage.setItem("CodGrupo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[2].innerHTML);
-    sessionStorage.setItem("CodSubgrupo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[3].innerHTML);
-    sessionStorage.setItem("CodMarca", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[4].innerHTML);
-    sessionStorage.setItem("CodCategoria", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[5].innerHTML);
-    sessionStorage.setItem("Codigo", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[6].innerHTML);
+    sessionStorage.setItem("CodigoInterno", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
     sessionStorage.setItem("Modificar", 'Modificar');
 
     location.href = "formrepuesto.php";

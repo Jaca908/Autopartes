@@ -144,6 +144,7 @@ function GuardarOModificar()
 	else if($GuardarModificar=="Modificar")
 	{
 		//modificar
+		 $CodigoInterno=$_POST['CodigoInterno'];
 		 $CodigoGeneral=$_POST['CodigoGeneral'];
 		 $Modelo=$_POST['Modelo'];
 	     $Generacion=$_POST['Generacion'];
@@ -192,6 +193,7 @@ function GuardarOModificar()
 			//sanitize el sql
 			$sql = "UPDATE repuesto 
 					SET CodigoGeneral='$CodigoGeneral',
+						Codigo='$Codigo',
 						FK_modelo='$Modelo',
 						FK_generacion='$Generacion',
 						FK_grupo='$Grupo',
@@ -223,7 +225,7 @@ function GuardarOModificar()
 						PrecioVenta=$PrecioVenta,
 						Utilidad=$Utilidad,
 						IVA=$IVA 
-						WHERE Codigo='$Codigo';";
+						WHERE CodigoInterno=$CodigoInterno;";
 							
 			if($Conexion->query($sql) === TRUE) 
 			{   
@@ -249,13 +251,7 @@ function GuardarOModificar()
 
 function Consultar()
 {
-	  $CodModelo=$_POST['CodModelo'];
-	  $CodGeneracion=$_POST['CodGeneracion'];
-	  $CodGrupo=$_POST['CodGrupo'];
-	  $CodSubgrupo=$_POST['CodSubgrupo'];
-	  $CodMarca=$_POST['CodMarca'];
-	  $CodCategoria=$_POST['CodCategoria'];
-	  $Codigo=$_POST['Codigo'];
+	  $CodigoInterno=$_POST['CodigoInterno'];
 	//$FK_Usuario=$_SESSION['IDUsuario'];
 
 	$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -266,6 +262,7 @@ function Consultar()
 	} 
 
 	$sql = "SELECT 
+				R.CodigoInterno,
 				R.CodigoGeneral,
 				R.FK_modelo,
 				R.FK_generacion,
@@ -301,9 +298,7 @@ function Consultar()
 				R.IVA
 	 
 	  FROM repuesto R 	 
-	  WHERE R.Codigo = '$Codigo' AND R.FK_modelo='$CodModelo' AND R.FK_generacion='$CodGeneracion' AND 
-	  		R.FK_grupo='$CodGrupo' AND R.FK_subgrupo='$CodSubgrupo' AND R.FK_marca_repuesto=$CodMarca AND 
-	  		R.FK_categoria=$CodCategoria;";
+	  WHERE R.CodigoInterno = $CodigoInterno;";
 						
 	$result = $Conexion->query($sql);
 
@@ -311,6 +306,7 @@ function Consultar()
 	{
 		$row = $result->fetch_assoc();
 
+		$CodigoInterno=$row['CodigoInterno'];
 		$CodigoGeneral=$row['CodigoGeneral'];
 		$FK_modelo=$row["FK_modelo"];
 		$FK_generacion=$row["FK_generacion"];
@@ -347,6 +343,7 @@ function Consultar()
 	}
 
 	$users_arr[] = array( 
+                         "CodigoInterno"=>$CodigoInterno,
                          "CodigoGeneral"=>$CodigoGeneral,
                          "Modelo"=>$FK_modelo,
                          "Generacion"=>$FK_generacion,

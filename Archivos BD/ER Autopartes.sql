@@ -37,6 +37,7 @@ CREATE TABLE `subgrupo` (
 );
 
 CREATE TABLE `repuesto` (
+    `CodigoInterno` INT NOT NULL AUTO_INCREMENT,
     `CodigoGeneral` VARCHAR(13) NOT NULL,
     `FK_modelo` VARCHAR(3) NOT NULL,
     `FK_generacion` VARCHAR(3) NOT NULL,
@@ -69,18 +70,17 @@ CREATE TABLE `repuesto` (
     `PrecioCosto` DECIMAL(10,2) NOT NULL,
     `PrecioVenta` DECIMAL(10,2) NOT NULL,
     `Utilidad` DECIMAL(10,2) NOT NULL,
-    `IVA` DECIMAL(5) NOT NULL,
-    PRIMARY KEY (`FK_modelo`, `FK_generacion`, `FK_grupo`, `FK_subgrupo`, `Codigo`)
+    `IVA` DECIMAL(5) NOT NULL
 );
 
 CREATE TABLE `marca_repuesto` (
-    `Codigo` INT NOT NULL AUTO_INCREMENT,
+    `Codigo` INT NOT NULL,
     `MarcaRepuesto` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );
 
 CREATE TABLE `categoria` (
-    `Codigo` INT NOT NULL AUTO_INCREMENT,
+    `Codigo` INT NOT NULL,
     `Categoria` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );

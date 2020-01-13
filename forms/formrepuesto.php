@@ -11,6 +11,8 @@
 <div class="form-inline">
 <legend>Ingrese el Repuesto</legend>
 
+<input type="hidden" id="CodigoInterno" name="txtCodigoInterno"/>
+
   <label for="fname">Código General<br>
   <input type="text" readonly="true" maxlength="13" id="CodigoGeneral" name="txtCodigoGeneral" placeholder="Código General"/>
   </label>
@@ -279,21 +281,13 @@
 /*Cargar datos al abrir la pagina para consultar cuando se pulse el boton de ver*/
 window.onload = function() { 
 
-var CodModelo=sessionStorage.getItem("CodModelo");
-var CodGeneracion=sessionStorage.getItem("CodGeneracion");
-var CodGrupo=sessionStorage.getItem("CodGrupo");
-var CodSubgrupo=sessionStorage.getItem("CodSubgrupo");
-var CodMarca=sessionStorage.getItem("CodMarca");
-var CodCategoria=sessionStorage.getItem("CodCategoria");
-var Codigo=sessionStorage.getItem("Codigo");
+var CodigoInterno=sessionStorage.getItem("CodigoInterno");
 
 var Modificar=sessionStorage.getItem("Modificar");
 
-  if(Codigo!=null && Modificar!=null)
+  if(CodigoInterno!=null && Modificar!=null)
   {
     sessionStorage.clear();
-
-    document.getElementById('Codigo').readOnly = true;
 
     $.ajax({
             url: '../Logica/Repuesto.php',
@@ -302,13 +296,8 @@ var Modificar=sessionStorage.getItem("Modificar");
             {
               MostrarDatos:'MostrarDatos',
               
-              CodModelo:CodModelo,
-              CodGeneracion:CodGeneracion,
-              CodGrupo:CodGrupo,
-              CodSubgrupo:CodSubgrupo,
-              CodMarca:CodMarca,
-              CodCategoria:CodCategoria,
-              Codigo:Codigo
+              CodigoInterno:CodigoInterno,
+              
             },
             dataType: 'json',
             success:function(response){
@@ -317,6 +306,8 @@ var Modificar=sessionStorage.getItem("Modificar");
 
                 if(len > 0)
                 {
+                  	 document.getElementById('CodigoInterno').value = response[0]['CodigoInterno'];
+                  	 
                   	 document.getElementById('CodigoGeneral').value = response[0]['CodigoGeneral'];
                   	 
                   	 document.getElementById('Modelo').value = response[0]['Modelo'];
@@ -395,10 +386,6 @@ var Modificar=sessionStorage.getItem("Modificar");
         });
 
         return false;
-  }
-  else
-  {
-    document.getElementById('Codigo').readOnly = false;
   }
 
 }
@@ -503,8 +490,9 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#Codigo').is('[readonly]'))?"Modificar":"Guardar", 
+             GuardarModificar:($('#CodigoInterno')!='')?"Modificar":"Guardar", 
              
+             CodigoInterno:document.getElementById("CodigoInterno").value,
              CodigoGeneral:document.getElementById('CodigoGeneral').value,
              Modelo:document.getElementById('Modelo').value,
              Generacion:document.getElementById('Generacion').value,
