@@ -19,7 +19,10 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 <link rel="stylesheet" href="../assets/css/styledatatable.css">
 
-
+	    <!--Librerias para el modal -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
@@ -128,6 +131,7 @@
             echo "<td>" . $ri['CaractAuto1'] . "</td>";
             echo "<td>";
             echo '<button onClick="ObtenerDatosFila(this)" style="border: none; background: none;"><a class="view" title="Ver y editar" data-toggle="tooltip"><i id="ver_editar_icon" class="material-icons">&#xE417;</i></a></button>';
+            echo '<button Onclick="ObtenerFilaABorrar(this)" style="border: none; background: none;"><a class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons" style=" color: yellow;">&#xE92B;</i></a></button>';
             echo "</td>";
             echo "</tr>";
           } ?>
@@ -156,10 +160,48 @@
 <script  src="../assets/js/scriptdatatable.js"></script>
 
 </div>
+
+  <div class="modal fade" id="ModalAdvertencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="font-weight: bold; color:#F0AD4E;" id="exampleModalLabel">Advertencia</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="color:black;" id="MSJAdvertencia">
+        </div>
+        <div class="modal-footer">
+          <button type="button" onclick="BorrarRepuesto()" class="btn btn btn-warning" data-dismiss="modal">Borrar</button>
+          <button type="button" onclick="LimpiarSession()" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="ModalMSJ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="DialogMSJ" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="font-weight: bold; color:black;" id="exampleModalLabel">Repuesto</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="color:black;" id="MSJ">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 <script>
-//Funcion para consultar/editar los modelos
+//Funcion para consultar/editar los repuestos
 
 function ObtenerDatosFila(oButton)
 {
@@ -171,6 +213,75 @@ function ObtenerDatosFila(oButton)
     location.href = "formrepuesto.php";
 }
 
+</script>
+
+<script>
+  function ObtenerFilaABorrar(oButton) {
+    /*funcion para cargar el msj de advertencia antes de borrar un repuesto*/
+    var dgvVerRepuestos = document.getElementById('table');
+
+    sessionStorage.setItem("CodInterno", dgvVerRepuestos.rows[oButton.parentNode.parentNode.rowIndex].cells[0].innerHTML);
+    sessionStorage.setItem("Borrar", 'Borrar');
+    sessionStorage.setItem("IndiceBoton", oButton.parentNode.parentNode.rowIndex);
+
+    $("#MSJAdvertencia").html("¿Desea borrar el documento seleccionado?");
+    $("#ModalAdvertencia").modal("show");
+  }
+</script>
+
+<script>
+  function BorrarRepuesto() {
+    var IndBoton = sessionStorage.getItem("IndiceBoton");
+    var dgvVerRepuestos = document.getElementById('table');
+    var CodInterno = sessionStorage.getItem("CodInterno");
+    var Borrar = sessionStorage.getItem("Borrar");
+
+    sessionStorage.clear();
+
+      $.ajax({
+        url: '../Logica/Repuesto.php',
+        type: 'post',
+        data: {
+          btnBorrar: Borrar,
+          CodInterno: CodInterno,
+        },
+        dataType: 'json',
+        success: function(response) {
+
+          var len = response.length;
+
+          if (len > 0) {
+          	
+          	var Respuesta = response[0]['Respuesta'];
+
+			//dgvVerRepuestos.deleteRow(IndBoton);	
+
+            $("#MSJ").html(Respuesta);
+            $("#ModalMSJ").modal("show");
+
+          }
+
+        }
+      });
+
+      return false;
+  }
+</script>
+
+<script>
+  function LimpiarSession() {
+    sessionStorage.clear();
+  }
+</script>
+
+  <script>
+	
+$('#ModalMSJ').on('hide.bs.modal', function (e) {
+		
+	//window.open('formmarca.php', '_self');
+	location.reload();
+});
+	
 </script>
 
 </html>

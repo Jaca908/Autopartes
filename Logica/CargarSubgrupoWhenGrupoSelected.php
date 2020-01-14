@@ -2,6 +2,8 @@
 
 include '../Conexion/Conexion.php';
 
+//funcion para cargar los subgrupos en un combobox cuando se selecciona un Grupo
+
 if(!empty($_POST["Grupo"])){
 	
 	$query="SELECT * FROM subgrupo WHERE FK_grupo = '".$_POST['Grupo']."';";

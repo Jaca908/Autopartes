@@ -15,7 +15,7 @@ else if(isset($_POST['MostrarDatos']))/*Para consultar y llenar los campos*/
 	Consultar();
 }
 
-function GuardarOModificar()
+function GuardarOModificar()//funcion para guardar o modificar una generacion
 {
 	$GuardarModificar=$_POST["GuardarModificar"];
 	
@@ -121,7 +121,7 @@ function GuardarOModificar()
       exit;
 }
 
-function Consultar()
+function Consultar()//funcion para consultar una generacion antes de modificar o solo ver
 {
 	$Codigo=$_POST['Codigo'];
 	//$FK_Usuario=$_SESSION['IDUsuario'];

@@ -15,7 +15,7 @@ else if(isset($_POST['MostrarDatos']))/*Para consultar y llenar los campos*/
 	Consultar();
 }
 
-function GuardarOModificar()
+function GuardarOModificar()//funcion para guardar o modificar un grupo
 {
 	$GuardarModificar=$_POST["GuardarModificar"];
 	
@@ -115,7 +115,7 @@ function GuardarOModificar()
       exit;
 }
 
-function Consultar()
+function Consultar()//funcion para consultar un grupo antes de modificar o solo ver
 {
 	$Codigo=$_POST['Codigo'];
 	

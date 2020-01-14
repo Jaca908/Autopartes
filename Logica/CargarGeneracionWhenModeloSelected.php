@@ -1,6 +1,8 @@
 <?php
 include '../Conexion/Conexion.php';
 
+//funcion para cargar las generaciones en un combobox cuando se selecciona un modelo
+
 if(!empty($_POST["Modelo"])){
     //obtener todas las generaciones del modelo seleccionado
     $query = $con->query("SELECT * FROM generacion WHERE FK_modelo = '".$_POST['Modelo']."';");

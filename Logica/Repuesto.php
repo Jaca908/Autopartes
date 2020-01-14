@@ -14,8 +14,12 @@ else if(isset($_POST['MostrarDatos']))/*Para consultar y llenar los campos*/
 {
 	Consultar();
 }
+else if(isset($_POST['btnBorrar']))
+{
+	Borrar();
+}
 
-function GuardarOModificar()
+function GuardarOModificar()//funcion para guardar o modificar un repuesto
 {
 	$GuardarModificar=$_POST["GuardarModificar"];
 	
@@ -249,7 +253,7 @@ function GuardarOModificar()
       exit;
 }
 
-function Consultar()
+function Consultar()//funcion para consultar un repuesto antes de modificar o solo verlo
 {
 	  $CodigoInterno=$_POST['CodigoInterno'];
 	//$FK_Usuario=$_SESSION['IDUsuario'];
@@ -382,6 +386,38 @@ function Consultar()
     // encoding array to json format
     echo json_encode($users_arr);
     exit; 
+}
+
+function Borrar()//funcion para borrar un repuesto
+{
+	$CodigoInterno=$_POST['CodInterno'];
+	
+	$Respuesta='';
+	
+	$Conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+	if ($Conexion->connect_error) 
+	{
+	 	die("Connection failed: " . $Conexion->connect_error);
+	}
+	
+	$sql="DELETE FROM repuesto WHERE CodigoInterno=$CodigoInterno";
+	
+	if($Conexion->query($sql) === TRUE) 
+	{   
+	  $Respuesta = "Repuesto borrado exitosamente";			  
+	} 
+	else 
+	{
+	  $Respuesta = "Error al borrar el repuesto";
+	}
+	
+	$users_arr[] = array(
+	  "Respuesta"=>$Respuesta,
+	);
+
+	echo json_encode($users_arr);
+	exit;
 }
 
 ?>
