@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS `subgrupo`;
 DROP TABLE IF EXISTS `repuesto`;
 DROP TABLE IF EXISTS `marca_repuesto`;
 DROP TABLE IF EXISTS `categoria`;
+DROP TABLE IF EXISTS `usuarios`;
+DROP TABLE IF EXISTS `pedidos`;
+DROP TABLE IF EXISTS `lineas_pedidos`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `modelo` (
@@ -74,15 +77,50 @@ CREATE TABLE `repuesto` (
 );
 
 CREATE TABLE `marca_repuesto` (
-    `Codigo` INT NOT NULL,
+    `Codigo` INT NOT NULL AUTO_INCREMENT,
     `MarcaRepuesto` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`Codigo`)
 );
 
 CREATE TABLE `categoria` (
-    `Codigo` INT NOT NULL,
+    `Codigo` INT NOT NULL AUTO_INCREMENT,
     `Categoria` VARCHAR(100) NOT NULL,
     PRIMARY KEY (`Codigo`)
+);
+
+CREATE TABLE `usuarios` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(100) NOT NULL,
+    `apellidos` VARCHAR(255),
+    `email` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `rol` VARCHAR(20) NOT NULL,
+    `imagen` TEXT,
+    PRIMARY KEY (`id`),
+    UNIQUE (`email`)
+);
+
+CREATE TABLE `pedidos` (
+    `Id` BIGINT NOT NULL AUTO_INCREMENT,
+    `FK_usuario` INT NOT NULL,
+    `Provincia` VARCHAR(100) NOT NULL,
+    `Localidad` VARCHAR(100) NOT NULL,
+    `Direccion` TEXT NOT NULL,
+    `Total` DECIMAL(14,2) NOT NULL,
+    `Estado` VARCHAR(20) NOT NULL,
+    `Fecha` DATETIME NOT NULL,
+    PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `lineas_pedidos` (
+    `Id` BIGINT NOT NULL AUTO_INCREMENT,
+    `FK_pedido` BIGINT NOT NULL,
+    `FK_repuesto` INT NOT NULL,
+    `Repuesto` VARCHAR(100) NOT NULL,
+    `PrecioVenta` DECIMAL(10,2) NOT NULL,
+    `IVA` DECIMAL(5) NOT NULL,
+    `Cantidad` INT NOT NULL,
+    PRIMARY KEY (`Id`)
 );
 
 ALTER TABLE `generacion` ADD FOREIGN KEY (`FK_modelo`) REFERENCES `modelo`(`Codigo`);
@@ -93,3 +131,6 @@ ALTER TABLE `repuesto` ADD FOREIGN KEY (`FK_grupo`) REFERENCES `grupo`(`Codigo`)
 ALTER TABLE `repuesto` ADD FOREIGN KEY (`FK_subgrupo`) REFERENCES `subgrupo`(`Codigo`);
 ALTER TABLE `repuesto` ADD FOREIGN KEY (`FK_marca_repuesto`) REFERENCES `marca_repuesto`(`Codigo`);
 ALTER TABLE `repuesto` ADD FOREIGN KEY (`FK_categoria`) REFERENCES `categoria`(`Codigo`);
+ALTER TABLE `pedidos` ADD FOREIGN KEY (`FK_usuario`) REFERENCES `usuarios`(`id`);
+ALTER TABLE `lineas_pedidos` ADD FOREIGN KEY (`FK_pedido`) REFERENCES `pedidos`(`Id`);
+ALTER TABLE `lineas_pedidos` ADD FOREIGN KEY (`FK_repuesto`) REFERENCES `repuesto`(`CodigoInterno`);

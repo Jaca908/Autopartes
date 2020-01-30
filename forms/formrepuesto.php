@@ -308,6 +308,8 @@ var Modificar=sessionStorage.getItem("Modificar");
                 {
                   	 document.getElementById('CodigoInterno').value = response[0]['CodigoInterno'];
                   	 
+                  	 $('#CodigoInterno').prop('readonly', true);
+                  	 
                   	 document.getElementById('CodigoGeneral').value = response[0]['CodigoGeneral'];
                   	 
                   	 document.getElementById('Modelo').value = response[0]['Modelo'];
@@ -386,6 +388,10 @@ var Modificar=sessionStorage.getItem("Modificar");
         });
 
         return false;
+  }
+  else
+  {
+  	$('#CodigoInterno').prop("readonly", false);
   }
 
 }
@@ -490,7 +496,7 @@ function Enviar()
           data: 
           {
              btnEnviar:"Enviar",
-             GuardarModificar:($('#CodigoInterno')!='')?"Modificar":"Guardar", 
+             GuardarModificar:($('#CodigoInterno').is('[readonly]'))?"Modificar":"Guardar", 
              
              CodigoInterno:document.getElementById("CodigoInterno").value,
              CodigoGeneral:document.getElementById('CodigoGeneral').value,
